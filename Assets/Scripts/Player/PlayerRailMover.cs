@@ -21,10 +21,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.W))
+        if(Input.GetKey(KeyCode.W))
         {
-            //This doesnt work because I mixed the meters and percentage concept!
-            //distancePercentage += movementDirection * speed * Time.deltaTime / railLength;
+            distancePercentage += movementDirection * speed * Time.deltaTime / railLength;
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
