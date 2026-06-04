@@ -1,8 +1,7 @@
-using System;
 using UnityEngine;
 using UnityEngine.Splines;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerRailMovement : MonoBehaviour
 {
     [SerializeField] private SplineContainer rail;
     [SerializeField] private float speed = 1f;
@@ -11,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private float distancePercentage;
     private float movementDirection = 1f;
 
+    private Vector3 currentPosition;
     private void Start()
     {
         // This is the actual length in "meters" not a percentage!
@@ -41,7 +41,14 @@ public class PlayerMovement : MonoBehaviour
             distancePercentage = 0f;
         }
 
-        Vector3 currentPosition = rail.EvaluatePosition(distancePercentage);
+        currentPosition = rail.EvaluatePosition(distancePercentage);
+        Vector3 forward = rail.EvaluateTangent(distancePercentage);
+
+        if (movementDirection == -1f) {
+            forward = -forward;
+        }
+        
         transform.position = currentPosition;
+        transform.forward = forward;
     }
 }
