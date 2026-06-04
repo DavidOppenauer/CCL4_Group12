@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd9553f1d2aa9d644937801ebe3597dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerRailMovement
-  rail: {fileID: 0}
+  rail: {fileID: 408473409}
   speed: 10
 --- !u!1 &273449982
 GameObject:
