@@ -48,7 +48,17 @@
 
 # VS Code local settings
 .vscode/
-
+# IDE / generated C# project files
+*.sln
+*.slnx
+*.csproj
+*.user
+*.suo
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
 # Gradle cache directory
 .gradle/
 
