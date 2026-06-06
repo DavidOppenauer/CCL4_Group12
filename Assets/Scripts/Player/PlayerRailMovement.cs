@@ -3,7 +3,8 @@ using UnityEngine.Splines;
 
 public class PlayerRailMovement : MonoBehaviour
 {
-    [SerializeField] private SplineContainer rail;
+    [SerializeField] private RailSegment initialRail;
+    private RailSegment currentRail;
     [SerializeField] private float speed = 1f;
 
     private float railLength;
@@ -14,12 +15,12 @@ public class PlayerRailMovement : MonoBehaviour
     private void Start()
     {
         // This is the actual length in "meters" not a percentage!
-        railLength = rail.CalculateLength();
-        //Debug.Log(railLength);
+        currentRail = initialRail;
+        railLength = currentRail.GetSplineContainer().CalculateLength();
     }
 
     // Update is called once per frame
-    void Update()
+    public void HandleMovement()
     {
         if(Input.GetKey(KeyCode.W))
         {
@@ -29,11 +30,17 @@ public class PlayerRailMovement : MonoBehaviour
         {
             movementDirection *= -1f;
         }
-
+        // Junction Logic
         // Stopping/Getting stuck at the end at the end
         if (distancePercentage > 1f)
         {
             distancePercentage = 1f;
+            if (currentRail.GetEndJunction() != null)
+            {
+                RailJunction railEndChoices = currentRail.GetEndJunction();
+                Debug.Log(railEndChoices.GetRailSegments());
+            }
+            
         }
         // Also cant go past the start
         if (distancePercentage < 0f)
@@ -41,8 +48,8 @@ public class PlayerRailMovement : MonoBehaviour
             distancePercentage = 0f;
         }
 
-        currentPosition = rail.EvaluatePosition(distancePercentage);
-        Vector3 forward = rail.EvaluateTangent(distancePercentage);
+        currentPosition = currentRail.GetSplineContainer().EvaluatePosition(distancePercentage);
+        Vector3 forward = currentRail.GetSplineContainer().EvaluateTangent(distancePercentage);
 
         if (movementDirection == -1f) {
             forward = -forward;
@@ -51,4 +58,6 @@ public class PlayerRailMovement : MonoBehaviour
         transform.position = currentPosition;
         transform.forward = forward;
     }
+
+    //public void
 }

@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd9553f1d2aa9d644937801ebe3597dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerRailMovement
-  rail: {fileID: 408473409}
+  initialRail: {fileID: 408473411}
   speed: 10
 --- !u!1 &273449982
 GameObject:
@@ -775,8 +775,9 @@ GameObject:
   m_Component:
   - component: {fileID: 408473410}
   - component: {fileID: 408473409}
+  - component: {fileID: 408473411}
   m_Layer: 0
-  m_Name: StartRailPlayer
+  m_Name: Rail_AB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -817,21 +818,21 @@ MonoBehaviour:
       TangentIn:
         x: -0
         y: -0
-        z: -5.9908295
+        z: -2.4609487
       TangentOut:
         x: 0
         y: 0
-        z: 5.9908295
+        z: 2.4609487
       Rotation:
         value:
           x: 0
-          y: 0.0026331262
+          y: 0.0064100805
           z: 0
-          w: 0.99999654
+          w: 0.9999795
     - Position:
         x: 0.3154911
         y: 0
-        z: 59.907463
+        z: 24.607464
       TangentIn:
         x: 0
         y: 0
@@ -870,13 +871,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 408473408}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.084508896, y: 0, z: -45.157463}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2056517566}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &408473411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408473408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eab592d688c2b54a8705d04fb054c90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RailSegment
+  startJunction: {fileID: 1158988665}
+  endJunction: {fileID: 786284589}
 --- !u!1 &558415917
 GameObject:
   m_ObjectHideFlags: 0
@@ -1183,8 +1198,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 786284588}
+  - component: {fileID: 786284589}
   m_Layer: 0
-  m_Name: Junction_B
+  m_Name: Junction_B_ForntOfBiulding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1198,13 +1214,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 786284587}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2056517566}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &786284589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786284587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a2f0ef09f1ed145836529eff0f4d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RailJunction
+  connectedRails:
+  - {fileID: 408473411}
 --- !u!1 &844376064
 GameObject:
   m_ObjectHideFlags: 0
@@ -1374,8 +1404,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1158988664}
+  - component: {fileID: 1158988665}
   m_Layer: 0
-  m_Name: Junction_A
+  m_Name: Junction_A_Entrypoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1389,13 +1420,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1158988663}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2056517566}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1158988665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158988663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a2f0ef09f1ed145836529eff0f4d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RailJunction
+  connectedRails:
+  - {fileID: 408473411}
 --- !u!1 &1431245137
 GameObject:
   m_ObjectHideFlags: 0
@@ -1613,6 +1658,40 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &2056517565
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2056517566}
+  m_Layer: 0
+  m_Name: Path
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2056517566
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056517565}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1158988664}
+  - {fileID: 786284588}
+  - {fileID: 408473410}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2142517643
 GameObject:
   m_ObjectHideFlags: 0
@@ -1652,8 +1731,6 @@ SceneRoots:
   - {fileID: 1625786213}
   - {fileID: 113593498}
   - {fileID: 999834135}
-  - {fileID: 408473410}
   - {fileID: 688345354}
   - {fileID: 398704847}
-  - {fileID: 1158988664}
-  - {fileID: 786284588}
+  - {fileID: 2056517566}
