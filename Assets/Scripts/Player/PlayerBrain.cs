@@ -2,11 +2,14 @@ using UnityEngine;
 
 public class PlayerBrain : MonoBehaviour
 {
+    [SerializeField] private RailSegment initialRail;
+    private RailSegment currentRail;
     private PlayerRailMovement playerRailMovement;
-    private void Start()
+    private void Awake()
     {
         playerRailMovement = GetComponent<PlayerRailMovement>();
         currentState = PlayerState.MovingAlongRail;
+        currentRail = initialRail;
     }
     private enum PlayerState
     {
@@ -24,11 +27,32 @@ public class PlayerBrain : MonoBehaviour
         switch (currentState)
         {
             case PlayerState.MovingAlongRail:
-                playerRailMovement.HandleMovement();
-                //if()
+                playerRailMovement.HandleMovement(currentRail);
+                if (playerRailMovement.GetEndOfRailReached())
+                {
+                    if (currentRail.GetEndJunction() != null)
+                    {
+                        currentState = PlayerState.ChoosingNextRail;
+                    } 
+                    else
+                    {
+                        return;
+                    }
+                }
+                if (playerRailMovement.GetStartOfRailReached())
+                {
+                    if (currentRail.GetStartJunction() != null)
+                    {
+                        currentState = PlayerState.ChoosingNextRail;
+                    } 
+                    else
+                    {
+                        return;
+                    }
+                }
             break;
             case PlayerState.ChoosingNextRail:
-
+                Debug.Log("We here in Choosong");
             break;
             case PlayerState.FirstPersonAiming:
 

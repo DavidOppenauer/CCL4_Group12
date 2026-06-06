@@ -3,25 +3,26 @@ using UnityEngine.Splines;
 
 public class PlayerRailMovement : MonoBehaviour
 {
-    [SerializeField] private RailSegment initialRail;
-    private RailSegment currentRail;
     [SerializeField] private float speed = 1f;
 
+    private RailSegment previousRail;
+    private bool endOfRailReached = false;
+    private bool startOfRailReached = false;
     private float railLength;
     private float distancePercentage;
     private float movementDirection = 1f;
-
     private Vector3 currentPosition;
-    private void Start()
-    {
-        // This is the actual length in "meters" not a percentage!
-        currentRail = initialRail;
-        railLength = currentRail.GetSplineContainer().CalculateLength();
-    }
 
     // Update is called once per frame
-    public void HandleMovement()
+    public void HandleMovement(RailSegment currentRail)
     {
+        // Only calculate length if its a new rail
+        if ( currentRail != previousRail )
+        {
+            railLength = currentRail.GetSplineContainer().CalculateLength();
+            previousRail = currentRail;
+        }
+        
         if(Input.GetKey(KeyCode.W))
         {
             distancePercentage += movementDirection * speed * Time.deltaTime / railLength;
@@ -35,17 +36,18 @@ public class PlayerRailMovement : MonoBehaviour
         if (distancePercentage > 1f)
         {
             distancePercentage = 1f;
-            if (currentRail.GetEndJunction() != null)
+            startOfRailReached = true;
+            /*if (currentRail.GetEndJunction() != null)
             {
-                RailJunction railEndChoices = currentRail.GetEndJunction();
+                railEndChoices = currentRail.GetEndJunction();
                 Debug.Log(railEndChoices.GetRailSegments());
-            }
-            
+            }*/
         }
-        // Also cant go past the start
+        // This may be really important... to have no <= because the it would immeadiatly trigger when we first place the player on a rail
         if (distancePercentage < 0f)
         {
             distancePercentage = 0f;
+            endOfRailReached = true;
         }
 
         currentPosition = currentRail.GetSplineContainer().EvaluatePosition(distancePercentage);
@@ -59,5 +61,19 @@ public class PlayerRailMovement : MonoBehaviour
         transform.forward = forward;
     }
 
-    //public void
+    public bool GetEndOfRailReached()
+    {
+        return endOfRailReached;
+    }
+
+    public bool GetStartOfRailReached()
+    {
+        return startOfRailReached;
+    }
+
+    public void ResetJunctionFlags()
+    {
+        startOfRailReached = false;
+        endOfRailReached = false;
+    } 
 }
