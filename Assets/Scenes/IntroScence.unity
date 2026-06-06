@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 113593498}
   - component: {fileID: 113593500}
   - component: {fileID: 113593501}
+  - component: {fileID: 113593502}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -189,8 +190,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd9553f1d2aa9d644937801ebe3597dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerRailMovement
-  initialRail: {fileID: 408473411}
   speed: 10
+--- !u!114 &113593502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113593497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4e10021a822f9b4e98c97f04bfd6743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerBrain
+  initialRail: {fileID: 408473411}
 --- !u!1 &273449982
 GameObject:
   m_ObjectHideFlags: 0
