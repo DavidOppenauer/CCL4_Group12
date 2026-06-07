@@ -4,6 +4,7 @@ public class PlayerBrain : MonoBehaviour
 {
     [SerializeField] private RailSegment initialRail;
     private RailSegment currentRail;
+    private RailJunction currentJunction;
     private PlayerRailMovement playerRailMovement;
     private void Awake()
     {
@@ -32,6 +33,13 @@ public class PlayerBrain : MonoBehaviour
                 {
                     if (currentRail.GetEndJunction() != null)
                     {
+                        currentJunction = currentRail.GetEndJunction();
+                        // Stop early if theres just the one rail its connected to its a dead end
+                        playerRailMovement.ResetJunctionFlags();
+                        if (currentJunction.GetRailCount() == 1)
+                        {
+                            return;
+                        }
                         currentState = PlayerState.ChoosingNextRail;
                     } 
                     else
@@ -43,6 +51,12 @@ public class PlayerBrain : MonoBehaviour
                 {
                     if (currentRail.GetStartJunction() != null)
                     {
+                        currentJunction = currentRail.GetStartJunction();
+                        playerRailMovement.ResetJunctionFlags();
+                        if (currentJunction.GetRailCount() == 1)
+                        {
+                            return;
+                        }
                         currentState = PlayerState.ChoosingNextRail;
                     } 
                     else
@@ -52,7 +66,8 @@ public class PlayerBrain : MonoBehaviour
                 }
             break;
             case PlayerState.ChoosingNextRail:
-                Debug.Log("We here in Choosong");
+                
+
             break;
             case PlayerState.FirstPersonAiming:
 

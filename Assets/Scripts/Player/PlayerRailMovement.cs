@@ -16,10 +16,11 @@ public class PlayerRailMovement : MonoBehaviour
     // Update is called once per frame
     public void HandleMovement(RailSegment currentRail)
     {
-        // Only calculate length if its a new rail
+        // Only recalculate if its a new rail
         if ( currentRail != previousRail )
         {
             railLength = currentRail.GetSplineContainer().CalculateLength();
+            distancePercentage = 0f;
             previousRail = currentRail;
         }
         
@@ -36,18 +37,13 @@ public class PlayerRailMovement : MonoBehaviour
         if (distancePercentage > 1f)
         {
             distancePercentage = 1f;
-            startOfRailReached = true;
-            /*if (currentRail.GetEndJunction() != null)
-            {
-                railEndChoices = currentRail.GetEndJunction();
-                Debug.Log(railEndChoices.GetRailSegments());
-            }*/
+            endOfRailReached = true;
         }
         // This may be really important... to have no <= because the it would immeadiatly trigger when we first place the player on a rail
         if (distancePercentage < 0f)
         {
             distancePercentage = 0f;
-            endOfRailReached = true;
+            startOfRailReached = true;
         }
 
         currentPosition = currentRail.GetSplineContainer().EvaluatePosition(distancePercentage);
@@ -75,5 +71,16 @@ public class PlayerRailMovement : MonoBehaviour
     {
         startOfRailReached = false;
         endOfRailReached = false;
-    } 
+    }
+
+    public void PlaceOnRailStart()
+    {
+        distancePercentage = 0f;
+        movementDirection = 1f;
+    }
+    public void PlaceOnRailEnd()
+    {
+        distancePercentage = 1f;
+        movementDirection = -1f;
+    }
 }

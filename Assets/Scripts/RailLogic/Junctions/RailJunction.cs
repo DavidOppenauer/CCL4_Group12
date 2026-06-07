@@ -8,4 +8,9 @@ public class RailJunction : MonoBehaviour
     {
         return connectedRails;
     }
+
+    public int GetRailCount()
+    {
+        return connectedRails.Length;
+    }
 }
