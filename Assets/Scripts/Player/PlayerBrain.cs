@@ -4,7 +4,10 @@ using UnityEngine.InputSystem;
 public class PlayerBrain : MonoBehaviour
 {
     [SerializeField] private RailSegment initialRail;
+    // Rail variable for MovementState
     private RailSegment currentRail;
+    // Rail variable for choosing state for more clarity
+    private RailSegment chosenRail;
     private RailJunction currentJunction;
     private PlayerRailMovement playerRailMovement;
     private RailSegment[] connectedRailsToCurrentJunction;
@@ -105,27 +108,38 @@ public class PlayerBrain : MonoBehaviour
                 // 0 should be the currentRail 1 and 2 should be different... Oh god I have to be careful in the inspector setting up references
                 if(Input.GetKeyDown(KeyCode.A))// Left for now
                 {
-                    currentRail = connectedRailsToCurrentJunction[1];
+                    chosenRail = connectedRailsToCurrentJunction[1];
                     playerHasDecidedOnRoute = true;
                 }
                 if(Input.GetKeyDown(KeyCode.D))// Left for now
                 {
-                    currentRail = connectedRailsToCurrentJunction[2];
+                    chosenRail = connectedRailsToCurrentJunction[2];
                     playerHasDecidedOnRoute = true;
                 }
                 if (playerHasDecidedOnRoute == true)
                 {
                     // Put the player at the corresponding Position meaning at the start or end of the rail
-                    if(currentJunctionType == JunctionType.EndJunction)
+                    if(currentJunction == chosenRail.GetStartJunction())
+                    {
+                        playerRailMovement.PlaceOnRailStart();
+                    }
+                    if (currentJunction == chosenRail.GetEndJunction())
+                    {
+                        playerRailMovement.PlaceOnRailEnd();
+                    }
+                    /*if(currentJunctionType == JunctionType.EndJunction)
                     {
                         playerRailMovement.PlaceOnRailStart();
                     }
                     if (currentJunctionType == JunctionType.StartJunction)
                     {
                         playerRailMovement.PlaceOnRailEnd();
-                    }
+                    }*/
                     // After everythings done reset the current Junction type for next cycle
-                    currentJunctionType = JunctionType.WaitingForNewValue;
+                    //currentJunctionType = JunctionType.WaitingForNewValue;
+
+                    // Set the new current Rail
+                    currentRail = chosenRail;
                     // Reset the Player has decided flag
                     playerHasDecidedOnRoute = false;
                     // Go back moving on the new rail
