@@ -1376,6 +1376,7 @@ MonoBehaviour:
   connectedRails:
   - {fileID: 408473411}
   - {fileID: 554445971}
+  - {fileID: 1079200623}
 --- !u!1 &844376064
 GameObject:
   m_ObjectHideFlags: 0

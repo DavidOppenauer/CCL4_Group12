@@ -89,11 +89,12 @@ public class PlayerBrain : MonoBehaviour
                 }
             break;
             case PlayerState.ChoosingNextRail:
+            
                 // Getting the variable only in the first iteration
                 if (currentState != previousState)
                 {
                     connectedRailsToCurrentJunction = currentJunction.GetRailSegments();
-                    currentState = previousState;                  
+                    previousState = currentState;                  
                 }
 
                 // ---------------------------------------------------------------------------------
@@ -130,7 +131,7 @@ public class PlayerBrain : MonoBehaviour
                     // Go back moving on the new rail
                     currentState = PlayerState.MovingAlongRail;                    
                 }
-
+            
             break;
             case PlayerState.FirstPersonAiming:
 
