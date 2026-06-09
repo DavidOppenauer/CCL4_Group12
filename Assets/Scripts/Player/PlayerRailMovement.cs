@@ -20,7 +20,6 @@ public class PlayerRailMovement : MonoBehaviour
         if ( currentRail != previousRail )
         {
             railLength = currentRail.GetSplineContainer().CalculateLength();
-            distancePercentage = 0f;
             previousRail = currentRail;
         }
         
