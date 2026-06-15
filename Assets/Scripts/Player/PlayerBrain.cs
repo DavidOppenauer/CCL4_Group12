@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerBrain : MonoBehaviour
 {
+    [SerializeField] private CameraController cameraController;
     [SerializeField] private RailSegment initialRail;
     // Rail variable for MovementState
     private RailSegment currentRail;
@@ -27,7 +28,7 @@ public class PlayerBrain : MonoBehaviour
     {
         MovingAlongRail,
         ChoosingNextRail,
-        FirstPersonAiming
+        Aiming
     }
     private PlayerState currentState;
     private PlayerState previousState;
@@ -38,6 +39,19 @@ public class PlayerBrain : MonoBehaviour
         switch (currentState)
         {
             case PlayerState.MovingAlongRail:
+                
+                // Transition Code
+                if(previousState != currentState)
+                {
+                    if (previousState == PlayerState.Aiming)
+                    {
+                        // First to third person Transition changes
+                        // HandleAimingToMoving();
+                        cameraController.SwitchToRailCamera();
+                        previousState = currentState;
+                    }
+                }
+
                 // Call Movement script to allow player movement
                 playerRailMovement.HandleMovement(currentRail);
                 // "Listen" for when the end of a rail was reached specifically the beginning or the end of the rail
@@ -159,7 +173,29 @@ public class PlayerBrain : MonoBehaviour
                 }
             
             break;
-            case PlayerState.FirstPersonAiming:
+            case PlayerState.Aiming:
+                /*
+                    stop rail movement check
+                    switch to AimCamera
+                    show crosshair
+                    allow mouse/controller aim
+                */
+                // Transition Code
+                if(previousState != currentState)
+                {
+                    cameraController.SwitchToAimCamera();
+                    if (previousState == PlayerState.MovingAlongRail)
+                    {
+                        // First to third person Transition changes
+                        // HandleAimingToMoving();
+                        
+                    }
+                    previousState = currentState;
+                }
+                if (Input.GetKey(KeyCode.Q))
+                {
+                    currentState = PlayerState.MovingAlongRail;
+                }
 
             break;
         }
@@ -167,6 +203,9 @@ public class PlayerBrain : MonoBehaviour
 
     private void HandleState()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            currentState = PlayerState.Aiming;
+        }
     }
 }

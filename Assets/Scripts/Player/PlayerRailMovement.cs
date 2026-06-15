@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Splines;
 
 public class PlayerRailMovement : MonoBehaviour

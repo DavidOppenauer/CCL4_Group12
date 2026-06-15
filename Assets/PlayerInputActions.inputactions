@@ -1,0 +1,83 @@
+{
+    "version": 1,
+    "name": "PlayerInputActions",
+    "maps": [
+        {
+            "name": "PlayerMovementMap",
+            "id": "84946987-13d4-4a65-ba13-895bf6ea4c67",
+            "actions": [
+                {
+                    "name": "Forward",
+                    "type": "Button",
+                    "id": "d59429b1-6f2f-4dbf-a7f1-79319b455c69",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TurnAround",
+                    "type": "Button",
+                    "id": "251433b0-ee7c-43fe-8825-5369351da17c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9f968e29-7dd9-4efc-b391-49261cf44687",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Forward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6ae5dd0e-c65e-44a5-82dd-552a55ba7aa8",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TurnAround",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "PlayerCameraMap",
+            "id": "09037138-705a-426e-9bad-b2caed9eee0a",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Value",
+                    "id": "ef0ca867-9338-4d80-9afc-2763f3229f8b",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "427d0930-0b17-4efa-90c9-d52496792ba2",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
