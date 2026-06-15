@@ -6,6 +6,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerBrain : MonoBehaviour
 {
+    // New Input System
+    [SerializeField] private PlayerInputs playerInput;
+
     [SerializeField] private CameraController cameraController;
     [SerializeField] private RailSegment initialRail;
     // Rail variable for MovementState
@@ -118,7 +121,7 @@ public class PlayerBrain : MonoBehaviour
 
                 // Setting currentRail to what the player chooses
                 // S should always be the return choice
-                if(Input.GetKeyDown(KeyCode.S))// Go back
+                if(playerInput.GetTurnAroundWasPressedThisFrame())// Go back
                 {
                     foreach ( RailSegment rail in availableRailChoices)
                     {
@@ -129,6 +132,7 @@ public class PlayerBrain : MonoBehaviour
                     }
                     playerHasDecidedOnRoute = true;
                 }
+                // REFACTOR OF NEW INPUT SYSTEM INCOMPLETE BECAUSE THIS SECTION SHOULDNT EXISSSSST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 if(Input.GetKeyDown(KeyCode.W))// Confirm
                 {
                     chosenRail = availableRailChoices[selectedRailChoiceIndex];
@@ -203,9 +207,16 @@ public class PlayerBrain : MonoBehaviour
 
     private void HandleState()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        bool aimIsPressed = playerInput.GetAimIsPressed();
+
+        if (aimIsPressed && currentState != PlayerState.ChoosingNextRail)
         {
             currentState = PlayerState.Aiming;
+        }
+
+        if (!aimIsPressed && currentState == PlayerState.Aiming)
+        {
+            currentState = PlayerState.MovingAlongRail;
         }
     }
 }

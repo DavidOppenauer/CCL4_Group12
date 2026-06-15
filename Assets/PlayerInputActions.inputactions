@@ -7,7 +7,7 @@
             "id": "84946987-13d4-4a65-ba13-895bf6ea4c67",
             "actions": [
                 {
-                    "name": "Forward",
+                    "name": "WalkForward",
                     "type": "Button",
                     "id": "d59429b1-6f2f-4dbf-a7f1-79319b455c69",
                     "expectedControlType": "",
@@ -23,6 +23,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "AimMode",
+                    "type": "Button",
+                    "id": "fa7a54ba-0028-49ed-9055-4724e3cc4b33",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -33,7 +42,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Forward",
+                    "action": "WalkForward",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -47,6 +56,17 @@
                     "action": "TurnAround",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4c23cb3a-30d4-4daf-bfaa-f01ecedf1298",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AimMode",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -55,7 +75,7 @@
             "id": "09037138-705a-426e-9bad-b2caed9eee0a",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "Look",
                     "type": "Value",
                     "id": "ef0ca867-9338-4d80-9afc-2763f3229f8b",
                     "expectedControlType": "Vector2",
@@ -72,7 +92,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

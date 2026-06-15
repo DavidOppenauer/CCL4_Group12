@@ -6,6 +6,9 @@ public class PlayerRailMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 1f;
 
+    // New Input System
+    [SerializeField] private PlayerInputs playerInput;
+
     private RailSegment previousRail;
     private bool endOfRailReached = false;
     private bool startOfRailReached = false;
@@ -24,11 +27,11 @@ public class PlayerRailMovement : MonoBehaviour
             previousRail = currentRail;
         }
         
-        if(Input.GetKey(KeyCode.W))
+        if(playerInput.GetMoveForwardIsPressed())
         {
             distancePercentage += movementDirection * speed * Time.deltaTime / railLength;
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (playerInput.GetTurnAroundWasPressedThisFrame())
         {
             movementDirection *= -1f;
         }
