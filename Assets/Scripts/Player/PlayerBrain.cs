@@ -6,6 +6,14 @@ using UnityEngine.InputSystem;
 
 public class PlayerBrain : MonoBehaviour
 {
+    // New Input System
+    [SerializeField] private PlayerInputs playerInput;
+
+    // Aiming controlls
+    private PlayerAimController playerAimController;
+
+    // Switching the camera, just between 2 the clearer distinction happens in cameraController
+    [SerializeField] private CameraController cameraController;
     [SerializeField] private RailSegment initialRail;
     // Rail variable for MovementState
     private RailSegment currentRail;
@@ -20,6 +28,7 @@ public class PlayerBrain : MonoBehaviour
     private void Awake()
     {
         playerRailMovement = GetComponent<PlayerRailMovement>();
+        playerAimController = GetComponent<PlayerAimController>();
         currentState = PlayerState.MovingAlongRail;
         currentRail = initialRail;
     }
@@ -27,7 +36,7 @@ public class PlayerBrain : MonoBehaviour
     {
         MovingAlongRail,
         ChoosingNextRail,
-        FirstPersonAiming
+        Aiming
     }
     private PlayerState currentState;
     private PlayerState previousState;
@@ -38,6 +47,20 @@ public class PlayerBrain : MonoBehaviour
         switch (currentState)
         {
             case PlayerState.MovingAlongRail:
+                
+                // Transition Code
+                if(previousState != currentState)
+                {
+                    if (previousState == PlayerState.Aiming)
+                    {
+                        // First to third person Transition changes
+                        // HandleAimingToMoving();
+                        playerAimController.DisableAiming();
+                        cameraController.SwitchToRailCamera();
+                        previousState = currentState;
+                    }
+                }
+
                 // Call Movement script to allow player movement
                 playerRailMovement.HandleMovement(currentRail);
                 // "Listen" for when the end of a rail was reached specifically the beginning or the end of the rail
@@ -104,7 +127,7 @@ public class PlayerBrain : MonoBehaviour
 
                 // Setting currentRail to what the player chooses
                 // S should always be the return choice
-                if(Input.GetKeyDown(KeyCode.S))// Go back
+                if(playerInput.GetTurnAroundWasPressedThisFrame())// Go back
                 {
                     foreach ( RailSegment rail in availableRailChoices)
                     {
@@ -115,6 +138,7 @@ public class PlayerBrain : MonoBehaviour
                     }
                     playerHasDecidedOnRoute = true;
                 }
+                // REFACTOR OF NEW INPUT SYSTEM INCOMPLETE BECAUSE THIS SECTION SHOULDNT EXISSSSST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 if(Input.GetKeyDown(KeyCode.W))// Confirm
                 {
                     chosenRail = availableRailChoices[selectedRailChoiceIndex];
@@ -159,14 +183,36 @@ public class PlayerBrain : MonoBehaviour
                 }
             
             break;
-            case PlayerState.FirstPersonAiming:
+            case PlayerState.Aiming:
+                /*
+                    show crosshair
+                    hide player show gun
+                */
+                // Transition Code
+                if(previousState != currentState)
+                {
+                    playerAimController.EnableAiming();
+                    cameraController.SwitchToAimCamera();
+                    previousState = currentState;
+                }
 
+                playerAimController.HandleAiming();
             break;
         }
     }
 
     private void HandleState()
     {
-        
+        bool aimIsPressed = playerInput.GetAimIsPressed();
+
+        if (aimIsPressed && currentState != PlayerState.ChoosingNextRail)
+        {
+            currentState = PlayerState.Aiming;
+        }
+
+        if (!aimIsPressed && currentState == PlayerState.Aiming)
+        {
+            currentState = PlayerState.MovingAlongRail;
+        }
     }
 }
