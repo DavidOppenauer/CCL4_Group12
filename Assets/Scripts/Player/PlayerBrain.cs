@@ -9,6 +9,10 @@ public class PlayerBrain : MonoBehaviour
     // New Input System
     [SerializeField] private PlayerInputs playerInput;
 
+    // Aiming controlls
+    private PlayerAimController playerAimController;
+
+    // Switching the camera, just between 2 the clearer distinction happens in cameraController
     [SerializeField] private CameraController cameraController;
     [SerializeField] private RailSegment initialRail;
     // Rail variable for MovementState
@@ -24,6 +28,7 @@ public class PlayerBrain : MonoBehaviour
     private void Awake()
     {
         playerRailMovement = GetComponent<PlayerRailMovement>();
+        playerAimController = GetComponent<PlayerAimController>();
         currentState = PlayerState.MovingAlongRail;
         currentRail = initialRail;
     }
@@ -50,6 +55,7 @@ public class PlayerBrain : MonoBehaviour
                     {
                         // First to third person Transition changes
                         // HandleAimingToMoving();
+                        playerAimController.DisableAiming();
                         cameraController.SwitchToRailCamera();
                         previousState = currentState;
                     }
@@ -179,28 +185,18 @@ public class PlayerBrain : MonoBehaviour
             break;
             case PlayerState.Aiming:
                 /*
-                    stop rail movement check
-                    switch to AimCamera
                     show crosshair
-                    allow mouse/controller aim
+                    hide player show gun
                 */
                 // Transition Code
                 if(previousState != currentState)
                 {
+                    playerAimController.EnableAiming();
                     cameraController.SwitchToAimCamera();
-                    if (previousState == PlayerState.MovingAlongRail)
-                    {
-                        // First to third person Transition changes
-                        // HandleAimingToMoving();
-                        
-                    }
                     previousState = currentState;
                 }
-                if (Input.GetKey(KeyCode.Q))
-                {
-                    currentState = PlayerState.MovingAlongRail;
-                }
 
+                playerAimController.HandleAiming();
             break;
         }
     }

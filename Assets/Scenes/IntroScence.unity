@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 28315222}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.39}
+  m_LocalPosition: {x: 0, y: 0, z: 3.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -162,6 +162,7 @@ GameObject:
   - component: {fileID: 113593500}
   - component: {fileID: 113593501}
   - component: {fileID: 113593502}
+  - component: {fileID: 113593503}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -239,6 +240,23 @@ MonoBehaviour:
   playerInput: {fileID: 246064572}
   cameraController: {fileID: 999834136}
   initialRail: {fileID: 408473411}
+--- !u!114 &113593503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113593497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44e27d6c701054742864a5550c45186d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAimController
+  playerInput: {fileID: 246064572}
+  aimCameraPivot: {fileID: 747543994}
+  mouseSensitivity: 0.1
+  minVerticalLook: -45
+  maxVerticalLook: 45
 --- !u!1 &246064571
 GameObject:
   m_ObjectHideFlags: 0
@@ -1433,7 +1451,7 @@ Transform:
   m_GameObject: {fileID: 747543993}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.57, z: 0.03}
+  m_LocalPosition: {x: 0, y: 2.5, z: 0.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1910,7 +1928,7 @@ Transform:
   m_GameObject: {fileID: 1390055465}
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000014676948, y: -4.748801e-22, z: 4.5838612e-23, w: 1}
-  m_LocalPosition: {x: 3.5, y: 1.57, z: -36.170002}
+  m_LocalPosition: {x: 3.5, y: 2.5, z: -36.170002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
