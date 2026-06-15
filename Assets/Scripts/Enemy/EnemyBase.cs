@@ -70,10 +70,9 @@ public class EnemyBase : MonoBehaviour
     private void OnChasingState()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-        navMeshAgent.isStopped = false;
         navMeshAgent.SetDestination(player.transform.position);
 
-        if (distanceToPlayer <= attackRange)
+        if (distanceToPlayer <= attackRange && HasLineOfSight())
         {
             currentState = EnemyState.Attacking;
         }
@@ -88,35 +87,31 @@ public class EnemyBase : MonoBehaviour
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
         Attack();
-        navMeshAgent.isStopped = true;
+        navMeshAgent.ResetPath();
 
-
-
-        if (distanceToPlayer > triggerRange)
-        {
-            currentState = EnemyState.Idle;
-        }
-        else if (distanceToPlayer > attackRange)
+        if (distanceToPlayer > attackRange || !HasLineOfSight())
         {
             currentState = EnemyState.Chasing;
         }
-
     }
     #endregion
 
     #region Helper Functions
-    // private bool HasLineOfSight()
-    // {
-    //     float distanceToPlayer = Vector3.Distance(transform.position, playerPosition.transform.position);
-    //     Vector3 enemyPos = transform.position + Vector3.up;
-    //     Vector3 playerPos = playerPosition.transform.position + Vector3.up;
-    //     Vector3 direction = (playerPos - enemyPos).normalized;
+    private bool HasLineOfSight()
+    {
+        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+        Vector3 enemyPos = transform.position;
+        Vector3 playerPos = player.transform.position;
+        Vector3 direction = (playerPos - enemyPos).normalized;
 
-    //     if (Physics.Raycast(enemyPos, direction, out RaycastHit hitInfo, distanceToPlayer))
-    //     {
-
-    //     }
-
-    // }
+        if (Physics.Raycast(enemyPos, direction, out RaycastHit hitInfo, distanceToPlayer, ~0))
+        {
+            if (hitInfo.transform.gameObject == player)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     #endregion
 }
