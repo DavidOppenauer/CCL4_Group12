@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerRailMovement
   speed: 10
-  playerInput: {fileID: 0}
+  playerInput: {fileID: 246064572}
 --- !u!114 &113593502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e10021a822f9b4e98c97f04bfd6743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBrain
-  playerInput: {fileID: 0}
+  playerInput: {fileID: 246064572}
   cameraController: {fileID: 999834136}
   initialRail: {fileID: 408473411}
 --- !u!1 &246064571
