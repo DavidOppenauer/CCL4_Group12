@@ -161,8 +161,8 @@ GameObject:
   - component: {fileID: 113593498}
   - component: {fileID: 113593500}
   - component: {fileID: 113593501}
-  - component: {fileID: 113593502}
   - component: {fileID: 113593503}
+  - component: {fileID: 113593502}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerRailMovement
   speed: 10
-  playerInput: {fileID: 246064572}
+  playerInput: {fileID: 246064574}
 --- !u!114 &113593502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,10 +236,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 113593497}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4e10021a822f9b4e98c97f04bfd6743, type: 3}
+  m_Script: {fileID: 11500000, guid: ead0fd93857ad2a4ab2f1d33261e595b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBrain
-  playerInput: {fileID: 246064572}
+  playerInput: {fileID: 246064574}
   cameraController: {fileID: 999834136}
   initialRail: {fileID: 408473411}
   reloadUI: {fileID: 1438278522}
@@ -252,10 +252,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 113593497}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44e27d6c701054742864a5550c45186d, type: 3}
+  m_Script: {fileID: 11500000, guid: 21a72a4abe8a6e94b8fd5e73a1648feb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAimController
-  playerInput: {fileID: 246064572}
+  playerInput: {fileID: 246064574}
   aimCameraPivot: {fileID: 747543994}
   mouseSensitivity: 0.1
   minVerticalLook: -45
@@ -269,7 +269,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 246064573}
-  - component: {fileID: 246064572}
+  - component: {fileID: 246064574}
   m_Layer: 0
   m_Name: PlayerInput
   m_TagString: Untagged
@@ -277,18 +277,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &246064572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 246064571}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9db255ca247300e41996f0bef1474cfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerInputs
 --- !u!4 &246064573
 Transform:
   m_ObjectHideFlags: 0
@@ -304,6 +292,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &246064574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246064571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa10eecf43cd0da47826b8cdbfc8f66e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInputs
 --- !u!1 &273449982
 GameObject:
   m_ObjectHideFlags: 0

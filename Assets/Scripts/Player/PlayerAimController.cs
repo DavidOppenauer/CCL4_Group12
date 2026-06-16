@@ -18,10 +18,12 @@ public class PlayerAimController : MonoBehaviour
     private bool aimingIsActive;
 
     private void Start()
-    {
+    {   /*
         // Start aligned with whatever rotation the pivot already has in the scene.
         horizontalRotation = aimCameraPivot.localEulerAngles.y;
-        verticalRotation = aimCameraPivot.localEulerAngles.x;
+        verticalRotation = aimCameraPivot.localEulerAngles.x;*/
+        // Start with player direction
+        ResetCamera();
     }
 
     public void EnableAiming()
@@ -38,6 +40,7 @@ public class PlayerAimController : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        ResetCamera();
     }
 
     public void HandleAiming()
@@ -55,5 +58,12 @@ public class PlayerAimController : MonoBehaviour
         verticalRotation = Mathf.Clamp(verticalRotation, minVerticalLook, maxVerticalLook);
 
         aimCameraPivot.localRotation = Quaternion.Euler(verticalRotation, horizontalRotation, 0f);
+    }
+
+    private void ResetCamera()
+    {
+        horizontalRotation = 0f;
+        verticalRotation = 0f;
+        aimCameraPivot.localRotation = Quaternion.identity;
     }
 }

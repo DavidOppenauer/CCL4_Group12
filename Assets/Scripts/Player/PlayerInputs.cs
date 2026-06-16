@@ -36,17 +36,21 @@ public class PlayerInputs : MonoBehaviour
     {
         return playerInput.PlayerMovementMap.TurnAround.WasPressedThisFrame();
     }
+    // Shooting
+    public bool GetShootWasPressedThisFrame()
+    {
+        return playerInput.PlayerMovementMap.Shoot.WasPressedThisFrame();
+    }
+    // Reload
+    public bool GetReloadWasPressedThisFrame()
+    {
+        return playerInput.PlayerMovementMap.Reload.WasPressedThisFrame();
+    }
 
     // Equivalent to old Input.GetKeyDown(KeyCode.Space), if you have an Aim action
     public bool GetAimIsPressed()
     {
         return playerInput.PlayerMovementMap.AimMode.IsPressed();
-    }
-
-    // Reload Input
-    public bool GetReloadWasPressedThisFrame()
-    {
-        return playerInput.PlayerMovementMap.Reload.WasPressedThisFrame();
     }
 
     // Mouse look input, if you have a Look action as Vector2

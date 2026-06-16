@@ -18,7 +18,7 @@ public class CompassOrbController : MonoBehaviour
             playerTransform = Camera.main.transform;
         }
     }
-
+    
     void LateUpdate()
     {
     if (playerTransform == null || orbRectTransform == null) return;

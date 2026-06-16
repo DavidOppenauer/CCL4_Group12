@@ -15,13 +15,16 @@ public class PlayerBrain : MonoBehaviour
     // Aiming controlls
     private PlayerAimController playerAimController;
 
+    //Shooting
+    private PlayerShoot playerShoot;
+
     // Switching the camera, just between 2 the clearer distinction happens in cameraController
     [SerializeField] private CameraController cameraController;
     [SerializeField] private RailSegment initialRail;
 
     // ------- UI REFERENCES -------
     [SerializeField] private GameObject reloadUI;
-    
+
     // Rail variable for MovementState
     private RailSegment currentRail;
     // Rail variable for choosing state for more clarity
@@ -36,6 +39,7 @@ public class PlayerBrain : MonoBehaviour
     {
         playerRailMovement = GetComponent<PlayerRailMovement>();
         playerAimController = GetComponent<PlayerAimController>();
+        playerShoot = GetComponent<PlayerShoot>();
         currentState = PlayerState.MovingAlongRail;
         currentRail = initialRail;
     }
@@ -62,7 +66,8 @@ public class PlayerBrain : MonoBehaviour
                     if (previousState == PlayerState.Aiming)
                     {
                         // First to third person Transition changes
-                        // HandleAimingToMoving();   
+                        // HandleAimingToMoving();
+                        
                     }
                     playerAimController.DisableAiming();
                     cameraController.SwitchToRailCamera();
@@ -210,8 +215,8 @@ public class PlayerBrain : MonoBehaviour
                     currentState = PlayerState.Reload;
                 }
                 playerAimController.HandleAiming();
-                
             break;
+            
             case PlayerState.Reload:
                 
                 // Transition Code
@@ -240,7 +245,6 @@ public class PlayerBrain : MonoBehaviour
         }
     }
 
-
     private void HandleState()
     {
         bool aimIsPressed = playerInput.GetAimIsPressed();
@@ -254,6 +258,5 @@ public class PlayerBrain : MonoBehaviour
         {
             currentState = PlayerState.MovingAlongRail;
         }
-
     }
 }
