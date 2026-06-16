@@ -118,6 +118,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""26aae153-8d18-4aaf-ac42-9d5c4f4c5a25"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -151,6 +160,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""AimMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9793f84d-d96e-4681-a455-3860794ca29d"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -192,6 +212,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_PlayerMovementMap_WalkForward = m_PlayerMovementMap.FindAction("WalkForward", throwIfNotFound: true);
         m_PlayerMovementMap_TurnAround = m_PlayerMovementMap.FindAction("TurnAround", throwIfNotFound: true);
         m_PlayerMovementMap_AimMode = m_PlayerMovementMap.FindAction("AimMode", throwIfNotFound: true);
+        m_PlayerMovementMap_Reload = m_PlayerMovementMap.FindAction("Reload", throwIfNotFound: true);
         // PlayerCameraMap
         m_PlayerCameraMap = asset.FindActionMap("PlayerCameraMap", throwIfNotFound: true);
         m_PlayerCameraMap_Look = m_PlayerCameraMap.FindAction("Look", throwIfNotFound: true);
@@ -279,6 +300,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMovementMap_WalkForward;
     private readonly InputAction m_PlayerMovementMap_TurnAround;
     private readonly InputAction m_PlayerMovementMap_AimMode;
+    private readonly InputAction m_PlayerMovementMap_Reload;
     /// <summary>
     /// Provides access to input actions defined in input action map "PlayerMovementMap".
     /// </summary>
@@ -302,6 +324,10 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "PlayerMovementMap/AimMode".
         /// </summary>
         public InputAction @AimMode => m_Wrapper.m_PlayerMovementMap_AimMode;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerMovementMap/Reload".
+        /// </summary>
+        public InputAction @Reload => m_Wrapper.m_PlayerMovementMap_Reload;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -337,6 +363,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @AimMode.started += instance.OnAimMode;
             @AimMode.performed += instance.OnAimMode;
             @AimMode.canceled += instance.OnAimMode;
+            @Reload.started += instance.OnReload;
+            @Reload.performed += instance.OnReload;
+            @Reload.canceled += instance.OnReload;
         }
 
         /// <summary>
@@ -357,6 +386,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @AimMode.started -= instance.OnAimMode;
             @AimMode.performed -= instance.OnAimMode;
             @AimMode.canceled -= instance.OnAimMode;
+            @Reload.started -= instance.OnReload;
+            @Reload.performed -= instance.OnReload;
+            @Reload.canceled -= instance.OnReload;
         }
 
         /// <summary>
@@ -514,6 +546,13 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnAimMode(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Reload" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnReload(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PlayerCameraMap" which allows adding and removing callbacks.
