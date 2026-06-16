@@ -22,13 +22,13 @@ public class EnemyBase : MonoBehaviour
     protected EnemyState currentState = EnemyState.Idle;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected virtual void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         switch (currentState)
         {
