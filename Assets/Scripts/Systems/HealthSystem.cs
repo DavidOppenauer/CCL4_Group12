@@ -10,7 +10,7 @@ public class HealthSystem : MonoBehaviour
         currentHealth -= damageAmount;
     }
 
-    private int GetCurrentHealth()
+    public int GetCurrentHealth()
     {
         return currentHealth;
     }
