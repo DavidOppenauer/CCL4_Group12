@@ -1,4 +1,5 @@
 using Unity.Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -21,16 +22,26 @@ public class CameraController : MonoBehaviour
     */
     [SerializeField] CinemachineCamera aimCamera;
     [SerializeField] CinemachineCamera initialRailCamera;
+    [SerializeField] CinemachineCamera reloadCamera;
     public void SwitchToRailCamera()
     {
         aimCamera.Priority = 0;
         initialRailCamera.Priority = 10;
+        reloadCamera.Priority = 0;
     }
 
     public void SwitchToAimCamera()
     {
         initialRailCamera.Priority = 0;
         aimCamera.Priority = 10;
+        reloadCamera.Priority = 0;
     }
 
+    public void SwitchToReloadCamera()
+    {
+        reloadCamera.Priority = 10;
+        initialRailCamera.Priority = 0;
+        aimCamera.Priority = 0;
+    }
+    
 }
