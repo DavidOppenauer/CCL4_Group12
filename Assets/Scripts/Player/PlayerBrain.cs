@@ -6,6 +6,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerBrain : MonoBehaviour
 {
+    // Global variable for inactivity during reload
+    private float timer = 0f;
+
     // New Input System
     [SerializeField] private PlayerInputs playerInput;
 
@@ -15,6 +18,10 @@ public class PlayerBrain : MonoBehaviour
     // Switching the camera, just between 2 the clearer distinction happens in cameraController
     [SerializeField] private CameraController cameraController;
     [SerializeField] private RailSegment initialRail;
+
+    // ------- UI REFERENCES -------
+    [SerializeField] private GameObject reloadUI;
+    
     // Rail variable for MovementState
     private RailSegment currentRail;
     // Rail variable for choosing state for more clarity
@@ -36,7 +43,8 @@ public class PlayerBrain : MonoBehaviour
     {
         MovingAlongRail,
         ChoosingNextRail,
-        Aiming
+        Aiming,
+        Reload
     }
     private PlayerState currentState;
     private PlayerState previousState;
@@ -54,11 +62,11 @@ public class PlayerBrain : MonoBehaviour
                     if (previousState == PlayerState.Aiming)
                     {
                         // First to third person Transition changes
-                        // HandleAimingToMoving();
-                        playerAimController.DisableAiming();
-                        cameraController.SwitchToRailCamera();
-                        previousState = currentState;
+                        // HandleAimingToMoving();   
                     }
+                    playerAimController.DisableAiming();
+                    cameraController.SwitchToRailCamera();
+                    previousState = currentState;
                 }
 
                 // Call Movement script to allow player movement
@@ -196,23 +204,56 @@ public class PlayerBrain : MonoBehaviour
                     previousState = currentState;
                 }
 
+                if (playerInput.GetReloadWasPressedThisFrame())
+                {
+                    playerAimController.DisableAiming();
+                    currentState = PlayerState.Reload;
+                }
                 playerAimController.HandleAiming();
+                
+            break;
+            case PlayerState.Reload:
+                
+                // Transition Code
+                if(previousState != currentState)
+                {
+                    //playerAimController.EnableAiming();
+                    cameraController.SwitchToReloadCamera();
+                    reloadUI.SetActive(true);
+                    previousState = currentState;
+                }
+                // ---- Timer section -----
+                // Used for inactivity during Reload state 
+                // Around 2.5 seconds, so it matches the Animations in the Reload_UI
+                timer += Time.deltaTime;
+
+                if (timer >= 2.5f)
+                {
+
+                    timer = 0f;
+                    reloadUI.SetActive(false);
+                    currentState = PlayerState.MovingAlongRail;
+                } 
+                //playerAimController.HandleAiming();
+                
             break;
         }
     }
+
 
     private void HandleState()
     {
         bool aimIsPressed = playerInput.GetAimIsPressed();
 
-        if (aimIsPressed && currentState != PlayerState.ChoosingNextRail)
+        if (aimIsPressed && currentState != PlayerState.ChoosingNextRail && currentState != PlayerState.Reload)
         {
             currentState = PlayerState.Aiming;
         }
 
-        if (!aimIsPressed && currentState == PlayerState.Aiming)
+        if (!aimIsPressed && currentState == PlayerState.Aiming && currentState != PlayerState.Reload)
         {
             currentState = PlayerState.MovingAlongRail;
         }
+
     }
 }
