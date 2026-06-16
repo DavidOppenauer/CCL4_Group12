@@ -43,6 +43,12 @@ public class PlayerInputs : MonoBehaviour
         return playerInput.PlayerMovementMap.AimMode.IsPressed();
     }
 
+    // Reload Input
+    public bool GetReloadWasPressedThisFrame()
+    {
+        return playerInput.PlayerMovementMap.Reload.WasPressedThisFrame();
+    }
+
     // Mouse look input, if you have a Look action as Vector2
     public Vector2 GetLookInput()
     {
