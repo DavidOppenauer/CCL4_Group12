@@ -147,7 +147,7 @@ Transform:
   m_GameObject: {fileID: 150176902}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 11.9, z: 0}
+  m_LocalPosition: {x: 0, y: 3.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -367,13 +367,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 505408566}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0988018, y: -0, z: -0, w: 0.9951072}
-  m_LocalPosition: {x: 0, y: 0.864, z: -3.046}
+  m_LocalRotation: {x: 0.0063817985, y: -0, z: -0, w: 0.9999797}
+  m_LocalPosition: {x: 0, y: 1.3, z: -3.046}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1216021732}
-  m_LocalEulerAnglesHint: {x: 11.34, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.731, y: 0, z: 0}
 --- !u!114 &505408570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -508,8 +508,8 @@ Transform:
   m_GameObject: {fileID: 659799532}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.66, y: 0.253, z: 10.428}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalPosition: {x: 8.66, y: 0.12, z: 10.428}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 150176903}
@@ -541,7 +541,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 765fd582196ccbb4ba3fd3597f091f4a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -575,7 +575,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.6066952
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -640,6 +640,40 @@ MonoBehaviour:
   player: {fileID: 1216021727}
   attackRange: 10
   triggerRange: 20
+  firePoint: {fileID: 150176903}
+  chargeUpColors:
+    serializedVersion: 2
+    key0: {r: 0.5372549, g: 0.5372549, b: 0.5294118, a: 1}
+    key1: {r: 1, g: 0, b: 0, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  chargeUpTime: 1
+  laserDuration: 0.5
+  explosionPrefab: {fileID: 6947915205150471094, guid: ab1fac88ea6792d46920e72f1804e2a5, type: 3}
 --- !u!1 &757748267
 GameObject:
   m_ObjectHideFlags: 0
@@ -987,7 +1021,7 @@ Transform:
   m_GameObject: {fileID: 1216021727}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.85, z: -20.71}
+  m_LocalPosition: {x: 0, y: 0.25, z: -20.71}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1168,12 +1202,45 @@ MonoBehaviour:
   m_GameObject: {fileID: 1309166343}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6911f063576e4bc41bbd4082e57da2cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 87c5f32b217ce234faa5b6412f281931, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyBase
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMelee
   player: {fileID: 1216021727}
   attackRange: 1
   triggerRange: 10
+  chargeUpColors:
+    serializedVersion: 2
+    key0: {r: 0.5372549, g: 0.5372549, b: 0.5294118, a: 1}
+    key1: {r: 1, g: 0, b: 0, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  chargeUpTime: 0.25
+  explosionPrefab: {fileID: 6947915205150471094, guid: ab1fac88ea6792d46920e72f1804e2a5, type: 3}
+  isFlying: 0
 --- !u!1 &1536759717
 GameObject:
   m_ObjectHideFlags: 0
@@ -1183,8 +1250,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1536759720}
-  - component: {fileID: 1536759719}
   - component: {fileID: 1536759718}
+  - component: {fileID: 1536759721}
   m_Layer: 0
   m_Name: Flying Bomba Main
   m_TagString: Untagged
@@ -1214,21 +1281,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1536759719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1536759717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6911f063576e4bc41bbd4082e57da2cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyBase
-  player: {fileID: 1216021727}
-  attackRange: 1
-  triggerRange: 10
 --- !u!4 &1536759720
 Transform:
   m_ObjectHideFlags: 0
@@ -1245,6 +1297,54 @@ Transform:
   - {fileID: 1117599428}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1536759721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536759717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87c5f32b217ce234faa5b6412f281931, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMelee
+  player: {fileID: 1216021727}
+  attackRange: 1
+  triggerRange: 10
+  chargeUpColors:
+    serializedVersion: 2
+    key0: {r: 0.5372549, g: 0.5372549, b: 0.5294118, a: 1}
+    key1: {r: 1, g: 0, b: 0, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  chargeUpTime: 0.25
+  explosionPrefab: {fileID: 6947915205150471094, guid: ab1fac88ea6792d46920e72f1804e2a5, type: 3}
+  isFlying: 1
 --- !u!1 &1630656492
 GameObject:
   m_ObjectHideFlags: 0
