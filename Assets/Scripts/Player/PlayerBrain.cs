@@ -48,7 +48,8 @@ public class PlayerBrain : MonoBehaviour
         MovingAlongRail,
         ChoosingNextRail,
         Aiming,
-        Reload
+        Reload,
+        Test
     }
     private PlayerState currentState;
     private PlayerState previousState;
