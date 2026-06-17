@@ -215,6 +215,7 @@ public class PlayerBrain : MonoBehaviour
                     currentState = PlayerState.Reload;
                 }
                 playerAimController.HandleAiming();
+                playerShoot.HandleShooting();
             break;
             
             case PlayerState.Reload:
