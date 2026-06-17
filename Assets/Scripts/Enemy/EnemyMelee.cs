@@ -9,6 +9,8 @@ public class EnemyMelee : EnemyBase
     [SerializeField] private bool isFlying;
     private MeshRenderer _meshRenderer;
     private float defaultHeight;
+    private float startingDistance;
+    private bool hasCalculatedStartDistance = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
     {
@@ -22,12 +24,18 @@ public class EnemyMelee : EnemyBase
         base.Update();
         if (isFlying)
         {
-            float distanceToPlayer = Vector3.Distance(transform.position,player.transform.position);
+            float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
-            float heightPercentage = Mathf.InverseLerp(attackRange, triggerRange, distanceToPlayer);
+            if (!hasCalculatedStartDistance)
+            {
+                startingDistance = distanceToPlayer;
+                hasCalculatedStartDistance = true;
+            }
 
-           _meshRenderer.transform.localPosition = new Vector3(_meshRenderer.transform.localPosition.x, defaultHeight * heightPercentage, _meshRenderer.transform.localPosition.z);
-            
+            float heightPercentage = Mathf.InverseLerp(attackRange, startingDistance, distanceToPlayer);
+
+            _meshRenderer.transform.localPosition = new Vector3(_meshRenderer.transform.localPosition.x, defaultHeight * heightPercentage, _meshRenderer.transform.localPosition.z);
+
         }
     }
     protected override void Attack()
@@ -39,7 +47,7 @@ public class EnemyMelee : EnemyBase
     {
         float timer = 0f;
 
-        while(timer < chargeUpTime)
+        while (timer < chargeUpTime)
         {
             timer += Time.deltaTime;
             float chargeUpPercentage = timer / chargeUpTime;

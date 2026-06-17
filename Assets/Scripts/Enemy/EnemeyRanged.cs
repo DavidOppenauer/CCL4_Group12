@@ -11,7 +11,7 @@ public class EnemeyRanged : EnemyBase
     [SerializeField] private GameObject explosionPrefab;
     private LineRenderer _lineRenderer;
     private MeshRenderer _meshRenderer;
-    
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
@@ -31,7 +31,7 @@ public class EnemeyRanged : EnemyBase
     {
         float timer = 0f;
 
-        while(timer < chargeUpTime)
+        while (timer < chargeUpTime)
         {
             timer += Time.deltaTime;
 
@@ -50,5 +50,5 @@ public class EnemeyRanged : EnemyBase
         Instantiate(explosionPrefab, firePoint.position, Quaternion.identity);
 
         Destroy(gameObject);
-    } 
+    }
 }
