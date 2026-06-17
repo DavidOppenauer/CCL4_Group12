@@ -71,7 +71,7 @@ public class PlayerBrain : MonoBehaviour
                         
                     }
                     playerAimController.DisableAiming();
-                    cameraController.SwitchToRailCamera();
+                    cameraController.SwitchToCurrentRailCamera();
                     previousState = currentState;
                 }
 

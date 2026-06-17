@@ -21,22 +21,31 @@ public class CameraController : MonoBehaviour
         - SwitchToAimCamera()
     */
     [Header("Unique Cameras")]
-    [SerializeField] CinemachineCamera aimCamera;
-    [SerializeField] CinemachineCamera initialRailCamera;
-    [SerializeField] CinemachineCamera reloadCamera;
+    [SerializeField] private CinemachineCamera aimCamera;
+    [SerializeField] private CinemachineCamera initialRailCamera;
+    [SerializeField] private CinemachineCamera reloadCamera;
     [Header("EviromentalCameras")]
-    [SerializeField] CinemachineCamera RailCamera_2;
-    public void SwitchToRailCamera()
+    //[SerializeField] private CinemachineCamera RailCamera_2;
+
+    private CinemachineCamera currentRailCamera;
+    private CinemachineCamera previousRailCamera;
+
+    private void Start()
     {
+        currentRailCamera = initialRailCamera;
+    }
+    public void SwitchToCurrentRailCamera()
+    {
+        currentRailCamera.Priority = 10;
+        previousRailCamera.Priority = 0;
         aimCamera.Priority = 0;
-        initialRailCamera.Priority = 10;
         reloadCamera.Priority = 0;
     }
 
     public void SwitchToAimCamera()
     {
-        initialRailCamera.Priority = 0;
         aimCamera.Priority = 10;
+        initialRailCamera.Priority = 0;
         reloadCamera.Priority = 0;
     }
 
@@ -45,6 +54,13 @@ public class CameraController : MonoBehaviour
         reloadCamera.Priority = 10;
         initialRailCamera.Priority = 0;
         aimCamera.Priority = 0;
+    }
+
+    public void SetCurrentRailCamera(CinemachineCamera _currentCamera)
+    {
+        previousRailCamera = currentRailCamera;
+        currentRailCamera = _currentCamera;
+        SwitchToCurrentRailCamera();
     }
     
 }
