@@ -14,8 +14,6 @@ public class EnemyBase : MonoBehaviour
     protected GameObject player;
     [SerializeField]
     protected float attackRange;
-    [SerializeField]
-    protected float triggerRange;
 
     protected NavMeshAgent navMeshAgent;
 
@@ -52,19 +50,17 @@ public class EnemyBase : MonoBehaviour
         Debug.Log("Enemy attacked!");
     }
 
-
     #region State Functions
-
-    private void OnIdleState()
+    public void TriggerEnemy()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-        navMeshAgent.ResetPath();
-
-        if (distanceToPlayer <= triggerRange)
+        if (currentState == EnemyState.Idle)
         {
             currentState = EnemyState.Chasing;
         }
-
+    }
+    private void OnIdleState()
+    {
+        navMeshAgent.ResetPath();
     }
 
     private void OnChasingState()
@@ -75,10 +71,6 @@ public class EnemyBase : MonoBehaviour
         if (distanceToPlayer <= attackRange && HasLineOfSight())
         {
             currentState = EnemyState.Attacking;
-        }
-        else if (distanceToPlayer > triggerRange)
-        {
-            currentState = EnemyState.Idle;
         }
 
     }
@@ -104,9 +96,9 @@ public class EnemyBase : MonoBehaviour
         Vector3 playerPos = player.transform.position;
         Vector3 direction = (playerPos - enemyPos).normalized;
 
-        if (Physics.Raycast(enemyPos, direction, out RaycastHit hitInfo, distanceToPlayer, ~0))
+        if (Physics.Raycast(enemyPos, direction, out RaycastHit hitInfo, distanceToPlayer))
         {
-            if (hitInfo.transform.gameObject == player)
+            if (hitInfo.collider.CompareTag("Player"))
             {
                 return true;
             }
