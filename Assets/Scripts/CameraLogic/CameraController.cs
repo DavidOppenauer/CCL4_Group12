@@ -20,9 +20,12 @@ public class CameraController : MonoBehaviour
         - SwitchToCurrentRailCamera()
         - SwitchToAimCamera()
     */
+    [Header("Unique Cameras")]
     [SerializeField] CinemachineCamera aimCamera;
     [SerializeField] CinemachineCamera initialRailCamera;
     [SerializeField] CinemachineCamera reloadCamera;
+    [Header("EviromentalCameras")]
+    [SerializeField] CinemachineCamera RailCamera_2;
     public void SwitchToRailCamera()
     {
         aimCamera.Priority = 0;
