@@ -19,8 +19,8 @@ public class EnemeyRanged : EnemyBase
         base.Start();
         _lineRenderer = GetComponent<LineRenderer>();
         _lineRenderer.enabled = false;
-        _meshRenderer = GetComponent<MeshRenderer>();
-       
+        _meshRenderer = GetComponentInChildren<MeshRenderer>();
+
     }
 
     protected override void Attack()

@@ -4,7 +4,7 @@ public class PlayerShoot : MonoBehaviour
 {
     [SerializeField] private Transform aimCamera;
     [SerializeField] private PlayerInputs playerInputs;
-    private Ray ray; 
+    private Ray ray;
     private RaycastHit hitData;
 
     private int debugHitCount;
@@ -29,7 +29,7 @@ public class PlayerShoot : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction * 10);
 
         // ref, in, out
-        if(Physics.Raycast(ray, out hitData, 100))
+        if (Physics.Raycast(ray, out hitData, 100))
         {
             Vector3 hitPosition = hitData.point;
             float hitDistance = hitData.distance;
@@ -39,14 +39,19 @@ public class PlayerShoot : MonoBehaviour
             // Debug.Log("hitted object position = " + hitPosition);
             // Debug.Log("hitted object distance = " + hitDistance);
             // Debug.Log("hitcount = " + debugHitCount);
-            if(hitData.collider.tag == "Enemy")
+            if (hitData.collider.tag == "Enemy")
             {
-                EnemyBase hitEnemy = hitData.collider.GetComponent<EnemyBase>();
+                EnemyBase hitEnemy = hitData.collider.GetComponentInParent<EnemyBase>();
                 Debug.Log("You hit the enemy: " + hitEnemy.name);
 
                 hitEnemy.OnHit();
             }
-        }
+            // if (hitObject.tag == "Enemy")
+            // {
+            //     HealthSystem enemyHealth = hitObject.GetComponent<HealthSystem>();
+            //     enemyHealth.TakeDamage(100);
+            // }
 
+        }
     }
 }
