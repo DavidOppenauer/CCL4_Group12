@@ -18,11 +18,14 @@ public class EnemyBase : MonoBehaviour
     protected NavMeshAgent navMeshAgent;
 
     protected EnemyState currentState = EnemyState.Idle;
+    protected HealthSystem healthSystem;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        healthSystem = GetComponent<HealthSystem>();
+        
     }
 
     // Update is called once per frame
@@ -48,6 +51,15 @@ public class EnemyBase : MonoBehaviour
     protected virtual void Attack()
     {
         Debug.Log("Enemy attacked!");
+    }
+
+    public virtual void OnHit()
+    {
+        healthSystem.TakeDamage(1);
+        if(healthSystem.GetCurrentHealth() <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     #region State Functions
