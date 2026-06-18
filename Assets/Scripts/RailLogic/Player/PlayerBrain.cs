@@ -98,10 +98,8 @@ public class PlayerBrain : MonoBehaviour
                         {
                             return;
                         }
-                        // Set the variable I use for only running code once right after switch of state
-                        previousState = currentState;
-                        // Proceed to next state
-                        currentState = PlayerState.ChoosingNextRail;
+                        Debug.Log("Reached END of rail: " + currentRail.name + " at junction: " + currentRail.GetEndJunction().name);
+                        EnterChoosingNextRail();
                     } 
                     else
                     {
@@ -118,8 +116,8 @@ public class PlayerBrain : MonoBehaviour
                         {
                             return;
                         }
-                        previousState = currentState;
-                        currentState = PlayerState.ChoosingNextRail;
+                        Debug.Log("Reached START of rail: " + currentRail.name + " at junction: " + currentRail.GetStartJunction().name);
+                        EnterChoosingNextRail();
                     } 
                     else
                     {
@@ -129,16 +127,16 @@ public class PlayerBrain : MonoBehaviour
             break;
             case PlayerState.ChoosingNextRail:
             
-                if (currentState != previousState)
+                /*if (currentState != previousState)
                 {
                     JunctionManager.JunctionConfig config = currentJunction.GetJunctionConfig(currentRail);
                     junctionManager.OpenJunctionMenu(config);
 
                     previousState = currentState;
-                }
-                /* Old Version
+                }*/
+                //Old Version
                 // Getting the variable only in the first iteration
-                if (currentState != previousState)
+                /*if (currentState != previousState)
                 {
                     // New UI based choosing
                     JunctionManager.JunctionConfig config = currentJunction.GetJunctionConfig(currentRail);
@@ -150,7 +148,7 @@ public class PlayerBrain : MonoBehaviour
                     // reset the choiceindex
                     selectedRailChoiceIndex = 0;
                     previousState = currentState;                  
-                }
+                }*/
 
                 // ---------------------------------------------------------------------------------
                 // THIS NEXT PART IS REALLY EXPERIMENTAL AND NEEDS GOOD CARE AND THOUGHT LATER ON...
@@ -158,19 +156,13 @@ public class PlayerBrain : MonoBehaviour
 
                 // Setting currentRail to what the player chooses
                 // S should always be the return choice
-                if(playerInput.GetTurnAroundWasPressedThisFrame())// Go back
+                if (playerInput.GetTurnAroundWasPressedThisFrame())
                 {
-                    foreach ( RailSegment rail in availableRailChoices)
-                    {
-                        if(rail == currentRail)
-                        {
-                            chosenRail = currentRail;
-                        }
-                    }
-                    playerHasDecidedOnRoute = true;
+                    ConfirmChosenRail(currentRail);
+                    junctionManager.CloseJunctionMenu();
                 }
                 // REFACTOR OF NEW INPUT SYSTEM INCOMPLETE BECAUSE THIS SECTION SHOULDNT EXISSSSST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                if(Input.GetKeyDown(KeyCode.W))// Confirm
+                /*if(Input.GetKeyDown(KeyCode.W))// Confirm
                 {
                     chosenRail = availableRailChoices[selectedRailChoiceIndex];
                     playerHasDecidedOnRoute = true;
@@ -192,7 +184,7 @@ public class PlayerBrain : MonoBehaviour
                         selectedRailChoiceIndex = 0;
                     }
                     Debug.Log("" + selectedRailChoiceIndex);
-                }
+                }*/
                 if (playerHasDecidedOnRoute == true)
                 {
                     // Look if the Junction the player is currently at is at the end or the start of the chosen junction, then place the player accordingly
@@ -212,7 +204,6 @@ public class PlayerBrain : MonoBehaviour
                     // Go back moving on the new rail
                     currentState = PlayerState.MovingAlongRail;                    
                 }
-            */
             break;
             case PlayerState.Aiming:
                 /*
@@ -286,19 +277,40 @@ public class PlayerBrain : MonoBehaviour
             return;
         }
 
-        chosenRail = currentJunction.GetRailForDirection(currentRail, direction);
+        RailSegment rail = currentJunction.GetRailForDirection(currentRail, direction);
+        ConfirmChosenRail(rail);
+    }
 
-        if (chosenRail == null)
+    private void EnterChoosingNextRail()
+    {
+        JunctionManager.JunctionConfig config = currentJunction.GetJunctionConfig(currentRail);
+
+        
+        Debug.Log("Opening junction menu at " + currentJunction.name + 
+                " coming from rail " + currentRail.name +
+                " | Left: " + config.allowLeft +
+                " Straight: " + config.allowStraight +
+                " Right: " + config.allowRight);
+
+        junctionManager.OpenJunctionMenu(config);
+
+        previousState = currentState;
+        currentState = PlayerState.ChoosingNextRail;
+    }
+
+    private void ConfirmChosenRail(RailSegment rail)
+    {
+        if (rail == null)
         {
-            Debug.LogWarning("No rail found for direction: " + direction);
+            Debug.LogWarning("Tried to confirm null rail.");
             return;
         }
 
-        if (currentJunction == chosenRail.GetStartJunction())
+        if (currentJunction == rail.GetStartJunction())
         {
             playerRailMovement.PlaceOnRailStart();
         }
-        else if (currentJunction == chosenRail.GetEndJunction())
+        else if (currentJunction == rail.GetEndJunction())
         {
             playerRailMovement.PlaceOnRailEnd();
         }
@@ -308,7 +320,8 @@ public class PlayerBrain : MonoBehaviour
             return;
         }
 
-        currentRail = chosenRail;
+        currentRail = rail;
+        previousState = currentState;
         currentState = PlayerState.MovingAlongRail;
     }
 }

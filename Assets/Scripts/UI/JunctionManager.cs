@@ -58,6 +58,15 @@ public class JunctionManager : MonoBehaviour
             OpenJunctionMenu(junctionConfig);
         }
     }
+    public void CloseJunctionMenu()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        TriggerAllActiveNodesToSlideOut();
+
+        StartCoroutine(DisableUIComponentsAfterAnimationDelay());
+    }
 
     public void SetJunctionConfig(bool _allowLeft, bool _allowStraight, bool _allowRight)
     {
@@ -90,18 +99,9 @@ public class JunctionManager : MonoBehaviour
     {
         Debug.Log($"Direction Locked In: {chosenDirection}");
 
-        //Invoke the event
         OnDirectionSelected?.Invoke(chosenDirection);
-        
-        // 1. Lock the mouse cursor back down immediately so standard gameplay tracking resumes
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
 
-        // 2. Fire the global leave action across all active nodes simultaneously
-        TriggerAllActiveNodesToSlideOut();
-
-        // 4. Safely clean up the UI gameobjects once the screen spatial wipes finish
-        StartCoroutine(DisableUIComponentsAfterAnimationDelay());
+        CloseJunctionMenu();
     }
 
     private void TriggerAllActiveNodesToSlideOut()

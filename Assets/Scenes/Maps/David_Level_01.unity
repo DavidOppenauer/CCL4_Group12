@@ -710,7 +710,7 @@ GameObject:
   - component: {fileID: 172322579}
   - component: {fileID: 172322578}
   m_Layer: 0
-  m_Name: Junction_B_ForntOfBiulding
+  m_Name: Junction_B_FirstThreeWayJunction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -737,6 +737,14 @@ MonoBehaviour:
     leftRail: {fileID: 540804162}
     straightRail: {fileID: 0}
     rightRail: {fileID: 1939677440}
+  - incomingRail: {fileID: 540804162}
+    leftRail: {fileID: 0}
+    straightRail: {fileID: 1939677440}
+    rightRail: {fileID: 103535896}
+  - incomingRail: {fileID: 1939677440}
+    leftRail: {fileID: 103535896}
+    straightRail: {fileID: 540804162}
+    rightRail: {fileID: 0}
 --- !u!4 &172322579
 Transform:
   m_ObjectHideFlags: 0
@@ -1055,6 +1063,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShoot
   aimCamera: {fileID: 2129479675}
   playerInputs: {fileID: 564758807}
+  hitLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &402108238
 MonoBehaviour:
   m_ObjectHideFlags: 0
