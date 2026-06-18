@@ -24,8 +24,7 @@ public class EnemyBase : MonoBehaviour
     protected virtual void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-        healthSystem = GetComponent<HealthSystem>();
-        
+        healthSystem = GetComponentInChildren<HealthSystem>();
     }
 
     // Update is called once per frame
@@ -56,7 +55,7 @@ public class EnemyBase : MonoBehaviour
     public virtual void OnHit()
     {
         healthSystem.TakeDamage(1);
-        if(healthSystem.GetCurrentHealth() <= 0)
+        if (healthSystem.GetCurrentHealth() <= 0)
         {
             Destroy(gameObject);
         }
