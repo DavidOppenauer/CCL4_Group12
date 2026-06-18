@@ -1,5 +1,4 @@
 using Unity.Cinemachine;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -30,36 +29,57 @@ public class CameraController : MonoBehaviour
     private CinemachineCamera currentRailCamera;
     private CinemachineCamera previousRailCamera;
 
-    private void Start()
-    {
-        currentRailCamera = initialRailCamera;
-    }
     public void SwitchToCurrentRailCamera()
     {
-        currentRailCamera.Priority = 10;
-        previousRailCamera.Priority = 0;
+        if (previousRailCamera != null)
+        {
+            previousRailCamera.Priority = 0;
+        }
+
         aimCamera.Priority = 0;
         reloadCamera.Priority = 0;
+
+        currentRailCamera.Priority = 10;
     }
 
     public void SwitchToAimCamera()
     {
-        aimCamera.Priority = 10;
-        initialRailCamera.Priority = 0;
+        if (currentRailCamera != null)
+        {
+            currentRailCamera.Priority = 0;
+        }
+
         reloadCamera.Priority = 0;
+        aimCamera.Priority = 10;
     }
 
     public void SwitchToReloadCamera()
     {
-        reloadCamera.Priority = 10;
-        initialRailCamera.Priority = 0;
+        if (currentRailCamera != null)
+        {
+            currentRailCamera.Priority = 0;
+        }
+
         aimCamera.Priority = 0;
+        reloadCamera.Priority = 10;
     }
 
-    public void SetCurrentRailCamera(CinemachineCamera _currentCamera)
+    public void SetCurrentRailCamera(CinemachineCamera newCamera)
     {
+        if (newCamera == null)
+        {
+            return;
+        }
+
+        if (newCamera == currentRailCamera)
+        {
+            SwitchToCurrentRailCamera();
+            return;
+        }
+
         previousRailCamera = currentRailCamera;
-        currentRailCamera = _currentCamera;
+        currentRailCamera = newCamera;
+
         SwitchToCurrentRailCamera();
     }
     

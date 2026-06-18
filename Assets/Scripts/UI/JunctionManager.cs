@@ -20,7 +20,7 @@ public class JunctionManager : MonoBehaviour
 
     // 2. ADDED THIS so you can check/uncheck paths directly in the Inspector!
     [Header("Test Configuration")]
-    [SerializeField] private JunctionConfig testConfig;
+    [SerializeField] private JunctionConfig junctionConfig;
 
     [Header("Animation Configuration")]
     [Tooltip("The name of the Trigger parameter connecting SlideIn to SlideOut in your Animator Controller.")]
@@ -33,6 +33,9 @@ public class JunctionManager : MonoBehaviour
     [Tooltip("Drag the CanvasGroup of your external HUD here for smooth fading.")]
     [SerializeField] private CanvasGroup healthCompassHUD;
     [SerializeField] private float fadeDuration = 0.2f;
+
+    // Events
+    public event Action<string> OnDirectionSelected;
 
     // Cache the Animators automatically to save performance
     private Animator leftAnimator;
@@ -52,8 +55,15 @@ public class JunctionManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.J))
         {
-            OpenJunctionMenu(testConfig);
+            OpenJunctionMenu(junctionConfig);
         }
+    }
+
+    public void SetJunctionConfig(bool _allowLeft, bool _allowStraight, bool _allowRight)
+    {
+        junctionConfig.allowLeft = _allowLeft;
+        junctionConfig.allowRight = _allowRight;
+        junctionConfig.allowStraight = _allowStraight;
     }
 
     /// <summary>
@@ -80,6 +90,9 @@ public class JunctionManager : MonoBehaviour
     {
         Debug.Log($"Direction Locked In: {chosenDirection}");
 
+        //Invoke the event
+        OnDirectionSelected?.Invoke(chosenDirection);
+        
         // 1. Lock the mouse cursor back down immediately so standard gameplay tracking resumes
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;

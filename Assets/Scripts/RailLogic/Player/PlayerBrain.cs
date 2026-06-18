@@ -12,6 +12,9 @@ public class PlayerBrain : MonoBehaviour
     // New Input System
     [SerializeField] private PlayerInputs playerInput;
 
+    // UI controls for junction
+    [SerializeField] private JunctionManager junctionManager;
+
     // Aiming controlls
     private PlayerAimController playerAimController;
 
@@ -42,6 +45,9 @@ public class PlayerBrain : MonoBehaviour
         playerShoot = GetComponent<PlayerShoot>();
         currentState = PlayerState.MovingAlongRail;
         currentRail = initialRail;
+
+        // Events
+        junctionManager.OnDirectionSelected += HandleJunctionDirectionSelected;
     }
     private enum PlayerState
     {
@@ -123,9 +129,20 @@ public class PlayerBrain : MonoBehaviour
             break;
             case PlayerState.ChoosingNextRail:
             
+                if (currentState != previousState)
+                {
+                    JunctionManager.JunctionConfig config = currentJunction.GetJunctionConfig(currentRail);
+                    junctionManager.OpenJunctionMenu(config);
+
+                    previousState = currentState;
+                }
+                /* Old Version
                 // Getting the variable only in the first iteration
                 if (currentState != previousState)
                 {
+                    // New UI based choosing
+                    JunctionManager.JunctionConfig config = currentJunction.GetJunctionConfig(currentRail);
+                    junctionManager.OpenJunctionMenu(config);
                     // Get the array of Rails(I aint changing it now because its already wired up in the editor(too much work))
                     connectedRailsToCurrentJunction = currentJunction.GetRailSegments();
                     // Convert said Array into a list
@@ -195,7 +212,7 @@ public class PlayerBrain : MonoBehaviour
                     // Go back moving on the new rail
                     currentState = PlayerState.MovingAlongRail;                    
                 }
-            
+            */
             break;
             case PlayerState.Aiming:
                 /*
@@ -260,5 +277,38 @@ public class PlayerBrain : MonoBehaviour
         {
             currentState = PlayerState.MovingAlongRail;
         }
+    }
+
+    private void HandleJunctionDirectionSelected(string direction)
+    {
+        if (currentState != PlayerState.ChoosingNextRail)
+        {
+            return;
+        }
+
+        chosenRail = currentJunction.GetRailForDirection(currentRail, direction);
+
+        if (chosenRail == null)
+        {
+            Debug.LogWarning("No rail found for direction: " + direction);
+            return;
+        }
+
+        if (currentJunction == chosenRail.GetStartJunction())
+        {
+            playerRailMovement.PlaceOnRailStart();
+        }
+        else if (currentJunction == chosenRail.GetEndJunction())
+        {
+            playerRailMovement.PlaceOnRailEnd();
+        }
+        else
+        {
+            Debug.LogWarning("Chosen rail is not connected to current junction!");
+            return;
+        }
+
+        currentRail = chosenRail;
+        currentState = PlayerState.MovingAlongRail;
     }
 }
