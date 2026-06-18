@@ -49,6 +49,7 @@ public class EnemyMelee : EnemyBase
 
         while (timer < chargeUpTime)
         {
+            
             timer += Time.deltaTime;
             float chargeUpPercentage = timer / chargeUpTime;
 

@@ -36,10 +36,17 @@ public class PlayerShoot : MonoBehaviour
             GameObject hitObject = hitData.transform.gameObject;
             debugHitCount++;
 
-            Debug.Log("hitted object name = " + hitObject.name);
-            Debug.Log("hitted object position = " + hitPosition);
-            Debug.Log("hitted object distance = " + hitDistance);
-            Debug.Log("hitcount = " + debugHitCount);
+            // Debug.Log("hitted object name = " + hitObject.name);
+            // Debug.Log("hitted object position = " + hitPosition);
+            // Debug.Log("hitted object distance = " + hitDistance);
+            // Debug.Log("hitcount = " + debugHitCount);
+            if(hitData.collider.tag == "Enemy")
+            {
+                EnemyBase hitEnemy = hitData.collider.GetComponent<EnemyBase>();
+                Debug.Log("You hit the enemy: " + hitEnemy.name);
+
+                hitEnemy.OnHit();
+            }
         }
 
     }

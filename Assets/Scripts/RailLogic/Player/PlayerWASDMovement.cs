@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerWASDMovement : MonoBehaviour
 
 {
 
