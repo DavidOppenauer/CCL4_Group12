@@ -19,7 +19,8 @@ public class EnemeyRanged : EnemyBase
         base.Start();
         _lineRenderer = GetComponent<LineRenderer>();
         _lineRenderer.enabled = false;
-        _meshRenderer = GetComponentInChildren<MeshRenderer>();
+        _meshRenderer = GetComponent<MeshRenderer>();
+       
     }
 
     protected override void Attack()
@@ -41,7 +42,6 @@ public class EnemeyRanged : EnemyBase
 
             yield return null;
         }
-
         _lineRenderer.enabled = true;
         _lineRenderer.SetPosition(0, firePoint.position);
         _lineRenderer.SetPosition(1, player.transform.position);
