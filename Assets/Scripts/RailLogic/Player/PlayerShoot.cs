@@ -35,7 +35,6 @@ public class PlayerShoot : MonoBehaviour
             float hitDistance = hitData.distance;
             GameObject hitObject = hitData.transform.gameObject;
             debugHitCount++;
-
             // Debug.Log("hitted object name = " + hitObject.name);
             // Debug.Log("hitted object position = " + hitPosition);
             // Debug.Log("hitted object distance = " + hitDistance);
