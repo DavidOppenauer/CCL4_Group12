@@ -26,6 +26,7 @@ public class EnemeyRanged : EnemyBase
     protected override void Attack()
     {
         StartCoroutine(LaserSequence());
+        
     }
 
     private IEnumerator LaserSequence()
@@ -48,7 +49,8 @@ public class EnemeyRanged : EnemyBase
         yield return new WaitForSeconds(laserDuration);
 
         Instantiate(explosionPrefab, firePoint.position, Quaternion.identity);
-
+        PlayerBrain playerBrain = player.GetComponent<PlayerBrain>();
+        playerBrain.OnHit();
         Destroy(gameObject);
     }
 }
