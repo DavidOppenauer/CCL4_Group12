@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9027569986254532572}
   - component: {fileID: 1738809540490121810}
   - component: {fileID: 5887578661776688471}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: KamikazeFly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 52587801718956791}
   - component: {fileID: 203265348811924890}
   - component: {fileID: 3015985027706952753}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: KamikazeFly
   m_TagString: Enemy
   m_Icon: {fileID: 0}

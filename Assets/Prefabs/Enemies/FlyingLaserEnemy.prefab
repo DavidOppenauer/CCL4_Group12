@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5151551684906527014}
   - component: {fileID: 2588155610652551502}
   - component: {fileID: 2491509512524179768}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FlyingLaserEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 1434893144501568191}
   - component: {fileID: 7348633171947014033}
   - component: {fileID: 4297644081036123252}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Flying Ranged
   m_TagString: Enemy
   m_Icon: {fileID: 0}
