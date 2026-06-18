@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestingGrounds.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
@@ -14,12 +14,18 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/IntroScence.unity
     guid: e0e88f4fafbc69b40b8923acd76fffc7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/EnemyMovementTest.unity
     guid: b065b2dc3c0a0044f84caa6541add433
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ShootEnemyTest.unity
     guid: c6100a1f608c0d4469dae20e4581c27f
+  - enabled: 1
+    path: Assets/Scenes/Maps/Level_00_protoype.unity
+    guid: c3d54b1f64395fe48a364c52637e6217
+  - enabled: 1
+    path: Assets/Scenes/Maps/Level_01_prototype.unity
+    guid: a7b0ed7fb8ba5ea42a904a6bfb80d660
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 96302f2a8e58cf44f92d0692cfcd929a, type: 3}
   m_UseUCBPForAssetBundles: 0
