@@ -38,6 +38,9 @@ public class PlayerBrain : MonoBehaviour
     private List<RailSegment> availableRailChoices;
     private int selectedRailChoiceIndex;
     private bool playerHasDecidedOnRoute = false;
+
+    protected HealthSystem healthSystem;
+
     private void Awake()
     {
         playerRailMovement = GetComponent<PlayerRailMovement>();
@@ -45,7 +48,7 @@ public class PlayerBrain : MonoBehaviour
         playerShoot = GetComponent<PlayerShoot>();
         currentState = PlayerState.MovingAlongRail;
         currentRail = initialRail;
-
+        healthSystem = GetComponentInChildren<HealthSystem>();
         // Events
         junctionManager.OnDirectionSelected += HandleJunctionDirectionSelected;
     }
@@ -261,6 +264,15 @@ public class PlayerBrain : MonoBehaviour
                 //playerAimController.HandleAiming();
                 
             break;
+        }
+    }
+
+    public virtual void OnHit()
+    {
+        healthSystem.TakeDamage(1);
+        if (healthSystem.GetCurrentHealth() <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 

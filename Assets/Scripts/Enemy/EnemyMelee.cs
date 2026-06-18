@@ -58,7 +58,8 @@ public class EnemyMelee : EnemyBase
         }
 
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-
+        PlayerBrain playerBrain = player.GetComponent<PlayerBrain>();
+        playerBrain.OnHit();
         Destroy(gameObject);
     }
 }
