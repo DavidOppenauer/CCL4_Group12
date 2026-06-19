@@ -8,7 +8,7 @@ public class PlayerBrain : MonoBehaviour
 {
     // Global variable for inactivity during reload
     private float timer = 0f;
-
+    
     // New Input System
     [SerializeField] private PlayerInputs playerInput;
 

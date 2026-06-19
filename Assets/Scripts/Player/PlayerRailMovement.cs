@@ -9,6 +9,9 @@ public class PlayerRailMovement : MonoBehaviour
     // New Input System
     [SerializeField] private PlayerInputs playerInput;
 
+    // Flag for the animator
+    private bool isWalking = false;
+
     private RailSegment previousRail;
     private bool endOfRailReached = false;
     private bool startOfRailReached = false;
@@ -26,11 +29,17 @@ public class PlayerRailMovement : MonoBehaviour
             railLength = currentRail.GetSplineContainer().CalculateLength();
             previousRail = currentRail;
         }
-        
+        //Handling the movement flag... surely this works
         if(playerInput.GetMoveForwardIsPressed())
         {
+            isWalking = true;
             distancePercentage += movementDirection * speed * Time.deltaTime / railLength;
+        } 
+        else
+        {
+            isWalking = false;
         }
+
         if (playerInput.GetTurnAroundWasPressedThisFrame())
         {
             movementDirection *= -1f;
@@ -85,5 +94,10 @@ public class PlayerRailMovement : MonoBehaviour
     {
         distancePercentage = 1f;
         movementDirection = -1f;
+    }
+
+    public bool GetIsPlayerWalking()
+    {
+        return isWalking;
     }
 }
