@@ -27,6 +27,7 @@ public class PlayerBrain : MonoBehaviour
 
     // ------- UI REFERENCES -------
     [SerializeField] private GameObject reloadUI;
+    [SerializeField] private GameObject aimUI;
 
     // Rail variable for MovementState
     private RailSegment currentRail;
@@ -79,6 +80,7 @@ public class PlayerBrain : MonoBehaviour
                         // HandleAimingToMoving();
                         
                     }
+                    aimUI.SetActive(false);
                     playerAimController.DisableAiming();
                     cameraController.SwitchToCurrentRailCamera();
                     previousState = currentState;
@@ -218,6 +220,7 @@ public class PlayerBrain : MonoBehaviour
                 {
                     playerAimController.EnableAiming();
                     cameraController.SwitchToAimCamera();
+                    aimUI.SetActive(true);
                     previousState = currentState;
                 }
 
@@ -235,6 +238,7 @@ public class PlayerBrain : MonoBehaviour
                 // Transition Code
                 if(previousState != currentState)
                 {
+                    aimUI.SetActive(false);
                     //playerAimController.EnableAiming();
                     cameraController.SwitchToReloadCamera();
                     reloadUI.SetActive(true);
@@ -295,6 +299,7 @@ public class PlayerBrain : MonoBehaviour
 
     private void EnterChoosingNextRail()
     {
+        aimUI.SetActive(false);
         JunctionManager.JunctionConfig config = currentJunction.GetJunctionConfig(currentRail);
 
         
