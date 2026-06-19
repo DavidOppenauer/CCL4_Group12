@@ -29,16 +29,14 @@ public class PlayerBrain : MonoBehaviour
     [SerializeField] private GameObject reloadUI;
     [SerializeField] private GameObject aimUI;
 
+    [SerializeField] private SceneLoader sceneLoader;
+
     // Rail variable for MovementState
     private RailSegment currentRail;
     // Rail variable for choosing state for more clarity
     private RailSegment chosenRail;
     private RailJunction currentJunction;
     private PlayerRailMovement playerRailMovement;
-    private RailSegment[] connectedRailsToCurrentJunction;
-    private List<RailSegment> availableRailChoices;
-    private int selectedRailChoiceIndex;
-    private bool playerHasDecidedOnRoute = false;
 
     protected HealthSystem healthSystem;
 
@@ -59,7 +57,7 @@ public class PlayerBrain : MonoBehaviour
         ChoosingNextRail,
         Aiming,
         Reload,
-        Test
+        Interact
     }
     private PlayerState currentState;
     private PlayerState previousState;
@@ -132,89 +130,13 @@ public class PlayerBrain : MonoBehaviour
             break;
             case PlayerState.ChoosingNextRail:
             
-                /*if (currentState != previousState)
-                {
-                    JunctionManager.JunctionConfig config = currentJunction.GetJunctionConfig(currentRail);
-                    junctionManager.OpenJunctionMenu(config);
-
-                    previousState = currentState;
-                }*/
-                //Old Version
-                // Getting the variable only in the first iteration
-                /*if (currentState != previousState)
-                {
-                    // New UI based choosing
-                    JunctionManager.JunctionConfig config = currentJunction.GetJunctionConfig(currentRail);
-                    junctionManager.OpenJunctionMenu(config);
-                    // Get the array of Rails(I aint changing it now because its already wired up in the editor(too much work))
-                    connectedRailsToCurrentJunction = currentJunction.GetRailSegments();
-                    // Convert said Array into a list
-                    availableRailChoices = connectedRailsToCurrentJunction.ToList();
-                    // reset the choiceindex
-                    selectedRailChoiceIndex = 0;
-                    previousState = currentState;                  
-                }*/
-
-                // ---------------------------------------------------------------------------------
-                // THIS NEXT PART IS REALLY EXPERIMENTAL AND NEEDS GOOD CARE AND THOUGHT LATER ON...
-                // ---------------------------------------------------------------------------------
-
-                // Setting currentRail to what the player chooses
-                // S should always be the return choice
                 if (playerInput.GetTurnAroundWasPressedThisFrame())
                 {
                     ConfirmChosenRail(currentRail);
                     junctionManager.CloseJunctionMenu();
                 }
-                // REFACTOR OF NEW INPUT SYSTEM INCOMPLETE BECAUSE THIS SECTION SHOULDNT EXISSSSST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                /*if(Input.GetKeyDown(KeyCode.W))// Confirm
-                {
-                    chosenRail = availableRailChoices[selectedRailChoiceIndex];
-                    playerHasDecidedOnRoute = true;
-                }
-                if(Input.GetKeyDown(KeyCode.A))// Cycle left
-                {
-                    selectedRailChoiceIndex -= 1;
-                    if (selectedRailChoiceIndex < 0)
-                    {
-                        selectedRailChoiceIndex = availableRailChoices.Count - 1;
-                    }
-                    Debug.Log("" + selectedRailChoiceIndex);
-                }
-                if(Input.GetKeyDown(KeyCode.D))// Cycle right
-                {
-                    selectedRailChoiceIndex += 1;
-                    if (selectedRailChoiceIndex >= availableRailChoices.Count)
-                    {
-                        selectedRailChoiceIndex = 0;
-                    }
-                    Debug.Log("" + selectedRailChoiceIndex);
-                }*/
-                /*if (playerHasDecidedOnRoute == true)
-                {
-                    // Look if the Junction the player is currently at is at the end or the start of the chosen junction, then place the player accordingly
-                    if(currentJunction == chosenRail.GetStartJunction())
-                    {
-                        playerRailMovement.PlaceOnRailStart();
-                    }
-                    if (currentJunction == chosenRail.GetEndJunction())
-                    {
-                        playerRailMovement.PlaceOnRailEnd();
-                    }
-                    // After everythings done reset the current Junction type for next cycle
-                    // Set the new current Rail
-                    currentRail = chosenRail;
-                    // Reset the Player has decided flag
-                    playerHasDecidedOnRoute = false;
-                    // Go back moving on the new rail
-                    currentState = PlayerState.MovingAlongRail;                    
-                }*/
             break;
             case PlayerState.Aiming:
-                /*
-                    show crosshair
-                    hide player show gun
-                */
                 // Transition Code
                 if(previousState != currentState)
                 {
@@ -259,6 +181,10 @@ public class PlayerBrain : MonoBehaviour
                 //playerAimController.HandleAiming();
                 
             break;
+
+            case PlayerState.Interact:
+
+            break;
         }
     }
 
@@ -268,6 +194,7 @@ public class PlayerBrain : MonoBehaviour
         if (healthSystem.GetCurrentHealth() <= 0)
         {
             Destroy(gameObject);
+            sceneLoader.ReloadActiveScene();
         }
     }
 
