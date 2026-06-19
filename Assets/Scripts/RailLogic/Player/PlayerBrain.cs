@@ -190,7 +190,7 @@ public class PlayerBrain : MonoBehaviour
                     }
                     Debug.Log("" + selectedRailChoiceIndex);
                 }*/
-                if (playerHasDecidedOnRoute == true)
+                /*if (playerHasDecidedOnRoute == true)
                 {
                     // Look if the Junction the player is currently at is at the end or the start of the chosen junction, then place the player accordingly
                     if(currentJunction == chosenRail.GetStartJunction())
@@ -208,7 +208,7 @@ public class PlayerBrain : MonoBehaviour
                     playerHasDecidedOnRoute = false;
                     // Go back moving on the new rail
                     currentState = PlayerState.MovingAlongRail;                    
-                }
+                }*/
             break;
             case PlayerState.Aiming:
                 /*
