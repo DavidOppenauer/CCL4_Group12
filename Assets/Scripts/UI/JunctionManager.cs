@@ -12,6 +12,8 @@ public class JunctionManager : MonoBehaviour
         public bool allowRight;
     }
 
+    [SerializeField] private GameObject menuRoot;
+
     // 1. UNCOMMENTED THESE so you can assign your UI Panels in the inspector
     [Header("Node Object References")]
     [SerializeField] private GameObject leftNode;
@@ -80,7 +82,7 @@ public class JunctionManager : MonoBehaviour
     /// </summary>
     public void OpenJunctionMenu(JunctionConfig config)
     {
-        gameObject.SetActive(true);
+        menuRoot.SetActive(true);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
@@ -128,7 +130,7 @@ public class JunctionManager : MonoBehaviour
         // Fade IN the external UI smoothly as the menu closes
         if (healthCompassHUD != null) yield return StartCoroutine(FadeCanvasGroup(healthCompassHUD, 0f, 1f));
 
-        gameObject.SetActive(false);
+        menuRoot.SetActive(false);
     }
 
     // Simple linear interpolation helper to handle the alpha fade over time
