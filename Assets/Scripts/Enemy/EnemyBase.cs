@@ -45,7 +45,6 @@ public class EnemyBase : MonoBehaviour
                 Debug.Log("Something went wrong with the states");
                 break;
         }
-        Debug.Log(currentState);
     }
 
     protected virtual void Attack()
