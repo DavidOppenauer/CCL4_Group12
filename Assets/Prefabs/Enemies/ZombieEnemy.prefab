@@ -186,6 +186,7 @@ MonoBehaviour:
   chargeUpTime: 0.25
   explosionPrefab: {fileID: 6947915205150471094, guid: ab1fac88ea6792d46920e72f1804e2a5, type: 3}
   isFlying: 0
+  targetOffset: 1
 --- !u!114 &2488595952017754422
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private Transform aimCamera;
     [SerializeField] private PlayerInputs playerInputs;
     [SerializeField] private LayerMask hitLayer;
+    [SerializeField] private GameObject bloodParticlePrefab;
     private Ray ray;
     private RaycastHit hitData;
 
@@ -44,7 +45,7 @@ public class PlayerShoot : MonoBehaviour
             {
                 EnemyBase hitEnemy = hitData.collider.GetComponentInParent<EnemyBase>();
                 Debug.Log("You hit the enemy: " + hitEnemy.name);
-
+                Instantiate(bloodParticlePrefab, hitData.point, Quaternion.LookRotation(hitData.normal));
                 hitEnemy.OnHit();
             }
             // if (hitObject.tag == "Enemy")

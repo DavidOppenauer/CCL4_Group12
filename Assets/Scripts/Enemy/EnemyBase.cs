@@ -19,12 +19,17 @@ public class EnemyBase : MonoBehaviour
 
     protected EnemyState currentState = EnemyState.Idle;
     protected HealthSystem healthSystem;
+    protected MeshRenderer meshRenderer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         healthSystem = GetComponentInChildren<HealthSystem>();
+        meshRenderer = GetComponentInChildren<MeshRenderer>();
+        meshRenderer.renderingLayerMask = 1u << 1;
+
+        
     }
 
     // Update is called once per frame
@@ -45,7 +50,6 @@ public class EnemyBase : MonoBehaviour
                 Debug.Log("Something went wrong with the states");
                 break;
         }
-        Debug.Log(currentState);
     }
 
     protected virtual void Attack()
