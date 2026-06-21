@@ -6,6 +6,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerBrain : MonoBehaviour
 {
+    // Interaction stuff
+    [SerializeField] private PlayerInteractionDetector playerInteractionDetector;
+    private String currentInteraction;
     // Global variable for inactivity during reload
     private float timer = 0f;
     
@@ -186,7 +189,14 @@ public class PlayerBrain : MonoBehaviour
             break;
 
             case PlayerState.Interaction:
-
+                if(previousState != currentState)
+                {
+                    // Disable Walking Animation
+                    playerRailMovement.SetIsPlayerWalking(false);
+                    //cameraController.SwitchToCustomCamera(currentInteraction.Camera)
+                    reloadUI.SetActive(true);
+                    previousState = currentState;
+                }
 
             break;
         }
@@ -215,6 +225,11 @@ public class PlayerBrain : MonoBehaviour
         {
             currentState = PlayerState.MovingAlongRail;
         }
+        if (playerInteractionDetector.GetPlayerHasEnteredInteraction())
+        {
+            currentState = PlayerState.Interaction;
+        }
+
     }
 
     private void HandleJunctionDirectionSelected(string direction)

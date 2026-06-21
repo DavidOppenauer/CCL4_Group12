@@ -1006,12 +1006,13 @@ GameObject:
   m_Component:
   - component: {fileID: 402108235}
   - component: {fileID: 402108241}
+  - component: {fileID: 402108236}
   - component: {fileID: 402108240}
   - component: {fileID: 402108239}
   - component: {fileID: 402108238}
   - component: {fileID: 402108237}
-  - component: {fileID: 402108236}
   - component: {fileID: 402108242}
+  - component: {fileID: 402108243}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1095,6 +1096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ead0fd93857ad2a4ab2f1d33261e595b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBrain
+  playerInteractionDetector: {fileID: 0}
   playerInput: {fileID: 564758807}
   junctionManager: {fileID: 1972486871}
   cameraController: {fileID: 739030888}
@@ -1169,6 +1171,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
   maxHealth: 3
+--- !u!114 &402108243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402108234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c77d8477cce62fc4fadc9ada91331032, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractionDetector
 --- !u!1 &422399730
 GameObject:
   m_ObjectHideFlags: 0
