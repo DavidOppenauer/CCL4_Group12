@@ -100,4 +100,9 @@ public class PlayerRailMovement : MonoBehaviour
     {
         return isWalking;
     }
+
+    public void SetIsPlayerWalking(bool state)
+    {
+        isWalking = state;
+    }
 }

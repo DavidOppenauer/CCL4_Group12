@@ -29,6 +29,7 @@ public class PlayerBrain : MonoBehaviour
     [SerializeField] private GameObject reloadUI;
     [SerializeField] private GameObject aimUI;
 
+    // SceneLoader for respawning
     [SerializeField] private SceneLoader sceneLoader;
 
     // Rail variable for MovementState
@@ -38,7 +39,22 @@ public class PlayerBrain : MonoBehaviour
     private RailJunction currentJunction;
     private PlayerRailMovement playerRailMovement;
 
+    // Player also uses the general healthsystem
     protected HealthSystem healthSystem;
+
+    // Different States of the player for the statemachine
+    private enum PlayerState
+    {
+        MovingAlongRail,
+        ChoosingNextRail,
+        Aiming,
+        Reload,
+        Interaction
+    }
+
+    // These two are used for logic that should run only when first entering a state
+    private PlayerState currentState;
+    private PlayerState previousState;
 
     private void Awake()
     {
@@ -48,19 +64,10 @@ public class PlayerBrain : MonoBehaviour
         currentState = PlayerState.MovingAlongRail;
         currentRail = initialRail;
         healthSystem = GetComponentInChildren<HealthSystem>();
-        // Events
+        // Event for the UI junction screen
         junctionManager.OnDirectionSelected += HandleJunctionDirectionSelected;
     }
-    private enum PlayerState
-    {
-        MovingAlongRail,
-        ChoosingNextRail,
-        Aiming,
-        Reload,
-        Interact
-    }
-    private PlayerState currentState;
-    private PlayerState previousState;
+
 
     private void Update()
     {
@@ -72,12 +79,8 @@ public class PlayerBrain : MonoBehaviour
                 // Transition Code
                 if(previousState != currentState)
                 {
-                    if (previousState == PlayerState.Aiming)
-                    {
-                        // First to third person Transition changes
-                        // HandleAimingToMoving();
-                        
-                    }
+                    // Disable Walking Animation
+                    playerRailMovement.SetIsPlayerWalking(false);
                     aimUI.SetActive(false);
                     playerAimController.DisableAiming();
                     cameraController.SwitchToCurrentRailCamera();
@@ -96,7 +99,7 @@ public class PlayerBrain : MonoBehaviour
                         currentJunction = currentRail.GetEndJunction();
                         // Tell the movement script that it was heard and reset the bools that get set when you reach the end of a rail
                         playerRailMovement.ResetJunctionFlags();
-                        // Stop early if theres just the one rail its connected to, its a dead end
+                        // Stop early if theres just the one rail its connected to, its a dead end //--------------------------------------------------- Depricated...
                         if (currentJunction.GetRailCount() == 1)
                         {
                             return;
@@ -104,10 +107,6 @@ public class PlayerBrain : MonoBehaviour
                         Debug.Log("Reached END of rail: " + currentRail.name + " at junction: " + currentRail.GetEndJunction().name);
                         EnterChoosingNextRail();
                     } 
-                    else
-                    {
-                        return;
-                    }
                 }
                 if (playerRailMovement.GetStartOfRailReached())
                 {
@@ -121,14 +120,16 @@ public class PlayerBrain : MonoBehaviour
                         }
                         Debug.Log("Reached START of rail: " + currentRail.name + " at junction: " + currentRail.GetStartJunction().name);
                         EnterChoosingNextRail();
-                    } 
-                    else
-                    {
-                        return;
                     }
                 }
             break;
             case PlayerState.ChoosingNextRail:
+                if(previousState != currentState)
+                {
+                    // Disable Walking Animation
+                    playerRailMovement.SetIsPlayerWalking(false);
+                    previousState = currentState;
+                }
             
                 if (playerInput.GetTurnAroundWasPressedThisFrame())
                 {
@@ -140,6 +141,8 @@ public class PlayerBrain : MonoBehaviour
                 // Transition Code
                 if(previousState != currentState)
                 {
+                    // Disable Walking Animation
+                    playerRailMovement.SetIsPlayerWalking(false);
                     playerAimController.EnableAiming();
                     cameraController.SwitchToAimCamera();
                     aimUI.SetActive(true);
@@ -160,6 +163,8 @@ public class PlayerBrain : MonoBehaviour
                 // Transition Code
                 if(previousState != currentState)
                 {
+                    // Disable Walking Animation
+                    playerRailMovement.SetIsPlayerWalking(false);
                     aimUI.SetActive(false);
                     //playerAimController.EnableAiming();
                     cameraController.SwitchToReloadCamera();
@@ -177,12 +182,11 @@ public class PlayerBrain : MonoBehaviour
                     timer = 0f;
                     reloadUI.SetActive(false);
                     currentState = PlayerState.MovingAlongRail;
-                } 
-                //playerAimController.HandleAiming();
-                
+                }                 
             break;
 
-            case PlayerState.Interact:
+            case PlayerState.Interaction:
+
 
             break;
         }
