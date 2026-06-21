@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5887578661776688471}
   m_Layer: 3
   m_Name: KamikazeFly
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,6 +104,7 @@ MonoBehaviour:
   chargeUpTime: 0.25
   explosionPrefab: {fileID: 6947915205150471094, guid: ab1fac88ea6792d46920e72f1804e2a5, type: 3}
   isFlying: 1
+  targetOffset: 1.5
 --- !u!114 &5887578661776688471
 MonoBehaviour:
   m_ObjectHideFlags: 0
