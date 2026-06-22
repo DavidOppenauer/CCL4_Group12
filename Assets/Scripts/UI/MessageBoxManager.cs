@@ -55,11 +55,11 @@ public class MessageBoxManager : MonoBehaviour
     private void Update()
     {
         #region Testing Tool
-        if (Input.GetKeyDown(KeyCode.M)) 
-        {
-            ShowMessage("This is a custom Text");
-            return; // Stop execution on this frame so 'M' doesn't accidentally trigger a double-input dismiss
-        }
+        // if (Input.GetKeyDown(KeyCode.M)) 
+        // {
+        //     ShowMessage("This is a custom Text");
+        //     return; // Stop execution on this frame so 'M' doesn't accidentally trigger a double-input dismiss
+        // }
         #endregion
 
         #region Input Dismiss Checks
