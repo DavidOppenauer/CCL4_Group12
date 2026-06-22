@@ -9,14 +9,29 @@ public class PlayerShoot : MonoBehaviour
     private Ray ray;
     private RaycastHit hitData;
 
+    // Ammo Logic
+    private int maxAmmo = 6;
+    private int currentAmmo;
+    private float shotCooldown = 200f;
+    private bool canShoot = true;
+
     private int debugHitCount;
     public void HandleShooting()
     {
-        if (playerInputs.GetShootWasPressedThisFrame())
+        if (playerInputs.GetShootWasPressedThisFrame() && currentAmmo > 0 && canShoot == true)
         {
-            // Fire Ray and do some effect maybe later on
+            //reduce ammo
+            currentAmmo--;
+            // play shoot animation
+
+            // Do raycast
             FireRay();
         }
+    }
+
+    public void ResetBullets()
+    {
+        currentAmmo = maxAmmo;
     }
 
     private void FireRay()

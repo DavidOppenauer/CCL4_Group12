@@ -197,6 +197,8 @@ public class PlayerBrain : MonoBehaviour
 
                     timer = 0f;
                     reloadUI.SetActive(false);
+                    // actual reloading
+                    playerShoot.ResetBullets();
                     currentState = PlayerState.MovingAlongRail;
                 }                 
             break;
