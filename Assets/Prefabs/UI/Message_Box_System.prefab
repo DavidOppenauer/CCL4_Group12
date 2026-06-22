@@ -181,9 +181,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f266c679222195499877c4f2bbbf422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MessageBoxManager
-  messageBoxPanel: {fileID: 4097599505807837875}
+  messageBoxContainer: {fileID: 6085528915960784609}
   messageText: {fileID: 2002052321467953841}
-  testMessage: This is a custom feedback message.
+  borderAnimator: {fileID: 7296209244304179641}
+  panelAnimator: {fileID: 0}
+  closeAnimationDuration: 0.4
 --- !u!1 &4097599505807837875
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,7 +197,6 @@ GameObject:
   - component: {fileID: 8160230355958150209}
   - component: {fileID: 8142345421641730875}
   - component: {fileID: 6481113434438803863}
-  - component: {fileID: 6510203135053528694}
   m_Layer: 5
   m_Name: Background_Panel
   m_TagString: Untagged
@@ -261,28 +262,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!95 &6510203135053528694
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4097599505807837875}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9ddadd1e10f22f3409fc9c29864d324f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6085528915960784609
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,7 +484,7 @@ Animator:
   m_GameObject: {fileID: 7982250822951397402}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9cb0e6ca301f06242abc0977a1f2f919, type: 2}
+  m_Controller: {fileID: 9100000, guid: 69c4313d32137404393c5f97dc76e5f3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
