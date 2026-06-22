@@ -22,6 +22,7 @@ public class PlayerBrain : MonoBehaviour
     private PlayerAimController playerAimController;
 
     // Animation flags
+    private PlayerAnimator playerAnimator;
     private bool isPlayerAiming = false;
 
     //Shooting
@@ -68,6 +69,7 @@ public class PlayerBrain : MonoBehaviour
         playerAimController = GetComponent<PlayerAimController>();
         playerInteractionDetector = GetComponent<PlayerInteractionDetector>();
         playerShoot = GetComponent<PlayerShoot>();
+        playerAnimator = GetComponentInChildren<PlayerAnimator>();
         currentState = PlayerState.MovingAlongRail;
         currentRail = initialRail;
         healthSystem = GetComponentInChildren<HealthSystem>();
@@ -180,11 +182,13 @@ public class PlayerBrain : MonoBehaviour
                     isPlayerAiming = false;
                     // Reset Visual Transform
                     playerAimController.ResetPlayerVisual();
-                    
                     aimUI.SetActive(false);
                     //playerAimController.EnableAiming();
                     cameraController.SwitchToReloadCamera();
+                    // Load UI
                     reloadUI.SetActive(true);
+                    // play reload animation
+                    playerAnimator.PlayReloadAnimation();
                     previousState = currentState;
                 }
                 // ---- Timer section -----

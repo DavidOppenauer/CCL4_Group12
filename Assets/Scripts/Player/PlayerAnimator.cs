@@ -9,6 +9,8 @@ public class PlayerAnimator : MonoBehaviour {
     
     private const string WALKING = "IsWalking";
     private const string AIMING = "IsAiming";
+    private const string SHOOT = "Shoot";
+    private const string RELOAD = "Reload";
 
     private void Awake() {
         animator = GetComponent<Animator>(); // Get the animator Component on this Obeject
@@ -18,5 +20,15 @@ public class PlayerAnimator : MonoBehaviour {
     {
         animator.SetBool(WALKING, playerMovement.GetIsPlayerWalking());
         animator.SetBool(AIMING, playerBrain.GetIsPlayerAiming());
+    }
+
+    public void PlayShootAnimation()
+    {
+        animator.SetTrigger(SHOOT);
+    }
+    public void PlayReloadAnimation()
+    {
+        animator.ResetTrigger(SHOOT);
+        animator.SetTrigger(RELOAD);
     }
 }
