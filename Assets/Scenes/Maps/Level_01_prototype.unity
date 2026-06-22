@@ -1170,6 +1170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
   maxHealth: 3
+  currentHealth: 0
 --- !u!1 &422399730
 GameObject:
   m_ObjectHideFlags: 0
@@ -1945,6 +1946,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3046116929833776566, guid: fc1e4a403ebd06c4cb3919624b3eed4d, type: 3}
   m_PrefabInstance: {fileID: 802739139}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &812572251
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 812572253}
+  - component: {fileID: 812572252}
+  m_Layer: 0
+  m_Name: ---- GAME MANAGER ----
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &812572252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812572251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc72470362ade204fac1dd507a9e9ba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  playerMaxHealth: 3
+  playerHealth: 3
+--- !u!4 &812572253
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812572251}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 17.46767, y: 0, z: -8.28554}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &812913148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6171,3 +6218,4 @@ SceneRoots:
   - {fileID: 1522212841}
   - {fileID: 8292661659095005963}
   - {fileID: 1803092744}
+  - {fileID: 812572253}
