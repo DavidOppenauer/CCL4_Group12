@@ -244,8 +244,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eab592d688c2b54a8705d04fb054c90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RailSegment
-  startJunction: {fileID: 0}
-  endJunction: {fileID: 0}
+  startJunction: {fileID: 1973160781}
+  endJunction: {fileID: 320377271}
 --- !u!1001 &24499841
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -374,6 +374,67 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4170535089350703167, guid: 3289d7b5332e8754aa1c543f92116397, type: 3}
   m_PrefabInstance: {fileID: 30642927}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &47921331
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 47921332}
+  - component: {fileID: 47921333}
+  m_Layer: 0
+  m_Name: JConference
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &47921332
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47921331}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1546127101}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &47921333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47921331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a2f0ef09f1ed145836529eff0f4d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RailJunction
+  railSegments:
+  - {fileID: 1604194494}
+  - {fileID: 1816448555}
+  - {fileID: 1723499949}
+  directionSetups:
+  - incomingRail: {fileID: 1604194494}
+    leftRail: {fileID: 1816448555}
+    straightRail: {fileID: 0}
+    rightRail: {fileID: 1723499949}
+  - incomingRail: {fileID: 1816448555}
+    leftRail: {fileID: 0}
+    straightRail: {fileID: 1723499949}
+    rightRail: {fileID: 1604194494}
+  - incomingRail: {fileID: 1723499949}
+    leftRail: {fileID: 1604194494}
+    straightRail: {fileID: 1816448555}
+    rightRail: {fileID: 0}
 --- !u!1 &58040279
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,8 +560,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eab592d688c2b54a8705d04fb054c90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RailSegment
-  startJunction: {fileID: 0}
-  endJunction: {fileID: 0}
+  startJunction: {fileID: 1334585495}
+  endJunction: {fileID: 320377271}
 --- !u!1 &64348231
 GameObject:
   m_ObjectHideFlags: 0
@@ -1609,9 +1670,9 @@ Transform:
   - {fileID: 58040281}
   - {fileID: 19522618}
   - {fileID: 1829015622}
+  - {fileID: 2088896630}
   - {fileID: 424214923}
   - {fileID: 914215991}
-  - {fileID: 2088896630}
   - {fileID: 1311200209}
   - {fileID: 1604194493}
   - {fileID: 1816448553}
@@ -1619,6 +1680,67 @@ Transform:
   - {fileID: 1411591327}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &273022384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 273022385}
+  - component: {fileID: 273022386}
+  m_Layer: 0
+  m_Name: JServerRoom
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &273022385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273022384}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1546127101}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &273022386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273022384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a2f0ef09f1ed145836529eff0f4d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RailJunction
+  railSegments:
+  - {fileID: 1311200210}
+  - {fileID: 1723499949}
+  - {fileID: 1411591328}
+  directionSetups:
+  - incomingRail: {fileID: 1723499949}
+    leftRail: {fileID: 1411591328}
+    straightRail: {fileID: 0}
+    rightRail: {fileID: 1311200210}
+  - incomingRail: {fileID: 1411591328}
+    leftRail: {fileID: 0}
+    straightRail: {fileID: 1311200210}
+    rightRail: {fileID: 1723499949}
+  - incomingRail: {fileID: 1311200210}
+    leftRail: {fileID: 1723499949}
+    straightRail: {fileID: 1411591328}
+    rightRail: {fileID: 0}
 --- !u!1 &276341643
 GameObject:
   m_ObjectHideFlags: 0
@@ -1916,6 +2038,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 425aa1161969c8c41a46085ece7ba3cc, type: 3}
+--- !u!1 &320377269
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 320377270}
+  - component: {fileID: 320377271}
+  m_Layer: 0
+  m_Name: JNorthOffice
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &320377270
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320377269}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1546127101}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &320377271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320377269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a2f0ef09f1ed145836529eff0f4d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RailJunction
+  railSegments:
+  - {fileID: 58040282}
+  - {fileID: 19522619}
+  - {fileID: 1829015623}
+  directionSetups:
+  - incomingRail: {fileID: 58040282}
+    leftRail: {fileID: 19522619}
+    straightRail: {fileID: 1829015623}
+    rightRail: {fileID: 0}
+  - incomingRail: {fileID: 19522619}
+    leftRail: {fileID: 1829015623}
+    straightRail: {fileID: 0}
+    rightRail: {fileID: 58040282}
+  - incomingRail: {fileID: 1829015623}
+    leftRail: {fileID: 0}
+    straightRail: {fileID: 58040282}
+    rightRail: {fileID: 19522619}
 --- !u!1001 &329954870
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2601,8 +2784,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eab592d688c2b54a8705d04fb054c90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RailSegment
-  startJunction: {fileID: 0}
-  endJunction: {fileID: 0}
+  startJunction: {fileID: 481351252}
+  endJunction: {fileID: 1172618759}
 --- !u!1 &433685884 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8851882309894692139, guid: cd7f6c710784b454983b52a208641c37, type: 3}
@@ -2816,6 +2999,67 @@ Transform:
   - {fileID: 1109461396}
   m_Father: {fileID: 1014639870}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &481351250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 481351251}
+  - component: {fileID: 481351252}
+  m_Layer: 0
+  m_Name: JCenterHallElevator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &481351251
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481351250}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1546127101}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &481351252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481351250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a2f0ef09f1ed145836529eff0f4d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RailJunction
+  railSegments:
+  - {fileID: 1829015623}
+  - {fileID: 1013715328}
+  - {fileID: 424214924}
+  directionSetups:
+  - incomingRail: {fileID: 1829015623}
+    leftRail: {fileID: 424214924}
+    straightRail: {fileID: 1013715328}
+    rightRail: {fileID: 0}
+  - incomingRail: {fileID: 424214924}
+    leftRail: {fileID: 1013715328}
+    straightRail: {fileID: 0}
+    rightRail: {fileID: 1829015623}
+  - incomingRail: {fileID: 1013715328}
+    leftRail: {fileID: 0}
+    straightRail: {fileID: 1829015623}
+    rightRail: {fileID: 424214924}
 --- !u!1001 &488382438
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3085,8 +3329,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eab592d688c2b54a8705d04fb054c90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RailSegment
-  startJunction: {fileID: 0}
-  endJunction: {fileID: 0}
+  startJunction: {fileID: 1447670297}
+  endJunction: {fileID: 1334585495}
 --- !u!1 &574329601
 GameObject:
   m_ObjectHideFlags: 0
@@ -3679,6 +3923,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &661643153
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 661643154}
+  - component: {fileID: 661643155}
+  m_Layer: 0
+  m_Name: EntryServerRoom
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &661643154
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661643153}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1546127101}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &661643155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661643153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a2f0ef09f1ed145836529eff0f4d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RailJunction
+  railSegments: []
+  directionSetups: []
 --- !u!1 &664605399
 GameObject:
   m_ObjectHideFlags: 0
@@ -3853,6 +4143,72 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3046116929833776566, guid: fc1e4a403ebd06c4cb3919624b3eed4d, type: 3}
   m_PrefabInstance: {fileID: 682431009}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &692278800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 692278801}
+  - component: {fileID: 692278802}
+  m_Layer: 0
+  m_Name: JCenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &692278801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692278800}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1546127101}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &692278802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692278800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a2f0ef09f1ed145836529eff0f4d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RailJunction
+  railSegments:
+  - {fileID: 1980968064}
+  - {fileID: 794035328}
+  - {fileID: 1013715328}
+  - {fileID: 1604194494}
+  directionSetups:
+  - incomingRail: {fileID: 1980968064}
+    leftRail: {fileID: 794035328}
+    straightRail: {fileID: 1013715328}
+    rightRail: {fileID: 1604194494}
+  - incomingRail: {fileID: 794035328}
+    leftRail: {fileID: 1013715328}
+    straightRail: {fileID: 1604194494}
+    rightRail: {fileID: 1980968064}
+  - incomingRail: {fileID: 1013715328}
+    leftRail: {fileID: 1604194494}
+    straightRail: {fileID: 1980968064}
+    rightRail: {fileID: 794035328}
+  - incomingRail: {fileID: 1604194494}
+    leftRail: {fileID: 1980968064}
+    straightRail: {fileID: 794035328}
+    rightRail: {fileID: 1013715328}
 --- !u!1 &784086070
 GameObject:
   m_ObjectHideFlags: 0
@@ -3972,13 +4328,13 @@ MonoBehaviour:
         z: 1.8310843
       Rotation:
         value:
-          x: 0.000000074325776
+          x: 0.0000000033528924
           y: -0.7037055
-          z: 0.000000066909735
+          z: -0.0000000033852272
           w: 0.71049184
     - Position:
         x: -18.31
-        y: -0.000003658235
+        y: 0
         z: 0.17573547
       TangentIn:
         x: -0
@@ -3990,9 +4346,9 @@ MonoBehaviour:
         z: 1.8310843
       Rotation:
         value:
-          x: 0.00000007432583
+          x: 0.00000000335295
           y: -0.7037055
-          z: 0.00000006690968
+          z: -0.000000003385285
           w: 0.71049184
     m_MetaData:
     - Mode: 0
@@ -4037,8 +4393,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eab592d688c2b54a8705d04fb054c90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RailSegment
-  startJunction: {fileID: 0}
-  endJunction: {fileID: 0}
+  startJunction: {fileID: 1334585495}
+  endJunction: {fileID: 692278802}
 --- !u!1 &795456044
 GameObject:
   m_ObjectHideFlags: 0
@@ -4824,13 +5180,13 @@ MonoBehaviour:
         z: 4.248987
       Rotation:
         value:
-          x: 0.00000013284198
+          x: 1.5555522e-11
           y: -0.0036222464
-          z: -0.0000000038132786
+          z: -0.000000004294412
           w: 0.99999344
     - Position:
         x: -0.30781555
-        y: -0.00001128763
+        y: 0
         z: 42.488754
       TangentIn:
         x: 0
@@ -4844,7 +5200,7 @@ MonoBehaviour:
         value:
           x: -0.000001385241
           y: -0.48347545
-          z: -0.00000042852264
+          z: -0.00000042852258
           w: 0.8753579
     - Position:
         x: -26.550003
@@ -4860,9 +5216,9 @@ MonoBehaviour:
         z: 2.6305308
       Rotation:
         value:
-          x: -0.00000015866127
+          x: -0.0000000017873001
           y: -0.6821896
-          z: -0.0000001444484
+          z: 0.0000000019156403
           w: 0.7311754
     m_MetaData:
     - Mode: 0
@@ -4909,8 +5265,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eab592d688c2b54a8705d04fb054c90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RailSegment
-  startJunction: {fileID: 0}
-  endJunction: {fileID: 0}
+  startJunction: {fileID: 1141268142}
+  endJunction: {fileID: 1172618759}
 --- !u!1 &935892572
 GameObject:
   m_ObjectHideFlags: 0
@@ -5260,8 +5616,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eab592d688c2b54a8705d04fb054c90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RailSegment
-  startJunction: {fileID: 0}
-  endJunction: {fileID: 0}
+  startJunction: {fileID: 692278802}
+  endJunction: {fileID: 481351252}
 --- !u!1 &1014639869
 GameObject:
   m_ObjectHideFlags: 0
@@ -6160,7 +6516,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1136746186
 Transform:
   m_ObjectHideFlags: 0
@@ -6191,6 +6547,67 @@ MonoBehaviour:
   railSegments:
   - {fileID: 1272286490}
   directionSetups: []
+--- !u!1 &1141268140
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1141268141}
+  - component: {fileID: 1141268142}
+  m_Layer: 0
+  m_Name: JEastHallConference
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1141268141
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141268140}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1546127101}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1141268142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141268140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a2f0ef09f1ed145836529eff0f4d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RailJunction
+  railSegments:
+  - {fileID: 1816448555}
+  - {fileID: 1411591328}
+  - {fileID: 914215992}
+  directionSetups:
+  - incomingRail: {fileID: 1816448555}
+    leftRail: {fileID: 914215992}
+    straightRail: {fileID: 0}
+    rightRail: {fileID: 1411591328}
+  - incomingRail: {fileID: 914215992}
+    leftRail: {fileID: 0}
+    straightRail: {fileID: 1411591328}
+    rightRail: {fileID: 1816448555}
+  - incomingRail: {fileID: 1411591328}
+    leftRail: {fileID: 1816448555}
+    straightRail: {fileID: 914215992}
+    rightRail: {fileID: 0}
 --- !u!1001 &1159129525
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6365,6 +6782,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1172618757
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1172618758}
+  - component: {fileID: 1172618759}
+  m_Layer: 0
+  m_Name: JElevator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1172618758
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172618757}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1546127101}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1172618759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172618757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a2f0ef09f1ed145836529eff0f4d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RailJunction
+  railSegments:
+  - {fileID: 2088896631}
+  - {fileID: 424214924}
+  - {fileID: 914215992}
+  directionSetups:
+  - incomingRail: {fileID: 2088896631}
+    leftRail: {fileID: 914215992}
+    straightRail: {fileID: 0}
+    rightRail: {fileID: 424214924}
+  - incomingRail: {fileID: 914215992}
+    leftRail: {fileID: 0}
+    straightRail: {fileID: 424214924}
+    rightRail: {fileID: 2088896631}
+  - incomingRail: {fileID: 424214924}
+    leftRail: {fileID: 2088896631}
+    straightRail: {fileID: 914215992}
+    rightRail: {fileID: 0}
 --- !u!1 &1192029288
 GameObject:
   m_ObjectHideFlags: 0
@@ -7515,8 +7993,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eab592d688c2b54a8705d04fb054c90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RailSegment
-  startJunction: {fileID: 0}
-  endJunction: {fileID: 0}
+  startJunction: {fileID: 273022386}
+  endJunction: {fileID: 661643155}
 --- !u!1001 &1315827434
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7647,6 +8125,67 @@ Transform:
   - {fileID: 1208131878}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1334585493
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1334585494}
+  - component: {fileID: 1334585495}
+  m_Layer: 0
+  m_Name: JOffice
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1334585494
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334585493}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1546127101}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1334585495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334585493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a2f0ef09f1ed145836529eff0f4d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RailJunction
+  railSegments:
+  - {fileID: 571065089}
+  - {fileID: 58040282}
+  - {fileID: 794035328}
+  directionSetups:
+  - incomingRail: {fileID: 571065089}
+    leftRail: {fileID: 0}
+    straightRail: {fileID: 58040282}
+    rightRail: {fileID: 794035328}
+  - incomingRail: {fileID: 58040282}
+    leftRail: {fileID: 794035328}
+    straightRail: {fileID: 571065089}
+    rightRail: {fileID: 0}
+  - incomingRail: {fileID: 794035328}
+    leftRail: {fileID: 571065089}
+    straightRail: {fileID: 58040282}
+    rightRail: {fileID: 0}
 --- !u!1 &1358246134
 GameObject:
   m_ObjectHideFlags: 0
@@ -8112,8 +8651,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eab592d688c2b54a8705d04fb054c90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RailSegment
-  startJunction: {fileID: 0}
-  endJunction: {fileID: 0}
+  startJunction: {fileID: 273022386}
+  endJunction: {fileID: 1141268142}
 --- !u!1 &1431266545
 GameObject:
   m_ObjectHideFlags: 0
@@ -9111,6 +9650,16 @@ Transform:
   - {fileID: 1136746186}
   - {fileID: 1973160780}
   - {fileID: 1447670296}
+  - {fileID: 1334585494}
+  - {fileID: 320377270}
+  - {fileID: 692278801}
+  - {fileID: 47921332}
+  - {fileID: 273022385}
+  - {fileID: 1172618758}
+  - {fileID: 1141268141}
+  - {fileID: 481351251}
+  - {fileID: 2029963058}
+  - {fileID: 661643154}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1563717505
@@ -9373,8 +9922,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eab592d688c2b54a8705d04fb054c90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RailSegment
-  startJunction: {fileID: 0}
-  endJunction: {fileID: 0}
+  startJunction: {fileID: 692278802}
+  endJunction: {fileID: 47921333}
 --- !u!1001 &1613539457
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9924,8 +10473,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eab592d688c2b54a8705d04fb054c90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RailSegment
-  startJunction: {fileID: 0}
-  endJunction: {fileID: 0}
+  startJunction: {fileID: 47921333}
+  endJunction: {fileID: 273022386}
 --- !u!1 &1748349423
 GameObject:
   m_ObjectHideFlags: 0
@@ -10363,7 +10912,6 @@ GameObject:
   - component: {fileID: 1816448553}
   - component: {fileID: 1816448552}
   - component: {fileID: 1816448555}
-  - component: {fileID: 1816448554}
   m_Layer: 0
   m_Name: RailConferenceRoom
   m_TagString: Untagged
@@ -10486,20 +11034,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 272007844}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1816448554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1816448551}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2eab592d688c2b54a8705d04fb054c90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RailSegment
-  startJunction: {fileID: 0}
-  endJunction: {fileID: 0}
 --- !u!114 &1816448555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10512,8 +11046,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eab592d688c2b54a8705d04fb054c90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RailSegment
-  startJunction: {fileID: 0}
-  endJunction: {fileID: 0}
+  startJunction: {fileID: 47921333}
+  endJunction: {fileID: 1141268142}
 --- !u!1 &1829015620
 GameObject:
   m_ObjectHideFlags: 0
@@ -10574,13 +11108,13 @@ MonoBehaviour:
         z: 1.0067823
       Rotation:
         value:
-          x: -0.000000007825602
+          x: -8.04976e-11
           y: 0.080638275
-          z: -3.6841222e-10
+          z: -9.950046e-10
           w: 0.9967435
     - Position:
         x: 1.6184158
-        y: 0.00000015646219
+        y: 0
         z: 9.93689
       TangentIn:
         x: 0
@@ -10610,10 +11144,10 @@ MonoBehaviour:
         z: 1.6273737
       Rotation:
         value:
-          x: -0.000000040549644
+          x: -0.000000040549647
           y: 0.93118566
-          z: 0.00000003574993
-          w: 0.36454538
+          z: 0.000000035749927
+          w: 0.36454535
     - Position:
         x: 21.019999
         y: 0
@@ -10679,8 +11213,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eab592d688c2b54a8705d04fb054c90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RailSegment
-  startJunction: {fileID: 0}
-  endJunction: {fileID: 0}
+  startJunction: {fileID: 320377271}
+  endJunction: {fileID: 481351252}
 --- !u!1001 &1891137041
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10976,8 +11510,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3a2f0ef09f1ed145836529eff0f4d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RailJunction
-  railSegments: []
-  directionSetups: []
+  railSegments:
+  - {fileID: 1272286490}
+  - {fileID: 19522619}
+  directionSetups:
+  - incomingRail: {fileID: 1272286490}
+    leftRail: {fileID: 19522619}
+    straightRail: {fileID: 0}
+    rightRail: {fileID: 19522619}
+  - incomingRail: {fileID: 19522619}
+    leftRail: {fileID: 1272286490}
+    straightRail: {fileID: 1272286490}
+    rightRail: {fileID: 0}
 --- !u!1 &1980968061
 GameObject:
   m_ObjectHideFlags: 0
@@ -11123,8 +11667,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eab592d688c2b54a8705d04fb054c90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RailSegment
-  startJunction: {fileID: 0}
-  endJunction: {fileID: 0}
+  startJunction: {fileID: 2019523196}
+  endJunction: {fileID: 692278802}
 --- !u!1 &1982653361
 GameObject:
   m_ObjectHideFlags: 0
@@ -11382,6 +11926,52 @@ MonoBehaviour:
     leftRail: {fileID: 795456047}
     straightRail: {fileID: 1223199676}
     rightRail: {fileID: 0}
+--- !u!1 &2029963057
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2029963058}
+  - component: {fileID: 2029963059}
+  m_Layer: 0
+  m_Name: ExitPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2029963058
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029963057}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1546127101}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2029963059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029963057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a2f0ef09f1ed145836529eff0f4d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RailJunction
+  railSegments: []
+  directionSetups: []
 --- !u!1 &2088896628
 GameObject:
   m_ObjectHideFlags: 0
@@ -11507,8 +12097,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eab592d688c2b54a8705d04fb054c90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RailSegment
-  startJunction: {fileID: 0}
-  endJunction: {fileID: 0}
+  startJunction: {fileID: 1172618759}
+  endJunction: {fileID: 2029963059}
 --- !u!114 &2140202300 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6064169932409194902, guid: 31166d42bcc7b8e4fb146b81ccc3796a, type: 3}
