@@ -21,11 +21,9 @@ using TMPro;
 //    - Once open, the box freezes and holds its text on screen.
 //    - The player can clear the message and trigger the close animation by
 //      pressing: ENTER, E, SPACEbar, or by clicking ANY Mouse Button.
-//    - You can also test the text and animaton by pressing The M Key, but you have to uncomment line.60 to make it work
+//    - You can test the text and animation at any time by pressing the M key.
 //
 // =================================================================================
-
-
 
 public class MessageBoxManager : MonoBehaviour
 {
@@ -33,7 +31,7 @@ public class MessageBoxManager : MonoBehaviour
     [SerializeField] private GameObject messageBoxContainer; // Master Canvas
     [SerializeField] private TextMeshProUGUI messageText;
 
-    [Header("Linked Animators")]
+    [Header("Linked Animators (Safe if Left Empty)")]
     [Tooltip("Message_Box_Border object here.")]
     [SerializeField] private Animator borderAnimator;
     [Tooltip("Background_Panel object here.")]
@@ -57,7 +55,11 @@ public class MessageBoxManager : MonoBehaviour
     private void Update()
     {
         #region Testing Tool
-        if (Input.GetKeyDown(KeyCode.M)) ShowMessage("This is a custom Text");
+        if (Input.GetKeyDown(KeyCode.M)) 
+        {
+            ShowMessage("This is a custom Text");
+            return; // Stop execution on this frame so 'M' doesn't accidentally trigger a double-input dismiss
+        }
         #endregion
 
         #region Input Dismiss Checks
@@ -85,12 +87,21 @@ public class MessageBoxManager : MonoBehaviour
     public void ShowMessage(string customNewText)
     {
         isClosing = false; // Reset the closing flag
-        messageText.text = customNewText;
+        
+        // Null check for text mesh component
+        if (messageText != null)
+        {
+            messageText.text = customNewText;
+        }
         
         // 1. Activate the master container UI layer
-        messageBoxContainer.SetActive(true);
+        if (messageBoxContainer != null)
+        {
+            messageBoxContainer.SetActive(true);
+        }
         
         // 2. FORCE the animations to start from code instead of playing automatically
+        // Added NULL-checks here to completely wipe out the NullReferenceException errors!
         if (borderAnimator != null) borderAnimator.SetTrigger("Intro");
         if (panelAnimator != null) panelAnimator.SetTrigger("Intro");
         
@@ -103,7 +114,7 @@ public class MessageBoxManager : MonoBehaviour
     {
         isClosing = true;
 
-        // 1. Tell BOTH animators to play their exit sequences right now
+        // Tell BOTH animators to play their exit sequences right now (Safe from null errors)
         if (borderAnimator != null) borderAnimator.SetTrigger("Dismiss");
         if (panelAnimator != null) panelAnimator.SetTrigger("Dismiss");
 
@@ -116,7 +127,11 @@ public class MessageBoxManager : MonoBehaviour
         yield return new WaitForSeconds(closeAnimationDuration);
 
         // Clean shutdown
-        messageBoxContainer.SetActive(false);
+        if (messageBoxContainer != null)
+        {
+            messageBoxContainer.SetActive(false);
+        }
+        
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         isClosing = false;
