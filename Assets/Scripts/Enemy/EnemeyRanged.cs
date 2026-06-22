@@ -11,6 +11,9 @@ public class EnemeyRanged : EnemyBase
     [SerializeField] private GameObject explosionPrefab;
     private LineRenderer _lineRenderer;
     private MeshRenderer _meshRenderer;
+    private float timer = 0f;
+    private Coroutine activeCoroutine;
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,13 +28,23 @@ public class EnemeyRanged : EnemyBase
 
     protected override void Attack()
     {
-        StartCoroutine(LaserSequence());
-        
+        if (activeCoroutine == null)
+            activeCoroutine = StartCoroutine(LaserSequence());
+
+    }
+
+    public override void OnHit()
+    {
+        healthSystem.TakeDamage(1);
+        timer = 0f;
+        if (healthSystem.GetCurrentHealth() <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private IEnumerator LaserSequence()
     {
-        float timer = 0f;
 
         while (timer < chargeUpTime)
         {
