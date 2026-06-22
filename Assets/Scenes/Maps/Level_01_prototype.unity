@@ -1084,6 +1084,7 @@ MonoBehaviour:
   hitLayer:
     serializedVersion: 2
     m_Bits: 8
+  bloodParticlePrefab: {fileID: 1391407481674032380, guid: b8873800b855f1241b9de5a5ef1313e0, type: 3}
 --- !u!114 &402108238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3199,6 +3200,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerVisual
       objectReference: {fileID: 0}
+    - target: {fileID: 6167003972850983120, guid: 3d837f5f5f4f17d4cb1b213e956a922b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167003972850983120, guid: 3d837f5f5f4f17d4cb1b213e956a922b, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5662543158716334341, guid: 3d837f5f5f4f17d4cb1b213e956a922b, type: 3}
@@ -4907,7 +4916,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 3
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
@@ -4958,7 +4967,7 @@ MonoBehaviour:
   m_SoftShadowQuality: 0
   m_RenderingLayersMask:
     serializedVersion: 0
-    m_Bits: 1
+    m_Bits: 3
   m_ShadowRenderingLayersMask:
     serializedVersion: 0
     m_Bits: 1
