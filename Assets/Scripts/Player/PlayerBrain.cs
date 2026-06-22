@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerBrain : MonoBehaviour
 {
     // Interaction stuff
-    [SerializeField] private PlayerInteractionDetector playerInteractionDetector;
+    private PlayerInteractionDetector playerInteractionDetector;
     private String currentInteraction;
     // Global variable for inactivity during reload
     private float timer = 0f;
@@ -20,6 +20,9 @@ public class PlayerBrain : MonoBehaviour
 
     // Aiming controlls
     private PlayerAimController playerAimController;
+
+    // Animation flags
+    private bool isPlayerAiming = false;
 
     //Shooting
     private PlayerShoot playerShoot;
@@ -63,6 +66,7 @@ public class PlayerBrain : MonoBehaviour
     {
         playerRailMovement = GetComponent<PlayerRailMovement>();
         playerAimController = GetComponent<PlayerAimController>();
+        playerInteractionDetector = GetComponent<PlayerInteractionDetector>();
         playerShoot = GetComponent<PlayerShoot>();
         currentState = PlayerState.MovingAlongRail;
         currentRail = initialRail;
@@ -84,6 +88,8 @@ public class PlayerBrain : MonoBehaviour
                 {
                     // Disable Walking Animation
                     playerRailMovement.SetIsPlayerWalking(false);
+                    // Disable AimAnimation
+                    isPlayerAiming = false;
                     aimUI.SetActive(false);
                     playerAimController.DisableAiming();
                     cameraController.SwitchToCurrentRailCamera();
@@ -146,6 +152,8 @@ public class PlayerBrain : MonoBehaviour
                 {
                     // Disable Walking Animation
                     playerRailMovement.SetIsPlayerWalking(false);
+                    // Trigger AimAnimation
+                    isPlayerAiming = true;
                     playerAimController.EnableAiming();
                     cameraController.SwitchToAimCamera();
                     aimUI.SetActive(true);
@@ -168,6 +176,11 @@ public class PlayerBrain : MonoBehaviour
                 {
                     // Disable Walking Animation
                     playerRailMovement.SetIsPlayerWalking(false);
+                    // Disable AimAnimation
+                    isPlayerAiming = false;
+                    // Reset Visual Transform
+                    playerAimController.ResetPlayerVisual();
+                    
                     aimUI.SetActive(false);
                     //playerAimController.EnableAiming();
                     cameraController.SwitchToReloadCamera();
@@ -197,7 +210,6 @@ public class PlayerBrain : MonoBehaviour
                     reloadUI.SetActive(true);
                     previousState = currentState;
                 }
-
             break;
         }
     }
@@ -286,5 +298,10 @@ public class PlayerBrain : MonoBehaviour
         currentRail = rail;
         previousState = currentState;
         currentState = PlayerState.MovingAlongRail;
+    }
+
+    public bool GetIsPlayerAiming()
+    {
+        return isPlayerAiming;
     }
 }
