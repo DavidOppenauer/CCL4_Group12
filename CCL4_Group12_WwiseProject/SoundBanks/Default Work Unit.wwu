@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{69F0C257-C7CD-4C49-8A6E-066B4CE2DE7E}" SchemaVersion="133">
 	<SoundBanks>
-		<WorkUnit Name="Default Work Unit" ID="{69F0C257-C7CD-4C49-8A6E-066B4CE2DE7E}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{69F0C257-C7CD-4C49-8A6E-066B4CE2DE7E}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="Main_Audio_Bank" ID="{B573AB01-A03D-4438-810B-18EDC07755D5}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Play_Gun_Shot" ID="{F4A1E49B-A770-4041-9DBD-3B8F07920503}" WorkUnitID="{9C22F978-1102-497A-9E98-4A759014261C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Ambient_Wind" ID="{7F45CCC6-C04E-43E0-8A83-0B2EC7D1556A}" WorkUnitID="{9C22F978-1102-497A-9E98-4A759014261C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_UI_Beam_Junction" ID="{C99E4A78-E9AE-445E-9072-68A4FE75AA56}" WorkUnitID="{9C22F978-1102-497A-9E98-4A759014261C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_UI_Beam_Message_In" ID="{A7C196D9-547D-4486-A868-D2F5AA9AF82E}" WorkUnitID="{9C22F978-1102-497A-9E98-4A759014261C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_DeadZ_Announce" ID="{52E7B7A1-F0F1-44C4-8616-DFB80C75D148}" WorkUnitID="{9C22F978-1102-497A-9E98-4A759014261C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Hit_Sound" ID="{3B0B02D0-1C53-4686-B8E8-FC86D3C90FBE}" WorkUnitID="{9C22F978-1102-497A-9E98-4A759014261C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Ambient_Office" ID="{35206181-1F85-479B-89D0-6B8953D25487}" WorkUnitID="{9C22F978-1102-497A-9E98-4A759014261C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Angel_Announce" ID="{6BEA3396-F411-47A3-B0F4-A1548AC10936}" WorkUnitID="{9C22F978-1102-497A-9E98-4A759014261C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Angel_ChargeUP" ID="{4148CD07-F524-4899-98CF-0E4CB6D79F73}" WorkUnitID="{9C22F978-1102-497A-9E98-4A759014261C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_UI_Beam_Message_Out" ID="{C26E1871-670B-4AB0-869C-B941E0FE2C97}" WorkUnitID="{9C22F978-1102-497A-9E98-4A759014261C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_MaskDemon_Announce" ID="{5F93C48F-5C7D-4C7A-966E-E08D266790E4}" WorkUnitID="{9C22F978-1102-497A-9E98-4A759014261C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Footsteps_Player" ID="{72BA453B-7F15-4CC6-BCEC-7A42F8AA4E3F}" WorkUnitID="{9C22F978-1102-497A-9E98-4A759014261C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stop_Stun_Angel" ID="{59DA2C18-98DB-4CD0-B9AA-37A811E128AE}" WorkUnitID="{9C22F978-1102-497A-9E98-4A759014261C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Explosion" ID="{AAEC9D0A-53CD-4D78-86C0-7CAFAACCD7E6}" WorkUnitID="{9C22F978-1102-497A-9E98-4A759014261C}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Footsteps_DeadZ" ID="{E5548B19-A4DC-4F0F-A8A9-6DB877F53657}" WorkUnitID="{9C22F978-1102-497A-9E98-4A759014261C}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
 	</SoundBanks>
 </WwiseDocument>
