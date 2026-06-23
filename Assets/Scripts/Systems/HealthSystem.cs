@@ -10,7 +10,7 @@ public class HealthSystem : MonoBehaviour
     void Awake()
     {
         isPlayer = gameObject.CompareTag("Player");
-        // currentHealth = maxHealth;
+        currentHealth = maxHealth;
     }
 
     public void TakeDamage(float damageAmount)

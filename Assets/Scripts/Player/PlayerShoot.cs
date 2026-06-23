@@ -29,7 +29,7 @@ public class PlayerShoot : MonoBehaviour
     {
         timer += Time.deltaTime;
         if (playerInputs.GetShootWasPressedThisFrame() && currentAmmo > 0 && canShoot == true && timer >= shotCooldown)
-        {           
+        {
             Debug.Log(currentAmmo);
             canShoot = false;
             //reduce ammo
@@ -73,7 +73,6 @@ public class PlayerShoot : MonoBehaviour
             if (hitData.collider.tag == "Enemy")
             {
                 EnemyBase hitEnemy = hitData.collider.GetComponentInParent<EnemyBase>();
-                // Debug.Log("You hit the enemy: " + hitEnemy.name);
                 Instantiate(bloodParticlePrefab, hitData.point, Quaternion.LookRotation(hitData.normal));
                 hitEnemy.OnHit();
             }

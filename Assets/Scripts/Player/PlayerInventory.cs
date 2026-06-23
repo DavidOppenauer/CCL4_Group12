@@ -1,21 +1,17 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    private bool hasKey_1 = false;
-    private bool hasKey_2 = false;    
-    private bool hasKey_3 = false;
+    private HashSet<string> collectedItems = new HashSet<string>();
 
-    private void SetHasKey_1(bool value)
+    public void AddItem(string itemId)
     {
-        hasKey_1 = value;
+        collectedItems.Add(itemId);
     }
-    private void SetHasKey_2(bool value)
+
+    public bool HasItem(string itemId)
     {
-        hasKey_2 = value;
-    }
-    private void SetHasKey_3(bool value)
-    {
-        hasKey_3 = value;
+        return collectedItems.Contains(itemId);
     }
 }

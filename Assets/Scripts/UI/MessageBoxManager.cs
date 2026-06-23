@@ -42,10 +42,10 @@ public class MessageBoxManager : MonoBehaviour
     [SerializeField] private float closeAnimationDuration = 0.5f;
 
     private bool isClosing = false;
+    private bool canDismiss = false;
 
     private void Start()
     {
-        // Safety check to ensure it starts turned off on boot up
         if (messageBoxContainer != null)
         {
             messageBoxContainer.SetActive(false);
@@ -54,71 +54,59 @@ public class MessageBoxManager : MonoBehaviour
 
     private void Update()
     {
-        #region Testing Tool
-        // if (Input.GetKeyDown(KeyCode.M)) 
-        // {
-        //     ShowMessage("This is a custom Text");
-        //     return; // Stop execution on this frame so 'M' doesn't accidentally trigger a double-input dismiss
-        // }
-        #endregion
-
-        #region Input Dismiss Checks
-        // Only accept input if the container is active and we aren't already running the close sequence
-        if (messageBoxContainer != null && messageBoxContainer.activeSelf && !isClosing)
+        if (messageBoxContainer != null && messageBoxContainer.activeSelf && !isClosing && canDismiss)
         {
-            // Triggers on: Left click (0), Right click (1), Middle click (2), Space, Enter, or E
-            if (Input.GetMouseButtonDown(0) || 
-                Input.GetMouseButtonDown(1) || 
-                Input.GetMouseButtonDown(2) || 
-                Input.GetKeyDown(KeyCode.Space) || 
-                Input.GetKeyDown(KeyCode.Return) || 
-                Input.GetKeyDown(KeyCode.KeypadEnter) || 
+            if (Input.GetMouseButtonDown(0) ||
+                Input.GetMouseButtonDown(1) ||
+                Input.GetMouseButtonDown(2) ||
+                Input.GetKeyDown(KeyCode.Space) ||
+                Input.GetKeyDown(KeyCode.Return) ||
+                Input.GetKeyDown(KeyCode.KeypadEnter) ||
                 Input.GetKeyDown(KeyCode.E))
             {
                 TriggerDismissSequence();
             }
         }
-        #endregion
     }
 
-    /// <summary>
-    /// Call this from any other script or trigger zone to display text and start the animation manually.
-    /// </summary>
     public void ShowMessage(string customNewText)
     {
-        isClosing = false; // Reset the closing flag
-        
-        // Null check for text mesh component
+        isClosing = false;
+        canDismiss = false;
+
         if (messageText != null)
         {
             messageText.text = customNewText;
         }
-        
-        // 1. Activate the master container UI layer
+
         if (messageBoxContainer != null)
         {
             messageBoxContainer.SetActive(true);
         }
-        
-        // 2. FORCE the animations to start from code instead of playing automatically
-        // Added NULL-checks here to completely wipe out the NullReferenceException errors!
+
         if (borderAnimator != null) borderAnimator.SetTrigger("Intro");
         if (panelAnimator != null) panelAnimator.SetTrigger("Intro");
-        
-        // 3. Handle the cursor tracking
+
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+
+        StartCoroutine(AllowDismissNextFrame());
+    }
+
+    private IEnumerator AllowDismissNextFrame()
+    {
+        yield return null;
+        canDismiss = true;
     }
 
     public void TriggerDismissSequence()
     {
         isClosing = true;
+        canDismiss = false;
 
-        // Tell BOTH animators to play their exit sequences right now (Safe from null errors)
         if (borderAnimator != null) borderAnimator.SetTrigger("Dismiss");
         if (panelAnimator != null) panelAnimator.SetTrigger("Dismiss");
 
-        // 2. Wait for the spatial scaling/fading to finish visually before killing the layout
         StartCoroutine(DisableUIComponentsDelay());
     }
 
@@ -126,14 +114,47 @@ public class MessageBoxManager : MonoBehaviour
     {
         yield return new WaitForSeconds(closeAnimationDuration);
 
-        // Clean shutdown
         if (messageBoxContainer != null)
         {
             messageBoxContainer.SetActive(false);
         }
-        
+
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         isClosing = false;
+    }
+
+    public bool GetIsMessageOpen()
+    {
+        return messageBoxContainer != null && messageBoxContainer.activeSelf;
+    }
+
+    public void ShowPrompt(string promptText)
+    {
+        isClosing = false;
+        canDismiss = false;
+
+        if (messageText != null)
+        {
+            messageText.text = promptText;
+        }
+
+        if (messageBoxContainer != null)
+        {
+            messageBoxContainer.SetActive(true);
+        }
+
+        if (borderAnimator != null) borderAnimator.SetTrigger("Intro");
+        if (panelAnimator != null) panelAnimator.SetTrigger("Intro");
+
+        // Important: do NOT unlock cursor for simple prompts
+    }
+
+    public void HidePrompt()
+    {
+        if (messageBoxContainer != null && messageBoxContainer.activeSelf && !isClosing)
+        {
+            TriggerDismissSequence();
+        }
     }
 }

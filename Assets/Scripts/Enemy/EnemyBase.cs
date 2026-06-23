@@ -19,17 +19,18 @@ public class EnemyBase : MonoBehaviour
 
     protected EnemyState currentState = EnemyState.Idle;
     protected HealthSystem healthSystem;
-    protected MeshRenderer meshRenderer;
+    protected Renderer renderer;
+    protected Animator animator;
+    protected EnemyState previousState;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         healthSystem = GetComponentInChildren<HealthSystem>();
-        meshRenderer = GetComponentInChildren<MeshRenderer>();
-        meshRenderer.renderingLayerMask = 1u << 1;
-
-        
+        renderer = GetComponentInChildren<Renderer>();
+        animator = GetComponentInChildren<Animator>();
+        renderer.renderingLayerMask = 1u << 1;
     }
 
     // Update is called once per frame
@@ -38,12 +39,30 @@ public class EnemyBase : MonoBehaviour
         switch (currentState)
         {
             case EnemyState.Idle:
+                // if (currentState != previousState)
+                // {
+                //     previousState = currentState;
+                // }
                 OnIdleState();
                 break;
             case EnemyState.Chasing:
+                // if (currentState != previousState)
+                // {
+                //     previousState = currentState;
+                // }
+                if (animator != null)
+                {
+                    animator.SetBool("isChasing", true);
+                }
                 OnChasingState();
                 break;
             case EnemyState.Attacking:
+                // if (currentState != previousState)
+                // {
+                //     animator.SetTrigger("Attack");
+                //     previousState = currentState;
+
+                // }
                 OnAttackingState();
                 break;
             default:
@@ -81,6 +100,7 @@ public class EnemyBase : MonoBehaviour
 
     private void OnChasingState()
     {
+
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
         navMeshAgent.SetDestination(player.transform.position);
 
@@ -96,11 +116,6 @@ public class EnemyBase : MonoBehaviour
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
         Attack();
         navMeshAgent.ResetPath();
-
-        if (distanceToPlayer > attackRange || !HasLineOfSight())
-        {
-            currentState = EnemyState.Chasing;
-        }
     }
     #endregion
 
