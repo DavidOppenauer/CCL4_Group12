@@ -58,4 +58,9 @@ public class PlayerInputs : MonoBehaviour
     {
         return playerInput.PlayerCameraMap.Look.ReadValue<Vector2>();
     }
+
+    public bool GetInteractWasPressedThisFrame()
+    {
+        return playerInput.PlayerMovementMap.Interact.WasPressedThisFrame();
+    }
 }
