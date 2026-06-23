@@ -365,7 +365,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
   maxHealth: 3
-  currentHealth: 0
 --- !u!114 &1363203879383745759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,6 +377,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c77d8477cce62fc4fadc9ada91331032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractionDetector
+  messageBoxManager: {fileID: 6435168062200331093}
+--- !u!114 &3266169053237938409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067534929869196622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 716f171108159474fbf35e8f8d9d970b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInventory
 --- !u!1 &1915828623076278517
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,19 +423,6 @@ Transform:
   - {fileID: 286891690542988362}
   m_Father: {fileID: 8345962238197365453}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  messageBoxManager: {fileID: 6435168062200331093}
---- !u!114 &3266169053237938409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1067534929869196622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 716f171108159474fbf35e8f8d9d970b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerInventory
 --- !u!1 &2362059309942807219
 GameObject:
   m_ObjectHideFlags: 0
