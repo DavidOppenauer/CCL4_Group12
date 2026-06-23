@@ -64,6 +64,23 @@ public class CameraController : MonoBehaviour
         reloadCamera.Priority = 10;
     }
 
+    public void SwitchToCustomCamera(CinemachineCamera customCamera)
+    {
+        if (currentRailCamera != null)
+        {
+            currentRailCamera.Priority = 0;
+        }
+
+        aimCamera.Priority = 0;
+        reloadCamera.Priority = 0;
+        customCamera.Priority = 10;
+    }
+
+    public void ResetCustomCamera(CinemachineCamera customCamera)
+    {
+        customCamera.Priority = 0;
+    }
+
     public void SetCurrentRailCamera(CinemachineCamera newCamera)
     {
         if (newCamera == null)

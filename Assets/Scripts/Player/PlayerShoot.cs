@@ -6,17 +6,46 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private PlayerInputs playerInputs;
     [SerializeField] private LayerMask hitLayer;
     [SerializeField] private GameObject bloodParticlePrefab;
+
+    private PlayerAnimator playerAnimator;
     private Ray ray;
     private RaycastHit hitData;
 
+    // Ammo Logic
+    private int maxAmmo = 6;
+    private int currentAmmo;
+    private float shotCooldown = 1f;
+    private bool canShoot = true;
+    private float timer = 0f;
     private int debugHitCount;
+
+    private void Start()
+    {
+        playerAnimator = GetComponentInChildren<PlayerAnimator>();
+        currentAmmo = maxAmmo;
+        timer = shotCooldown;
+    }
     public void HandleShooting()
     {
-        if (playerInputs.GetShootWasPressedThisFrame())
-        {
-            // Fire Ray and do some effect maybe later on
+        timer += Time.deltaTime;
+        if (playerInputs.GetShootWasPressedThisFrame() && currentAmmo > 0 && canShoot == true && timer >= shotCooldown)
+        {           
+            Debug.Log(currentAmmo);
+            canShoot = false;
+            //reduce ammo
+            currentAmmo--;
+            // play shoot animation
+            playerAnimator.PlayShootAnimation();
+            // Fire Ray
             FireRay();
+            // reset Timer
+            timer = 0f;
         }
+    }
+
+    public void ResetBullets()
+    {
+        currentAmmo = maxAmmo;
     }
 
     private void FireRay()
@@ -48,12 +77,7 @@ public class PlayerShoot : MonoBehaviour
                 Instantiate(bloodParticlePrefab, hitData.point, Quaternion.LookRotation(hitData.normal));
                 hitEnemy.OnHit();
             }
-            // if (hitObject.tag == "Enemy")
-            // {
-            //     HealthSystem enemyHealth = hitObject.GetComponent<HealthSystem>();
-            //     enemyHealth.TakeDamage(100);
-            // }
-
         }
+        canShoot = true;
     }
 }

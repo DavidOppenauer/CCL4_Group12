@@ -6,9 +6,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerBrain : MonoBehaviour
 {
+    // Interaction stuff
+    private PlayerInteractionDetector playerInteractionDetector;
+    private String currentInteraction;
     // Global variable for inactivity during reload
     private float timer = 0f;
-
+    
     // New Input System
     [SerializeField] private PlayerInputs playerInput;
 
@@ -17,6 +20,10 @@ public class PlayerBrain : MonoBehaviour
 
     // Aiming controlls
     private PlayerAimController playerAimController;
+
+    // Animation flags
+    private PlayerAnimator playerAnimator;
+    private bool isPlayerAiming = false;
 
     //Shooting
     private PlayerShoot playerShoot;
@@ -29,6 +36,7 @@ public class PlayerBrain : MonoBehaviour
     [SerializeField] private GameObject reloadUI;
     [SerializeField] private GameObject aimUI;
 
+    // SceneLoader for respawning
     [SerializeField] private SceneLoader sceneLoader;
 
     // Rail variable for MovementState
@@ -38,29 +46,37 @@ public class PlayerBrain : MonoBehaviour
     private RailJunction currentJunction;
     private PlayerRailMovement playerRailMovement;
 
+    // Player also uses the general healthsystem
     protected HealthSystem healthSystem;
 
-    private void Awake()
-    {
-        playerRailMovement = GetComponent<PlayerRailMovement>();
-        playerAimController = GetComponent<PlayerAimController>();
-        playerShoot = GetComponent<PlayerShoot>();
-        currentState = PlayerState.MovingAlongRail;
-        currentRail = initialRail;
-        healthSystem = GetComponentInChildren<HealthSystem>();
-        // Events
-        junctionManager.OnDirectionSelected += HandleJunctionDirectionSelected;
-    }
+    // Different States of the player for the statemachine
     private enum PlayerState
     {
         MovingAlongRail,
         ChoosingNextRail,
         Aiming,
         Reload,
-        Interact
+        Interaction
     }
+
+    // These two are used for logic that should run only when first entering a state
     private PlayerState currentState;
     private PlayerState previousState;
+
+    private void Awake()
+    {
+        playerRailMovement = GetComponent<PlayerRailMovement>();
+        playerAimController = GetComponent<PlayerAimController>();
+        playerInteractionDetector = GetComponent<PlayerInteractionDetector>();
+        playerShoot = GetComponent<PlayerShoot>();
+        playerAnimator = GetComponentInChildren<PlayerAnimator>();
+        currentState = PlayerState.MovingAlongRail;
+        currentRail = initialRail;
+        healthSystem = GetComponentInChildren<HealthSystem>();
+        // Event for the UI junction screen
+        junctionManager.OnDirectionSelected += HandleJunctionDirectionSelected;
+    }
+
 
     private void Update()
     {
@@ -72,12 +88,10 @@ public class PlayerBrain : MonoBehaviour
                 // Transition Code
                 if(previousState != currentState)
                 {
-                    if (previousState == PlayerState.Aiming)
-                    {
-                        // First to third person Transition changes
-                        // HandleAimingToMoving();
-                        
-                    }
+                    // Disable Walking Animation
+                    playerRailMovement.SetIsPlayerWalking(false);
+                    // Disable AimAnimation
+                    isPlayerAiming = false;
                     aimUI.SetActive(false);
                     playerAimController.DisableAiming();
                     cameraController.SwitchToCurrentRailCamera();
@@ -96,7 +110,7 @@ public class PlayerBrain : MonoBehaviour
                         currentJunction = currentRail.GetEndJunction();
                         // Tell the movement script that it was heard and reset the bools that get set when you reach the end of a rail
                         playerRailMovement.ResetJunctionFlags();
-                        // Stop early if theres just the one rail its connected to, its a dead end
+                        // Stop early if theres just the one rail its connected to, its a dead end //--------------------------------------------------- Depricated...
                         if (currentJunction.GetRailCount() == 1)
                         {
                             return;
@@ -104,10 +118,6 @@ public class PlayerBrain : MonoBehaviour
                         Debug.Log("Reached END of rail: " + currentRail.name + " at junction: " + currentRail.GetEndJunction().name);
                         EnterChoosingNextRail();
                     } 
-                    else
-                    {
-                        return;
-                    }
                 }
                 if (playerRailMovement.GetStartOfRailReached())
                 {
@@ -121,14 +131,16 @@ public class PlayerBrain : MonoBehaviour
                         }
                         Debug.Log("Reached START of rail: " + currentRail.name + " at junction: " + currentRail.GetStartJunction().name);
                         EnterChoosingNextRail();
-                    } 
-                    else
-                    {
-                        return;
                     }
                 }
             break;
             case PlayerState.ChoosingNextRail:
+                if(previousState != currentState)
+                {
+                    // Disable Walking Animation
+                    playerRailMovement.SetIsPlayerWalking(false);
+                    previousState = currentState;
+                }
             
                 if (playerInput.GetTurnAroundWasPressedThisFrame())
                 {
@@ -140,6 +152,10 @@ public class PlayerBrain : MonoBehaviour
                 // Transition Code
                 if(previousState != currentState)
                 {
+                    // Disable Walking Animation
+                    playerRailMovement.SetIsPlayerWalking(false);
+                    // Trigger AimAnimation
+                    isPlayerAiming = true;
                     playerAimController.EnableAiming();
                     cameraController.SwitchToAimCamera();
                     aimUI.SetActive(true);
@@ -160,10 +176,19 @@ public class PlayerBrain : MonoBehaviour
                 // Transition Code
                 if(previousState != currentState)
                 {
+                    // Disable Walking Animation
+                    playerRailMovement.SetIsPlayerWalking(false);
+                    // Disable AimAnimation
+                    isPlayerAiming = false;
+                    // Reset Visual Transform
+                    playerAimController.ResetPlayerVisual();
                     aimUI.SetActive(false);
                     //playerAimController.EnableAiming();
                     cameraController.SwitchToReloadCamera();
+                    // Load UI
                     reloadUI.SetActive(true);
+                    // play reload animation
+                    playerAnimator.PlayReloadAnimation();
                     previousState = currentState;
                 }
                 // ---- Timer section -----
@@ -176,14 +201,21 @@ public class PlayerBrain : MonoBehaviour
 
                     timer = 0f;
                     reloadUI.SetActive(false);
+                    // actual reloading
+                    playerShoot.ResetBullets();
                     currentState = PlayerState.MovingAlongRail;
-                } 
-                //playerAimController.HandleAiming();
-                
+                }                 
             break;
 
-            case PlayerState.Interact:
-
+            case PlayerState.Interaction:
+                if(previousState != currentState)
+                {
+                    // Disable Walking Animation
+                    playerRailMovement.SetIsPlayerWalking(false);
+                    //cameraController.SwitchToCustomCamera(currentInteraction.Camera)
+                    reloadUI.SetActive(true);
+                    previousState = currentState;
+                }
             break;
         }
     }
@@ -211,6 +243,11 @@ public class PlayerBrain : MonoBehaviour
         {
             currentState = PlayerState.MovingAlongRail;
         }
+        if (playerInteractionDetector.GetPlayerHasEnteredInteraction())
+        {
+            currentState = PlayerState.Interaction;
+        }
+
     }
 
     private void HandleJunctionDirectionSelected(string direction)
@@ -267,5 +304,10 @@ public class PlayerBrain : MonoBehaviour
         currentRail = rail;
         previousState = currentState;
         currentState = PlayerState.MovingAlongRail;
+    }
+
+    public bool GetIsPlayerAiming()
+    {
+        return isPlayerAiming;
     }
 }
