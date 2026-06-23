@@ -29,6 +29,11 @@ public class CameraController : MonoBehaviour
     private CinemachineCamera currentRailCamera;
     private CinemachineCamera previousRailCamera;
 
+    void Start()
+    {
+        currentRailCamera = initialRailCamera;
+    } 
+
     public void SwitchToCurrentRailCamera()
     {
         if (previousRailCamera != null)
