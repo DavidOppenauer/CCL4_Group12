@@ -926,6 +926,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 262972034}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &338776351 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7743472118694370105, guid: 553cc7c2a92713144a31386995c397be, type: 3}
+  m_PrefabInstance: {fileID: 850699261}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1001 &387320778
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1896,6 +1907,25 @@ Transform:
   - {fileID: 839117706}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &739303430 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2048864701305374360, guid: 553cc7c2a92713144a31386995c397be, type: 3}
+  m_PrefabInstance: {fileID: 850699261}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &739303435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739303430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6908f8c84da800041a3fa75855758615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerUIHealthStatus
+  player: {fileID: 402108234}
+  healthBar: {fileID: 338776351}
 --- !u!1001 &802739139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2311,7 +2341,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2048864701305374360, guid: 553cc7c2a92713144a31386995c397be, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 739303435}
   m_SourcePrefab: {fileID: 100100000, guid: 553cc7c2a92713144a31386995c397be, type: 3}
 --- !u!224 &850699262 stripped
 RectTransform:
