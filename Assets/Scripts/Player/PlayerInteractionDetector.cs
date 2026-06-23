@@ -2,38 +2,55 @@ using UnityEngine;
 
 public class PlayerInteractionDetector : MonoBehaviour
 {
-    private PickUpKeyInteraction currentPickupKeyInteraction;
-    private LockedDoorInteraction currentLockedDoorInteraction;
-
-    private bool playerHasEnteredInteraction = false;
-
+    [SerializeField] private MessageBoxManager messageBoxManager;
+    private Interactable currentInteractable;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "LockedDoorInteraction")
+        Interactable interactable = other.GetComponentInParent<Interactable>();
+
+        if (interactable != null)
         {
-            playerHasEnteredInteraction = true;
-            currentLockedDoorInteraction = other.gameObject.GetComponent<LockedDoorInteraction>();
-        }
-        if (other.gameObject.tag == "PickUpKeyInteraction")
-        {
-            playerHasEnteredInteraction = true;
-            currentPickupKeyInteraction = other.gameObject.GetComponent<PickUpKeyInteraction>();
+            currentInteractable = interactable;
+
+            if (messageBoxManager != null)
+            {
+                messageBoxManager.ShowPrompt(interactable.GetPromptText());
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "LockedDoorInteraction" || other.gameObject.tag == "PickUpKeyInteraction")
+        Interactable interactable = other.GetComponentInParent<Interactable>();
+
+        if (interactable != null && interactable == currentInteractable)
         {
-            playerHasEnteredInteraction = false;
-            currentLockedDoorInteraction = null;
-            currentPickupKeyInteraction = null;
+            ClearCurrentInteraction();
         }
     }
 
-    public bool GetPlayerHasEnteredInteraction()
+    public bool HasInteraction()
     {
-        return playerHasEnteredInteraction;
+        return currentInteractable != null && currentInteractable.gameObject.activeInHierarchy;
     }
 
+    public Interactable GetCurrentInteractable()
+    {
+        if (!HasInteraction())
+        {
+            return null;
+        }
+
+        return currentInteractable;
+    }
+
+    public void ClearCurrentInteraction()
+    {
+        currentInteractable = null;
+
+        if (messageBoxManager != null)
+        {
+            messageBoxManager.HidePrompt();
+        }
+    }
 }

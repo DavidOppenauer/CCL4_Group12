@@ -4,6 +4,9 @@ using UnityEngine.Splines;
 
 public class PlayerRailMovement : MonoBehaviour
 {
+    [SerializeField] private LayerMask blockerLayer;
+    [SerializeField] private float collisionRadius = 0.35f;
+    [SerializeField] private float collisionHeightOffset = 1f;
     [SerializeField] private float speed = 1f;
 
     // New Input System
@@ -20,54 +23,78 @@ public class PlayerRailMovement : MonoBehaviour
     private float movementDirection = 1f;
     private Vector3 currentPosition;
 
-    // Update is called once per frame
-    public void HandleMovement(RailSegment currentRail)
+// Update is called once per frame
+public void HandleMovement(RailSegment currentRail)
+{
+    // Only recalculate if its a new rail
+    if (currentRail != previousRail)
     {
-        // Only recalculate if its a new rail
-        if ( currentRail != previousRail )
-        {
-            railLength = currentRail.GetSplineContainer().CalculateLength();
-            previousRail = currentRail;
-        }
-        //Handling the movement flag... surely this works
-        if(playerInput.GetMoveForwardIsPressed())
-        {
-            isWalking = true;
-            distancePercentage += movementDirection * speed * Time.deltaTime / railLength;
-        } 
-        else
-        {
-            isWalking = false;
-        }
-
-        if (playerInput.GetTurnAroundWasPressedThisFrame())
-        {
-            movementDirection *= -1f;
-        }
-        // Junction Logic
-        // Stopping/Getting stuck at the end at the end
-        if (distancePercentage > 1f)
-        {
-            distancePercentage = 1f;
-            endOfRailReached = true;
-        }
-        // This may be really important... to have no <= because the it would immeadiatly trigger when we first place the player on a rail
-        if (distancePercentage < 0f)
-        {
-            distancePercentage = 0f;
-            startOfRailReached = true;
-        }
-
-        currentPosition = currentRail.GetSplineContainer().EvaluatePosition(distancePercentage);
-        Vector3 forward = currentRail.GetSplineContainer().EvaluateTangent(distancePercentage);
-
-        if (movementDirection == -1f) {
-            forward = -forward;
-        }
-        
-        transform.position = currentPosition;
-        transform.forward = forward;
+        railLength = currentRail.GetSplineContainer().CalculateLength();
+        previousRail = currentRail;
     }
+
+    if (playerInput.GetTurnAroundWasPressedThisFrame())
+    {
+        movementDirection *= -1f;
+    }
+
+    //Handling the movement flag... surely this works
+    isWalking = false;
+
+    if (playerInput.GetMoveForwardIsPressed())
+    {
+        // 1. Calculate where we WOULD move next
+        // First we calculate where the player WOULD move next
+        float nextDistancePercentage = distancePercentage;
+        nextDistancePercentage += movementDirection * speed * Time.deltaTime / railLength;
+
+        
+        // 2. Clamp it and remember if we reached a junction
+        // Junction Logic
+        bool wouldReachEnd = false;
+        bool wouldReachStart = false;
+
+        // Stopping/Getting stuck at the end at the end
+        if (nextDistancePercentage > 1f)
+        {
+            nextDistancePercentage = 1f;
+            wouldReachEnd = true;
+        }
+
+        // This may be really important... to have no <= because the it would immeadiatly trigger when we first place the player on a rail
+        if (nextDistancePercentage < 0f)
+        {
+            nextDistancePercentage = 0f;
+            wouldReachStart = true;
+        }
+
+        // 3. Get the target position from the spline
+        Vector3 nextPosition = currentRail.GetSplineContainer().EvaluatePosition(nextDistancePercentage);
+
+        // 4. Check if something blocks the way
+        // Only move if the next position is not blocked by a solid door/blocker
+        if (!MovementIsBlocked(nextPosition))
+        {
+            // 5. Only now actually accept the movement
+            distancePercentage = nextDistancePercentage;
+            endOfRailReached = wouldReachEnd;
+            startOfRailReached = wouldReachStart;
+            isWalking = true;
+        }
+    }  
+
+    // Always update position/rotation based on the accepted distancePercentage
+    currentPosition = currentRail.GetSplineContainer().EvaluatePosition(distancePercentage);
+    Vector3 forward = currentRail.GetSplineContainer().EvaluateTangent(distancePercentage);
+
+    if (movementDirection == -1f) 
+    {
+        forward = -forward;
+    }
+
+    transform.position = currentPosition;
+    transform.forward = forward;
+}
 
     public bool GetEndOfRailReached()
     {
@@ -104,5 +131,34 @@ public class PlayerRailMovement : MonoBehaviour
     public void SetIsPlayerWalking(bool state)
     {
         isWalking = state;
+    }
+
+    private bool MovementIsBlocked(Vector3 targetPosition)
+    {
+        Vector3 currentCheckPosition = transform.position + Vector3.up * collisionHeightOffset;
+        Vector3 targetCheckPosition = targetPosition + Vector3.up * collisionHeightOffset;
+
+        Vector3 moveDirection = targetCheckPosition - currentCheckPosition;
+        float moveDistance = moveDirection.magnitude;
+
+        if (moveDistance <= 0f)
+        {
+            return false;
+        }
+
+        if (Physics.SphereCast(
+            currentCheckPosition,
+            collisionRadius,
+            moveDirection.normalized,
+            out RaycastHit hit,
+            moveDistance,
+            blockerLayer,
+            QueryTriggerInteraction.Ignore))
+        {
+            Debug.Log("Movement blocked by: " + hit.collider.name);
+            return true;
+        }
+
+        return false;
     }
 }

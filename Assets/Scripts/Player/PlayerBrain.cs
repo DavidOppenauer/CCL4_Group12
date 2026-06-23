@@ -7,8 +7,11 @@ using UnityEngine.InputSystem;
 public class PlayerBrain : MonoBehaviour
 {
     // Interaction stuff
-    private PlayerInteractionDetector playerInteractionDetector;
-    private String currentInteraction;
+    private PlayerInteractionDetector interactionDetector;
+    private PlayerInventory playerInventory;
+    [SerializeField] private MessageBoxManager messageBoxManager;
+
+    private bool interactionWasStarted = false;
     // Global variable for inactivity during reload
     private float timer = 0f;
     
@@ -67,7 +70,8 @@ public class PlayerBrain : MonoBehaviour
     {
         playerRailMovement = GetComponent<PlayerRailMovement>();
         playerAimController = GetComponent<PlayerAimController>();
-        playerInteractionDetector = GetComponent<PlayerInteractionDetector>();
+        interactionDetector = GetComponent<PlayerInteractionDetector>();
+        playerInventory = GetComponent<PlayerInventory>();
         playerShoot = GetComponent<PlayerShoot>();
         playerAnimator = GetComponentInChildren<PlayerAnimator>();
         currentState = PlayerState.MovingAlongRail;
@@ -208,13 +212,35 @@ public class PlayerBrain : MonoBehaviour
             break;
 
             case PlayerState.Interaction:
-                if(previousState != currentState)
+                /*if(previousState != currentState)
                 {
                     // Disable Walking Animation
                     playerRailMovement.SetIsPlayerWalking(false);
                     //cameraController.SwitchToCustomCamera(currentInteraction.Camera)
-                    reloadUI.SetActive(true);
+                    
                     previousState = currentState;
+                }*/
+                if (!interactionWasStarted)
+                {
+                    playerRailMovement.SetIsPlayerWalking(false);
+
+                    Interactable interactable = interactionDetector.GetCurrentInteractable();
+
+                    if (interactable != null)
+                    {
+                        interactable.Interact(playerInventory, messageBoxManager);
+                        interactionDetector.ClearCurrentInteraction();
+                    }
+
+                    interactionWasStarted = true;
+                }
+
+                if (interactionWasStarted && !messageBoxManager.GetIsMessageOpen())
+                {
+                    interactionWasStarted = false;
+
+                    previousState = currentState;
+                    currentState = PlayerState.MovingAlongRail;
                 }
             break;
         }
@@ -243,11 +269,11 @@ public class PlayerBrain : MonoBehaviour
         {
             currentState = PlayerState.MovingAlongRail;
         }
-        if (playerInteractionDetector.GetPlayerHasEnteredInteraction())
+        if (playerInput.GetInteractWasPressedThisFrame() && currentState == PlayerState.MovingAlongRail && interactionDetector.HasInteraction())
         {
+            previousState = currentState;
             currentState = PlayerState.Interaction;
         }
-
     }
 
     private void HandleJunctionDirectionSelected(string direction)

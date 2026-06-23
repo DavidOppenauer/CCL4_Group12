@@ -136,6 +136,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""acb911db-d4c3-49b3-beec-363dbc258b29"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -174,6 +183,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""5de68abb-94a2-40fc-b34a-e300d7898d4a"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AimMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""9793f84d-d96e-4681-a455-3860794ca29d"",
                     ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
@@ -191,6 +211,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bf73820c-3aac-4536-af0a-c6a04186d7fa"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -234,6 +265,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_PlayerMovementMap_AimMode = m_PlayerMovementMap.FindAction("AimMode", throwIfNotFound: true);
         m_PlayerMovementMap_Reload = m_PlayerMovementMap.FindAction("Reload", throwIfNotFound: true);
         m_PlayerMovementMap_Shoot = m_PlayerMovementMap.FindAction("Shoot", throwIfNotFound: true);
+        m_PlayerMovementMap_Interact = m_PlayerMovementMap.FindAction("Interact", throwIfNotFound: true);
         // PlayerCameraMap
         m_PlayerCameraMap = asset.FindActionMap("PlayerCameraMap", throwIfNotFound: true);
         m_PlayerCameraMap_Look = m_PlayerCameraMap.FindAction("Look", throwIfNotFound: true);
@@ -323,6 +355,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMovementMap_AimMode;
     private readonly InputAction m_PlayerMovementMap_Reload;
     private readonly InputAction m_PlayerMovementMap_Shoot;
+    private readonly InputAction m_PlayerMovementMap_Interact;
     /// <summary>
     /// Provides access to input actions defined in input action map "PlayerMovementMap".
     /// </summary>
@@ -354,6 +387,10 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "PlayerMovementMap/Shoot".
         /// </summary>
         public InputAction @Shoot => m_Wrapper.m_PlayerMovementMap_Shoot;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerMovementMap/Interact".
+        /// </summary>
+        public InputAction @Interact => m_Wrapper.m_PlayerMovementMap_Interact;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -395,6 +432,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Shoot.started += instance.OnShoot;
             @Shoot.performed += instance.OnShoot;
             @Shoot.canceled += instance.OnShoot;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
         }
 
         /// <summary>
@@ -421,6 +461,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Shoot.started -= instance.OnShoot;
             @Shoot.performed -= instance.OnShoot;
             @Shoot.canceled -= instance.OnShoot;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
         }
 
         /// <summary>
@@ -592,6 +635,13 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnShoot(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Interact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnInteract(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PlayerCameraMap" which allows adding and removing callbacks.
