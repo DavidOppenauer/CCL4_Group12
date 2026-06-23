@@ -1255,7 +1255,7 @@ GameObject:
   - component: {fileID: 433903409}
   - component: {fileID: 433903408}
   m_Layer: 0
-  m_Name: CameraZone_3_CinematicShot
+  m_Name: Camera_Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1271,7 +1271,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: -5.5433}
-  m_LocalScale: {x: 1, y: 1, z: 2.6817894}
+  m_LocalScale: {x: 1.7084, y: 1, z: 8.892814}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 249270540}
@@ -4473,8 +4473,8 @@ Transform:
   m_GameObject: {fileID: 2002217461}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.13, y: 0.5, z: -54.45}
-  m_LocalScale: {x: 1.9916, y: 1, z: 23.901167}
+  m_LocalPosition: {x: 0.13, y: 0.5, z: -40.3}
+  m_LocalScale: {x: 1.9916, y: 1, z: 52.486965}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 249270540}
