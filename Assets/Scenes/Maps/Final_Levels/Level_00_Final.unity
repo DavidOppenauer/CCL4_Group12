@@ -975,7 +975,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
   aimCamera: {fileID: 1444292471}
   initialRailCamera: {fileID: 72776690}
-  reloadCamera: {fileID: 1980584750}
+  reloadCamera: {fileID: 1310588937}
 --- !u!4 &319893566
 Transform:
   m_ObjectHideFlags: 0
@@ -1711,7 +1711,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &606461103
 Transform:
   m_ObjectHideFlags: 0
@@ -2919,6 +2919,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1310588937 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4589972057113343620, guid: cb1aa5380a39c884ca9a628bef524ae8, type: 3}
+  m_PrefabInstance: {fileID: 855363872}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
 --- !u!1 &1315691019
 GameObject:
   m_ObjectHideFlags: 0
@@ -4433,17 +4444,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 607555d6da2990e40b30e33480158a43, type: 3}
---- !u!114 &1980584750 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2934012134790170934, guid: cb1aa5380a39c884ca9a628bef524ae8, type: 3}
-  m_PrefabInstance: {fileID: 855363872}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
 --- !u!1 &2002217461
 GameObject:
   m_ObjectHideFlags: 0
