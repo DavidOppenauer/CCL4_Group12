@@ -64,6 +64,7 @@ public class JunctionManager : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        AkUnitySoundEngine.PostEvent("Play_UI_Beam_Junction_SlideOut", gameObject);
 
         TriggerAllActiveNodesToSlideOut();
 
@@ -85,6 +86,7 @@ public class JunctionManager : MonoBehaviour
         menuRoot.SetActive(true);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        //AkUnitySoundEngine.PostEvent("Play_UI_Beam_Junction_SlideIn", gameObject);
 
         // Fade OUT the external UI smoothly
         if (healthCompassHUD != null) StartCoroutine(FadeCanvasGroup(healthCompassHUD, 1f, 0f));
@@ -99,8 +101,7 @@ public class JunctionManager : MonoBehaviour
     /// </summary>
     public void SelectDirection(string chosenDirection)
     {
-        Debug.Log($"Direction Locked In: {chosenDirection}");
-
+        //Debug.Log($"Direction Locked In: {chosenDirection}");
         OnDirectionSelected?.Invoke(chosenDirection);
 
         CloseJunctionMenu();

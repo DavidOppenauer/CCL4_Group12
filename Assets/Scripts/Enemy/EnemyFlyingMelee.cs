@@ -29,6 +29,7 @@ public class EnemyFlyingMelee : EnemyBase
         {
             startingDistance = Vector3.Distance(transform.position, player.transform.position);
             hasCalculatedStartDistance = true;
+            AkUnitySoundEngine.PostEvent("Play_MaskDemon_Announce", gameObject);
         }
 
         if (hasCalculatedStartDistance)
@@ -67,8 +68,8 @@ public class EnemyFlyingMelee : EnemyBase
         //     yield return null;
         // }
         yield return new WaitForSeconds(chargeUpTime);
-
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        AkUnitySoundEngine.PostEvent("Play_Explosion", gameObject);
         PlayerBrain playerBrain = player.GetComponent<PlayerBrain>();
         playerBrain.OnHit();
         Destroy(gameObject);

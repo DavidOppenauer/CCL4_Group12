@@ -165,12 +165,6 @@ public class PlayerBrain : MonoBehaviour
                     aimUI.SetActive(true);
                     previousState = currentState;
                 }
-
-                if (playerInput.GetReloadWasPressedThisFrame())
-                {
-                    playerAimController.DisableAiming();
-                    currentState = PlayerState.Reload;
-                }
                 playerAimController.HandleAiming();
                 playerShoot.HandleShooting();
             break;
@@ -180,6 +174,8 @@ public class PlayerBrain : MonoBehaviour
                 // Transition Code
                 if(previousState != currentState)
                 {
+                    // Disable aiming
+                    playerAimController.DisableAiming();
                     // Disable Walking Animation
                     playerRailMovement.SetIsPlayerWalking(false);
                     // Disable AimAnimation
@@ -273,6 +269,10 @@ public class PlayerBrain : MonoBehaviour
         {
             previousState = currentState;
             currentState = PlayerState.Interaction;
+        }
+        if (playerInput.GetReloadWasPressedThisFrame() && currentState != PlayerState.Interaction)
+        {
+            currentState = PlayerState.Reload;
         }
     }
 

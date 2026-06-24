@@ -145,7 +145,7 @@
 						<Action Name="" ID="{845553A8-DA2D-4D02-B503-8EC82EFFD331}" ShortID="744264659">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="UI_Beam_Junction" ID="{CE72C49B-0C15-4368-BF47-977B37435A6D}" WorkUnitID="{12249294-F7F9-453A-A384-A10C2CAE4D71}"/>
+									<ObjectRef Name="UI_Beam_Junction_SlideIn" ID="{CE72C49B-0C15-4368-BF47-977B37435A6D}" WorkUnitID="{12249294-F7F9-453A-A384-A10C2CAE4D71}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -168,6 +168,61 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="UI_Beam_Message_Out" ID="{6556C4AF-8FEC-45AD-A0C3-C6BDD9411968}" WorkUnitID="{12249294-F7F9-453A-A384-A10C2CAE4D71}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Cylinder_Spin" ID="{74F797A9-7771-4C38-86B3-9BC8D351FCCB}">
+					<ChildrenList>
+						<Action Name="" ID="{05B00EBD-75B3-4CA5-8277-3BE7DD2BC2C7}" ShortID="321112803">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Cylinder_Spin" ID="{4620E420-5CB6-4496-9C0C-DB6E57C08012}" WorkUnitID="{12249294-F7F9-453A-A384-A10C2CAE4D71}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Eject_Bullets" ID="{F2CD2B07-7DC4-4239-A10F-ED7736B3D768}">
+					<ChildrenList>
+						<Action Name="" ID="{90DF7EFF-D110-4978-92D7-D3AD4E091A11}" ShortID="937575064">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Eject_Bullets" ID="{93434AC4-59E4-4F0E-BF25-EC80D7D3BC60}" WorkUnitID="{12249294-F7F9-453A-A384-A10C2CAE4D71}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Empty_Revolver" ID="{0D054802-F1C9-4031-BD4D-5BEA834DBA89}">
+					<ChildrenList>
+						<Action Name="" ID="{89F87C35-3D74-4C5E-B515-3E97FD2172B5}" ShortID="663871162">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Empty_Revolver" ID="{A8F81996-4ADC-4A8C-83F8-4555D853F0B8}" WorkUnitID="{12249294-F7F9-453A-A384-A10C2CAE4D71}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_UI_Beam_Junction_SlideIn" ID="{6B4EABB5-718D-406C-B0AA-5886F8B32B1A}">
+					<ChildrenList>
+						<Action Name="" ID="{4233496D-9812-451C-B675-94458D03C796}" ShortID="611506199">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="UI_Beam_Junction_SlideIn" ID="{CE72C49B-0C15-4368-BF47-977B37435A6D}" WorkUnitID="{12249294-F7F9-453A-A384-A10C2CAE4D71}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_UI_Beam_Junction_SlideOut" ID="{67E8DD1C-7A55-49B7-BEE6-862733778866}">
+					<ChildrenList>
+						<Action Name="" ID="{616DF63F-177D-4869-9F0D-83DA7BD4E8E4}" ShortID="479864044">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="UI_Beam_Junction_SlideOut" ID="{9EE26E3D-0445-4926-BC6F-A1801750A4AA}" WorkUnitID="{12249294-F7F9-453A-A384-A10C2CAE4D71}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

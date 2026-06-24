@@ -14,7 +14,7 @@ public class PlayerShoot : MonoBehaviour
     // Ammo Logic
     private int maxAmmo = 6;
     private int currentAmmo;
-    private float shotCooldown = 1f;
+    [SerializeField] private float shotCooldown = 1f;
     private bool canShoot = true;
     private float timer = 0f;
     private int debugHitCount;
@@ -36,6 +36,8 @@ public class PlayerShoot : MonoBehaviour
             currentAmmo--;
             // play shoot animation
             playerAnimator.PlayShootAnimation();
+            // shoot sound
+            AkUnitySoundEngine.PostEvent("Play_Gun_Shot", gameObject);
             // Fire Ray
             FireRay();
             // reset Timer
