@@ -44,8 +44,9 @@ public class PlayerShoot : MonoBehaviour
                 // reset Timer
                 timer = 0f;
             }
-            else
+            else if(currentAmmo <= 0)
             {
+                
                 AkUnitySoundEngine.PostEvent("Play_Empty_Revolver", gameObject);
             }
         }

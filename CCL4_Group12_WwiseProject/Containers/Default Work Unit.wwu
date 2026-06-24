@@ -55,8 +55,22 @@
 				</Sound>
 				<RandomSequenceContainer Name="Footsteps_Player" ID="{536C022D-E265-45E5-A58D-A5A65B85D784}" ShortID="114476290">
 					<PropertyList>
+						<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+						<Property Name="Lowpass" Type="int16">
+							<ValueList>
+								<Value>35</Value>
+							</ValueList>
+						</Property>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
 						<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
 						<Property Name="Pitch" Type="int32">
+							<ValueList>
+								<Value>1000</Value>
+							</ValueList>
 							<ModifierList>
 								<ModifierInfo>
 									<Modifier Name="" ID="{C7B918A5-1096-4801-9816-EA6FAC3E3115}">
@@ -68,6 +82,12 @@
 									</Modifier>
 								</ModifierInfo>
 							</ModifierList>
+						</Property>
+						<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
 						</Property>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
@@ -96,6 +116,21 @@
 					</ReferenceList>
 					<ChildrenList>
 						<Sound Name="PlayerFootsteps-001" ID="{1EFBCFD4-7C9B-4F41-B481-74AA63767665}" ShortID="311153610">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{E0BD416F-B339-4E37-AD92-EBA5D8E4FCE8}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="30"/>
+													<Property Name="Min" Type="Real64" Value="-30"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CBBF3BF4-C844-4C60-BC53-E76DD30E9B0F}"/>
@@ -107,7 +142,10 @@
 							<ChildrenList>
 								<AudioFileSource Name="PlayerFootsteps-001" ID="{84F95AE7-7763-40E3-AA7C-7B2F8268833A}">
 									<PropertyList>
+										<Property Name="FadeInDuration" Type="Real64" Value="0.033"/>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.06997"/>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="0.18988"/>
 										<Property Name="TrimEnd" Type="Real64" Value="0.36364"/>
 									</PropertyList>
 									<Language>SFX</Language>
@@ -122,6 +160,21 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="PlayerFootsteps-002" ID="{98EC91AF-D91B-4B19-8027-7D68F73DDC9D}" ShortID="506754517">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{8EE1B99A-4EB7-4F92-9BCF-4AE217557B23}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="20"/>
+													<Property Name="Min" Type="Real64" Value="-20"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CBBF3BF4-C844-4C60-BC53-E76DD30E9B0F}"/>
@@ -133,7 +186,10 @@
 							<ChildrenList>
 								<AudioFileSource Name="PlayerFootsteps-002" ID="{D1317252-5F22-41CD-8444-EBC03ADF0BF2}">
 									<PropertyList>
+										<Property Name="FadeInDuration" Type="Real64" Value="0.02498"/>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.06343"/>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="0.18269"/>
 										<Property Name="TrimEnd" Type="Real64" Value="0.35589"/>
 									</PropertyList>
 									<Language>SFX</Language>
@@ -147,111 +203,22 @@
 								<ActiveSource Name="PlayerFootsteps-002" ID="{D1317252-5F22-41CD-8444-EBC03ADF0BF2}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="PlayerFootsteps-003" ID="{39136E48-EADA-40A7-AF69-4F6E35F21595}" ShortID="851194385">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CBBF3BF4-C844-4C60-BC53-E76DD30E9B0F}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{4828AA22-1610-4CD9-AC6C-79FF63595D7F}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="PlayerFootsteps-003" ID="{F13916AF-ACC7-412F-AE88-43ABF9707D99}">
-									<PropertyList>
-										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimEnd" Type="Real64" Value="0.28995"/>
-									</PropertyList>
-									<Language>SFX</Language>
-									<AudioFile>PlayerFootsteps-003.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="526109289"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="PlayerFootsteps-003" ID="{F13916AF-ACC7-412F-AE88-43ABF9707D99}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-						<Sound Name="PlayerFootsteps-004" ID="{4FBB757A-D841-41AA-A555-1125EA7389D7}" ShortID="855474933">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CBBF3BF4-C844-4C60-BC53-E76DD30E9B0F}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{4828AA22-1610-4CD9-AC6C-79FF63595D7F}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="PlayerFootsteps-004" ID="{2BF9F894-3D4F-4DCB-BB94-8C75CC66B43E}">
-									<PropertyList>
-										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimEnd" Type="Real64" Value="0.2132"/>
-									</PropertyList>
-									<Language>SFX</Language>
-									<AudioFile>PlayerFootsteps-004.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="670747660"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="PlayerFootsteps-004" ID="{2BF9F894-3D4F-4DCB-BB94-8C75CC66B43E}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-						<Sound Name="PlayerFootsteps-005" ID="{AC3AD690-2E96-4760-9E28-A98C76D90B5C}" ShortID="233748460">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CBBF3BF4-C844-4C60-BC53-E76DD30E9B0F}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{4828AA22-1610-4CD9-AC6C-79FF63595D7F}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="PlayerFootsteps-005" ID="{8FF296C8-BF2A-4F74-AF36-F26F56F950B8}">
-									<PropertyList>
-										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimEnd" Type="Real64" Value="0.23918"/>
-									</PropertyList>
-									<Language>SFX</Language>
-									<AudioFile>PlayerFootsteps-005.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="98950027"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="PlayerFootsteps-005" ID="{8FF296C8-BF2A-4F74-AF36-F26F56F950B8}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-						<Sound Name="PlayerFootsteps-006" ID="{508EB16C-886D-4999-9B3A-4584133AC9E2}" ShortID="792377373">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CBBF3BF4-C844-4C60-BC53-E76DD30E9B0F}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{4828AA22-1610-4CD9-AC6C-79FF63595D7F}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="PlayerFootsteps-006" ID="{4EBEB826-FF0B-4799-8554-42569BD171E6}">
-									<PropertyList>
-										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimEnd" Type="Real64" Value="0.26554"/>
-									</PropertyList>
-									<Language>SFX</Language>
-									<AudioFile>PlayerFootsteps-006.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="390640720"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="PlayerFootsteps-006" ID="{4EBEB826-FF0B-4799-8554-42569BD171E6}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
 						<Sound Name="PlayerFootsteps-007" ID="{8D170C89-3F1B-4FB0-A705-4FD69EE06224}" ShortID="1023352749">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{600A8E9A-68EF-4AAF-B381-4D4A4BC6109E}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="25"/>
+													<Property Name="Min" Type="Real64" Value="-25"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CBBF3BF4-C844-4C60-BC53-E76DD30E9B0F}"/>
@@ -263,9 +230,11 @@
 							<ChildrenList>
 								<AudioFileSource Name="PlayerFootsteps-007" ID="{B3A932B7-BBD2-4EFF-83AB-A0EACFD4FF22}">
 									<PropertyList>
-										<Property Name="LoopBegin" Type="Real64" Value="0"/>
+										<Property Name="FadeInDuration" Type="Real64" Value="0.06227"/>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.09507"/>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimEnd" Type="Real64" Value="0.27455"/>
+										<Property Name="TrimBegin" Type="Real64" Value="0.0467"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.26763"/>
 									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>PlayerFootsteps-007.wav</AudioFile>
@@ -279,6 +248,21 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="PlayerFootsteps-008" ID="{A95CFD17-15B0-4E9A-A6E4-A0C0F6AFFB90}" ShortID="284242535">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{4281B2ED-A221-4932-932B-EA4C45DD462A}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="30"/>
+													<Property Name="Min" Type="Real64" Value="-30"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CBBF3BF4-C844-4C60-BC53-E76DD30E9B0F}"/>
@@ -290,8 +274,10 @@
 							<ChildrenList>
 								<AudioFileSource Name="PlayerFootsteps-008" ID="{6EB51CCA-44A6-45F3-9AE1-EE6A864D5632}">
 									<PropertyList>
+										<Property Name="FadeInDuration" Type="Real64" Value="0.03857"/>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.10023"/>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimEnd" Type="Real64" Value="0.29682"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.23318"/>
 									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>PlayerFootsteps-008.wav</AudioFile>
@@ -309,6 +295,12 @@
 				<RandomSequenceContainer Name="Footsteps_DeadZ" ID="{EFB80C40-ADEA-47B6-BEB7-9D47CB848C41}" ShortID="293620630">
 					<PropertyList>
 						<Property Name="3DSpatialization" Type="int16" Value="2"/>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
+						<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
 						<Property Name="Pitch" Type="int32">
 							<ModifierList>
 								<ModifierInfo>
@@ -321,6 +313,12 @@
 									</Modifier>
 								</ModifierInfo>
 							</ModifierList>
+						</Property>
+						<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
 						</Property>
 						<Property Name="Volume" Type="Real64">
 							<ModifierList>
@@ -346,6 +344,15 @@
 					</ReferenceList>
 					<ChildrenList>
 						<Sound Name="DeadZ-Footsteps-001" ID="{AB762D84-0EA3-41D1-A958-A756C3A2909D}" ShortID="908740957">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{5B6352EB-7EBD-4F91-953E-9F13AED3EEE9}"/>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CBBF3BF4-C844-4C60-BC53-E76DD30E9B0F}"/>
@@ -358,7 +365,7 @@
 								<AudioFileSource Name="DeadZ-Footsteps-001" ID="{F1FA8F83-F034-448D-AC42-1F14DF02D4A6}">
 									<PropertyList>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimEnd" Type="Real64" Value="0.23349"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.1277"/>
 									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>DeadZ-Footsteps-001.wav</AudioFile>
@@ -426,6 +433,15 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="DeadZ-Footsteps-004" ID="{91662793-8FBE-46E0-9C0C-08A320116E99}" ShortID="716833939">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{8D90E00C-B612-42F0-9D8E-D5292031D9D8}"/>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CBBF3BF4-C844-4C60-BC53-E76DD30E9B0F}"/>
@@ -437,9 +453,8 @@
 							<ChildrenList>
 								<AudioFileSource Name="DeadZ-Footsteps-004" ID="{F3C3D321-9D51-4B49-B467-B146C37BAF4A}">
 									<PropertyList>
-										<Property Name="LoopBegin" Type="Real64" Value="0"/>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimEnd" Type="Real64" Value="0.12991"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.11995"/>
 									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>DeadZ-Footsteps-004.wav</AudioFile>
@@ -453,6 +468,15 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="DeadZ-Footsteps-005" ID="{91480F36-F2AF-471E-B47C-914C44B3CF02}" ShortID="960242895">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{15CEB64F-608B-4022-BE0C-72FDEFBD6758}"/>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CBBF3BF4-C844-4C60-BC53-E76DD30E9B0F}"/>
@@ -464,9 +488,9 @@
 							<ChildrenList>
 								<AudioFileSource Name="DeadZ-Footsteps-005" ID="{E7974E71-14B9-4BC0-A511-8978816DBB97}">
 									<PropertyList>
-										<Property Name="LoopBegin" Type="Real64" Value="0"/>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimEnd" Type="Real64" Value="0.22528"/>
+										<Property Name="TrimBegin" Type="Real64" Value="0.03474"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.13013"/>
 									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>DeadZ-Footsteps-005.wav</AudioFile>
@@ -480,6 +504,15 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="DeadZ-Footsteps-006" ID="{9DE8D64F-953E-45F5-B1CD-9C4D118FBEAB}" ShortID="643818685">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{B2D972C7-10F5-4AAB-AD6C-CDC7C3E87777}"/>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CBBF3BF4-C844-4C60-BC53-E76DD30E9B0F}"/>
