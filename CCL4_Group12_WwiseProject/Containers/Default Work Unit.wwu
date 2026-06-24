@@ -55,6 +55,7 @@
 				</Sound>
 				<RandomSequenceContainer Name="Footsteps_Player" ID="{536C022D-E265-45E5-A58D-A5A65B85D784}" ShortID="114476290">
 					<PropertyList>
+						<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
 						<Property Name="Pitch" Type="int32">
 							<ModifierList>
 								<ModifierInfo>
@@ -69,6 +70,9 @@
 							</ModifierList>
 						</Property>
 						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-10</Value>
+							</ValueList>
 							<ModifierList>
 								<ModifierInfo>
 									<Modifier Name="" ID="{05D09C00-4358-46AF-81D0-C11DF01D1246}">
@@ -129,9 +133,8 @@
 							<ChildrenList>
 								<AudioFileSource Name="PlayerFootsteps-002" ID="{D1317252-5F22-41CD-8444-EBC03ADF0BF2}">
 									<PropertyList>
-										<Property Name="LoopBegin" Type="Real64" Value="0"/>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimEnd" Type="Real64" Value="0.3847"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.35589"/>
 									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>PlayerFootsteps-002.wav</AudioFile>
@@ -157,7 +160,7 @@
 								<AudioFileSource Name="PlayerFootsteps-003" ID="{F13916AF-ACC7-412F-AE88-43ABF9707D99}">
 									<PropertyList>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimEnd" Type="Real64" Value="0.3791"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.28995"/>
 									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>PlayerFootsteps-003.wav</AudioFile>
@@ -183,7 +186,7 @@
 								<AudioFileSource Name="PlayerFootsteps-004" ID="{2BF9F894-3D4F-4DCB-BB94-8C75CC66B43E}">
 									<PropertyList>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimEnd" Type="Real64" Value="0.20572"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.2132"/>
 									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>PlayerFootsteps-004.wav</AudioFile>
@@ -208,9 +211,8 @@
 							<ChildrenList>
 								<AudioFileSource Name="PlayerFootsteps-005" ID="{8FF296C8-BF2A-4F74-AF36-F26F56F950B8}">
 									<PropertyList>
-										<Property Name="LoopBegin" Type="Real64" Value="0"/>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimEnd" Type="Real64" Value="0.3383"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.23918"/>
 									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>PlayerFootsteps-005.wav</AudioFile>
@@ -235,9 +237,8 @@
 							<ChildrenList>
 								<AudioFileSource Name="PlayerFootsteps-006" ID="{4EBEB826-FF0B-4799-8554-42569BD171E6}">
 									<PropertyList>
-										<Property Name="LoopBegin" Type="Real64" Value="0"/>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimEnd" Type="Real64" Value="0.43756"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.26554"/>
 									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>PlayerFootsteps-006.wav</AudioFile>
@@ -289,9 +290,8 @@
 							<ChildrenList>
 								<AudioFileSource Name="PlayerFootsteps-008" ID="{6EB51CCA-44A6-45F3-9AE1-EE6A864D5632}">
 									<PropertyList>
-										<Property Name="LoopBegin" Type="Real64" Value="0"/>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimEnd" Type="Real64" Value="0.22354"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.29682"/>
 									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>PlayerFootsteps-008.wav</AudioFile>
@@ -535,7 +535,10 @@
 					<ChildrenList>
 						<AudioFileSource Name="Angel_Announce" ID="{5D0825F8-6DB0-4308-BCC9-F0ABE4333B28}">
 							<PropertyList>
+								<Property Name="FadeOutDuration" Type="Real64" Value="0.58174"/>
+								<Property Name="FadeOutShape" Type="int16" Value="1"/>
 								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.87566"/>
 							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>Angel_Announce.wav</AudioFile>
@@ -593,9 +596,34 @@
 				<Sound Name="MaskDemon_Announce" ID="{C546BDE9-425D-4602-8B54-0766F5804AA7}" ShortID="468870268">
 					<PropertyList>
 						<Property Name="3DSpatialization" Type="int16" Value="2"/>
+						<Property Name="InitialDelay" Type="Real64">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{095A4B38-2884-485A-837D-07FD4C2FF432}">
+										<PropertyList>
+											<Property Name="Max" Type="Real64" Value="2"/>
+											<Property Name="Min" Type="Real64" Value="-2"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{12F84408-1808-4EC2-A001-CCD2345B39EA}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="10"/>
+											<Property Name="Min" Type="Real64" Value="-10"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-3</Value>
+								<Value>-5</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -609,6 +637,12 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="MaskDemon_Announce" ID="{23009B94-BB0F-484E-BCA9-D504A35ED2F6}">
+							<PropertyList>
+								<Property Name="FadeOutDuration" Type="Real64" Value="0.38843"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="0.13744"/>
+								<Property Name="TrimEnd" Type="Real64" Value="1.22056"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>MaskDemon_Announce.wav</AudioFile>
 							<MediaIDList>
@@ -622,6 +656,11 @@
 				</Sound>
 				<Sound Name="Gun_Shot" ID="{CBE29470-42F4-477C-8126-D64F1187642C}" ShortID="518502850">
 					<PropertyList>
+						<Property Name="Lowpass" Type="int16">
+							<ValueList>
+								<Value>3</Value>
+							</ValueList>
+						</Property>
 						<Property Name="Pitch" Type="int32">
 							<ModifierList>
 								<ModifierInfo>
@@ -659,6 +698,11 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="Gun_Shot" ID="{05D37DDA-B24E-40A9-8661-5E2B1F56F152}">
+							<PropertyList>
+								<Property Name="FadeOutDuration" Type="Real64" Value="0.19499"/>
+								<Property Name="LoopBegin" Type="Real64" Value="0"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>Gun_Shot.wav</AudioFile>
 							<MediaIDList>
@@ -687,6 +731,9 @@
 							</ModifierList>
 						</Property>
 						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-10</Value>
+							</ValueList>
 							<ModifierList>
 								<ModifierInfo>
 									<Modifier Name="" ID="{873FE150-838D-4E00-9F7A-03DCDD23EE61}">
@@ -970,6 +1017,9 @@
 							</ModifierList>
 						</Property>
 						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-20</Value>
+							</ValueList>
 							<ModifierList>
 								<ModifierInfo>
 									<Modifier Name="" ID="{2471ECA5-1644-4AB8-B709-F7725AD979F2}">
@@ -1004,17 +1054,40 @@
 						<ActiveSource Name="Explosion" ID="{13A989DF-4011-40D0-BFFC-4E56C92D857B}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
-				<Sound Name="UI_Beam_Junction" ID="{CE72C49B-0C15-4368-BF47-977B37435A6D}" ShortID="409972772">
+				<Sound Name="UI_Beam_Junction_SlideIn" ID="{CE72C49B-0C15-4368-BF47-977B37435A6D}" ShortID="409972772">
 					<PropertyList>
+						<Property Name="InitialDelay" Type="Real64">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{84E01407-3C28-47D1-AC52-0C357E7A55FC}">
+										<PropertyList>
+											<Property Name="Max" Type="Real64" Value="2"/>
+											<Property Name="Min" Type="Real64" Value="-2"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
 						<Property Name="Pitch" Type="int32">
 							<ModifierList>
 								<ModifierInfo>
 									<Modifier Name="" ID="{4171B8E1-3E93-441E-8E08-8C636A025C74}">
 										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
 											<Property Name="Max" Type="Real64" Value="100"/>
 											<Property Name="Min" Type="Real64" Value="-100"/>
 										</PropertyList>
 									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-10</Value>
+							</ValueList>
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{BA739A0E-ECB8-4843-B660-40FB6C8E8F92}"/>
 								</ModifierInfo>
 							</ModifierList>
 						</Property>
@@ -1031,7 +1104,8 @@
 						<AudioFileSource Name="SFX_UI_Beam_Master" ID="{FAC4EA64-C9CF-4D6F-853B-5E600A862BC7}">
 							<PropertyList>
 								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-								<Property Name="TrimEnd" Type="Real64" Value="0.22905"/>
+								<Property Name="TrimBegin" Type="Real64" Value="0.04623"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.78179"/>
 							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>SFX_UI_Beam_Master.wav</AudioFile>
@@ -1055,6 +1129,16 @@
 											<Property Name="Max" Type="Real64" Value="400"/>
 										</PropertyList>
 									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-15</Value>
+							</ValueList>
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{C727FED2-5F50-4855-BA80-564DB5732819}"/>
 								</ModifierInfo>
 							</ModifierList>
 						</Property>
@@ -1232,6 +1316,88 @@
 					</ChildrenList>
 					<ActiveSourceList>
 						<ActiveSource Name="Empty_Revolver" ID="{E24B0DF4-31A1-47FC-A401-6A9C46A506D7}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="UI_Beam_Junction_SlideOut" ID="{9EE26E3D-0445-4926-BC6F-A1801750A4AA}" ShortID="644342325">
+					<PropertyList>
+						<Property Name="InitialDelay" Type="Real64">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{E41E482C-4289-4A66-BE41-2DF2D5CF6B47}">
+										<PropertyList>
+											<Property Name="Max" Type="Real64" Value="2"/>
+											<Property Name="Min" Type="Real64" Value="-2"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+						<Property Name="Lowpass" Type="int16">
+							<ValueList>
+								<Value>50</Value>
+							</ValueList>
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{280C220F-4386-4482-A888-BFDD4F5232A0}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="10"/>
+											<Property Name="Min" Type="Real64" Value="-5"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+						<Property Name="Pitch" Type="int32">
+							<ValueList>
+								<Value>-100</Value>
+							</ValueList>
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{0180EFC1-2613-4580-A584-91ACC0BEC739}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Min" Type="Real64" Value="-300"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-10</Value>
+							</ValueList>
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{34E4D50F-D832-42BA-8EF8-9C779DD18403}"/>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CBBF3BF4-C844-4C60-BC53-E76DD30E9B0F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{4828AA22-1610-4CD9-AC6C-79FF63595D7F}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="SFX_UI_Beam_Master" ID="{0D8FD4A7-EEE8-46B9-BA88-DF09217312FB}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="0.04623"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.78179"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>SFX_UI_Beam_Master.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="943912739"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="SFX_UI_Beam_Master" ID="{0D8FD4A7-EEE8-46B9-BA88-DF09217312FB}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 			</ChildrenList>
