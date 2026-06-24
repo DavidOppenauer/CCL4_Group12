@@ -14,7 +14,7 @@ public class PlayerShoot : MonoBehaviour
     // Ammo Logic
     private int maxAmmo = 6;
     private int currentAmmo;
-    private float shotCooldown = 1f;
+    [SerializeField] private float shotCooldown = 1f;
     private bool canShoot = true;
     private float timer = 0f;
     private int debugHitCount;

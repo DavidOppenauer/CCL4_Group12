@@ -262,17 +262,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &46049120 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2934012134790170934, guid: cb1aa5380a39c884ca9a628bef524ae8, type: 3}
-  m_PrefabInstance: {fileID: 8685873543016219274}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
 --- !u!1 &103535895
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,39 +344,39 @@ MonoBehaviour:
       TangentIn:
         x: -0
         y: -0
-        z: -2.9908848
+        z: -3.0000803
       TangentOut:
         x: 0
         y: 0
-        z: 2.9908848
+        z: 3.0000803
       Rotation:
         value:
           x: 0
-          y: -0.0037614556
+          y: -0.0036665932
           z: -0
-          w: 0.999993
+          w: 0.9999933
     - Position:
-        x: -0.225
+        x: -0.22
         y: 0
-        z: 69.11546
+        z: 69.20746
       TangentIn:
         x: 0
         y: 0
-        z: 0
+        z: -9.900265
       TangentOut:
         x: 0
         y: 0
-        z: 0
+        z: 9.900265
       Rotation:
         value:
           x: 0
-          y: 0
-          z: 0
-          w: 1
+          y: -0.0036665937
+          z: -0
+          w: 0.9999933
     m_MetaData:
     - Mode: 0
       Tension: 0.5
-    - Mode: 1
+    - Mode: 2
       Tension: 0.5
     m_Closed: 0
     m_IntData:
@@ -1567,7 +1556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
   aimCamera: {fileID: 861561691}
   initialRailCamera: {fileID: 493298058}
-  reloadCamera: {fileID: 46049120}
+  reloadCamera: {fileID: 1745554591}
 --- !u!4 &739030889
 Transform:
   m_ObjectHideFlags: 0
@@ -3382,6 +3371,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1590541312}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1745554591 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4589972057113343620, guid: cb1aa5380a39c884ca9a628bef524ae8, type: 3}
+  m_PrefabInstance: {fileID: 8685873543016219274}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
 --- !u!1 &1748349423
 GameObject:
   m_ObjectHideFlags: 0
@@ -4867,6 +4867,63 @@ MonoBehaviour:
     leftRail: {fileID: 1939677440}
     straightRail: {fileID: 0}
     rightRail: {fileID: 540804162}
+--- !u!1001 &2930239680855498743
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 139737514204487593, guid: 9ceaf50c80200a84b944e8f0b65ba3a8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 139737514204487593, guid: 9ceaf50c80200a84b944e8f0b65ba3a8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.01741219
+      objectReference: {fileID: 0}
+    - target: {fileID: 139737514204487593, guid: 9ceaf50c80200a84b944e8f0b65ba3a8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 139737514204487593, guid: 9ceaf50c80200a84b944e8f0b65ba3a8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 139737514204487593, guid: 9ceaf50c80200a84b944e8f0b65ba3a8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 139737514204487593, guid: 9ceaf50c80200a84b944e8f0b65ba3a8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 139737514204487593, guid: 9ceaf50c80200a84b944e8f0b65ba3a8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 139737514204487593, guid: 9ceaf50c80200a84b944e8f0b65ba3a8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 139737514204487593, guid: 9ceaf50c80200a84b944e8f0b65ba3a8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 139737514204487593, guid: 9ceaf50c80200a84b944e8f0b65ba3a8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4375634922858824053, guid: 9ceaf50c80200a84b944e8f0b65ba3a8, type: 3}
+      propertyPath: m_Name
+      value: Cubicle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9ceaf50c80200a84b944e8f0b65ba3a8, type: 3}
 --- !u!1001 &8685873543016219274
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4891,6 +4948,10 @@ PrefabInstance:
       propertyPath: cameraController
       value: 
       objectReference: {fileID: 739030888}
+    - target: {fileID: 4180167567512263866, guid: cb1aa5380a39c884ca9a628bef524ae8, type: 3}
+      propertyPath: shotCooldown
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4660305877342641494, guid: cb1aa5380a39c884ca9a628bef524ae8, type: 3}
       propertyPath: mainCamera
       value: 
@@ -4957,3 +5018,4 @@ SceneRoots:
   - {fileID: 1204540578}
   - {fileID: 663555609}
   - {fileID: 35390012}
+  - {fileID: 2930239680855498743}
