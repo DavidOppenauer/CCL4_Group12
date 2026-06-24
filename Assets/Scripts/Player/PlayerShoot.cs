@@ -28,21 +28,28 @@ public class PlayerShoot : MonoBehaviour
     public void HandleShooting()
     {
         timer += Time.deltaTime;
-        if (playerInputs.GetShootWasPressedThisFrame() && currentAmmo > 0 && canShoot == true && timer >= shotCooldown)
-        {
-            Debug.Log(currentAmmo);
-            canShoot = false;
-            //reduce ammo
-            currentAmmo--;
-            // play shoot animation
-            playerAnimator.PlayShootAnimation();
-            // shoot sound
-            AkUnitySoundEngine.PostEvent("Play_Gun_Shot", gameObject);
-            // Fire Ray
-            FireRay();
-            // reset Timer
-            timer = 0f;
+        if(playerInputs.GetShootWasPressedThisFrame()){
+            if (currentAmmo > 0 && canShoot == true && timer >= shotCooldown)
+            {
+                Debug.Log(currentAmmo);
+                canShoot = false;
+                //reduce ammo
+                currentAmmo--;
+                // play shoot animation
+                playerAnimator.PlayShootAnimation();
+                // shoot sound
+                AkUnitySoundEngine.PostEvent("Play_Gun_Shot", gameObject);
+                // Fire Ray
+                FireRay();
+                // reset Timer
+                timer = 0f;
+            }
+            else
+            {
+                AkUnitySoundEngine.PostEvent("Play_Empty_Revolver", gameObject);
+            }
         }
+       
     }
 
     public void ResetBullets()
