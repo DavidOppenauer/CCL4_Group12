@@ -352,6 +352,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   bloodParticlePrefab: {fileID: 1391407481674032380, guid: b8873800b855f1241b9de5a5ef1313e0, type: 3}
+  shotCooldown: 0.5
 --- !u!114 &1815889232242572773
 MonoBehaviour:
   m_ObjectHideFlags: 0
