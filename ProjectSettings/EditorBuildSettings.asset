@@ -21,10 +21,10 @@ EditorBuildSettings:
     path: Assets/Scenes/ShootEnemyTest.unity
     guid: c6100a1f608c0d4469dae20e4581c27f
   - enabled: 1
-    path: Assets/Scenes/Maps/Final_Levels/Level_00_Final.unity
+    path: Assets/Scenes/Maps/Final_Levels/Level_00_Finale.unity
     guid: c3d54b1f64395fe48a364c52637e6217
   - enabled: 1
-    path: Assets/Scenes/Maps/Final_Levels/Level_01_Final.unity
+    path: Assets/Scenes/Maps/Final_Levels/Level_01_Finale.unity
     guid: 8cdc8099efef7274ebf8abd6bb94a6b3
   - enabled: 0
     path: Assets/Scenes/Maps/Level_01_prototype.unity
