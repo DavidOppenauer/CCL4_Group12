@@ -186,6 +186,8 @@ MonoBehaviour:
   chargeUpTime: 1
   laserDuration: 0.5
   explosionPrefab: {fileID: 6947915205150471094, guid: ab1fac88ea6792d46920e72f1804e2a5, type: 3}
+  stunTime: 1
+  baseAnimationLength: 2.1
 --- !u!114 &2074790121782471607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,7 +201,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
   maxHealth: 3
-  currentHealth: 0
 --- !u!1001 &8531743740344290429
 PrefabInstance:
   m_ObjectHideFlags: 0
