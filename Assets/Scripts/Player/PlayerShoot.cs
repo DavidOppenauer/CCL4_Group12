@@ -36,6 +36,8 @@ public class PlayerShoot : MonoBehaviour
             currentAmmo--;
             // play shoot animation
             playerAnimator.PlayShootAnimation();
+            // shoot sound
+            AkUnitySoundEngine.PostEvent("Play_Gun_Shot", gameObject);
             // Fire Ray
             FireRay();
             // reset Timer

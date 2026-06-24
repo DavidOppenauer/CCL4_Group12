@@ -53,6 +53,7 @@ public class EnemeyRanged : EnemyBase
 
     public override void OnHit()
     {
+        AkUnitySoundEngine.PostEvent("Play_Hit_Sound", gameObject);
         healthSystem.TakeDamage(1);
 
         if (activeCoroutine != null)
