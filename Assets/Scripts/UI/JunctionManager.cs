@@ -86,7 +86,7 @@ public class JunctionManager : MonoBehaviour
         menuRoot.SetActive(true);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        AkUnitySoundEngine.PostEvent("Play_UI_Beam_Junction_SlideIn", gameObject);
+        //AkUnitySoundEngine.PostEvent("Play_UI_Beam_Junction_SlideIn", gameObject);
 
         // Fade OUT the external UI smoothly
         if (healthCompassHUD != null) StartCoroutine(FadeCanvasGroup(healthCompassHUD, 1f, 0f));

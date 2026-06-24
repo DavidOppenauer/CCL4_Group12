@@ -102,6 +102,7 @@ public class MessageBoxManager : MonoBehaviour
 
     public void TriggerDismissSequence()
     {
+        AkUnitySoundEngine.PostEvent("Play_UI_Beam_Message_Out", gameObject);
         isClosing = true;
         canDismiss = false;
 
