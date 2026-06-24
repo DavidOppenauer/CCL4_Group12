@@ -91,7 +91,7 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<Sound Name="Player_Footstep-008" ID="{6C1DD9A6-75B0-4995-B27F-6ABBE9CB61AE}" ShortID="596317688">
+						<Sound Name="PlayerFootsteps-001" ID="{1EFBCFD4-7C9B-4F41-B481-74AA63767665}" ShortID="311153610">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CBBF3BF4-C844-4C60-BC53-E76DD30E9B0F}"/>
@@ -101,19 +101,23 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="Player_Footstep-008" ID="{1C456DC4-D31B-42F2-AACF-1DC3F99DDF70}">
+								<AudioFileSource Name="PlayerFootsteps-001" ID="{84F95AE7-7763-40E3-AA7C-7B2F8268833A}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.36364"/>
+									</PropertyList>
 									<Language>SFX</Language>
-									<AudioFile>Player_Footstep-008.wav</AudioFile>
+									<AudioFile>PlayerFootsteps-001.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="467383238"/>
+										<MediaID ID="984535731"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="Player_Footstep-008" ID="{1C456DC4-D31B-42F2-AACF-1DC3F99DDF70}" Platform="Linked"/>
+								<ActiveSource Name="PlayerFootsteps-001" ID="{84F95AE7-7763-40E3-AA7C-7B2F8268833A}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="Player_Footstep-005" ID="{5B8FBD99-ED89-4B17-875B-7DF038CCFF8B}" ShortID="659330791">
+						<Sound Name="PlayerFootsteps-002" ID="{98EC91AF-D91B-4B19-8027-7D68F73DDC9D}" ShortID="506754517">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CBBF3BF4-C844-4C60-BC53-E76DD30E9B0F}"/>
@@ -123,19 +127,24 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="Player_Footstep-005" ID="{FEBE12B2-04BC-4B63-A0CD-7379AEF779D3}">
+								<AudioFileSource Name="PlayerFootsteps-002" ID="{D1317252-5F22-41CD-8444-EBC03ADF0BF2}">
+									<PropertyList>
+										<Property Name="LoopBegin" Type="Real64" Value="0"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.3847"/>
+									</PropertyList>
 									<Language>SFX</Language>
-									<AudioFile>Player_Footstep-005.wav</AudioFile>
+									<AudioFile>PlayerFootsteps-002.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="156543674"/>
+										<MediaID ID="443947840"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="Player_Footstep-005" ID="{FEBE12B2-04BC-4B63-A0CD-7379AEF779D3}" Platform="Linked"/>
+								<ActiveSource Name="PlayerFootsteps-002" ID="{D1317252-5F22-41CD-8444-EBC03ADF0BF2}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="Player_Footstep-003" ID="{1C313F00-D52C-4B4E-982E-EF3813DCFDE6}" ShortID="373844799">
+						<Sound Name="PlayerFootsteps-003" ID="{39136E48-EADA-40A7-AF69-4F6E35F21595}" ShortID="851194385">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CBBF3BF4-C844-4C60-BC53-E76DD30E9B0F}"/>
@@ -145,19 +154,23 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="Player_Footstep-003" ID="{5F24B77A-959F-4F84-A706-49C83155C7E2}">
+								<AudioFileSource Name="PlayerFootsteps-003" ID="{F13916AF-ACC7-412F-AE88-43ABF9707D99}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.3791"/>
+									</PropertyList>
 									<Language>SFX</Language>
-									<AudioFile>Player_Footstep-003.wav</AudioFile>
+									<AudioFile>PlayerFootsteps-003.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="942354488"/>
+										<MediaID ID="526109289"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="Player_Footstep-003" ID="{5F24B77A-959F-4F84-A706-49C83155C7E2}" Platform="Linked"/>
+								<ActiveSource Name="PlayerFootsteps-003" ID="{F13916AF-ACC7-412F-AE88-43ABF9707D99}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="Player_Footstep-007" ID="{C933BDA9-EE77-4684-B6C4-796D0CE67960}" ShortID="407393462">
+						<Sound Name="PlayerFootsteps-004" ID="{4FBB757A-D841-41AA-A555-1125EA7389D7}" ShortID="855474933">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CBBF3BF4-C844-4C60-BC53-E76DD30E9B0F}"/>
@@ -167,19 +180,23 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="Player_Footstep-007" ID="{4381E4BC-53A4-42BD-A591-793488B225A0}">
+								<AudioFileSource Name="PlayerFootsteps-004" ID="{2BF9F894-3D4F-4DCB-BB94-8C75CC66B43E}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.20572"/>
+									</PropertyList>
 									<Language>SFX</Language>
-									<AudioFile>Player_Footstep-007.wav</AudioFile>
+									<AudioFile>PlayerFootsteps-004.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="837658021"/>
+										<MediaID ID="670747660"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="Player_Footstep-007" ID="{4381E4BC-53A4-42BD-A591-793488B225A0}" Platform="Linked"/>
+								<ActiveSource Name="PlayerFootsteps-004" ID="{2BF9F894-3D4F-4DCB-BB94-8C75CC66B43E}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="Player_Footstep-006" ID="{15E2B9D9-7454-4A07-9605-70FFCD49DD28}" ShortID="440748826">
+						<Sound Name="PlayerFootsteps-005" ID="{AC3AD690-2E96-4760-9E28-A98C76D90B5C}" ShortID="233748460">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CBBF3BF4-C844-4C60-BC53-E76DD30E9B0F}"/>
@@ -189,19 +206,24 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="Player_Footstep-006" ID="{8D1933F1-844D-4097-BBAC-9E93A43B105A}">
+								<AudioFileSource Name="PlayerFootsteps-005" ID="{8FF296C8-BF2A-4F74-AF36-F26F56F950B8}">
+									<PropertyList>
+										<Property Name="LoopBegin" Type="Real64" Value="0"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.3383"/>
+									</PropertyList>
 									<Language>SFX</Language>
-									<AudioFile>Player_Footstep-006.wav</AudioFile>
+									<AudioFile>PlayerFootsteps-005.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="29942684"/>
+										<MediaID ID="98950027"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="Player_Footstep-006" ID="{8D1933F1-844D-4097-BBAC-9E93A43B105A}" Platform="Linked"/>
+								<ActiveSource Name="PlayerFootsteps-005" ID="{8FF296C8-BF2A-4F74-AF36-F26F56F950B8}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="Player_Footstep-001" ID="{5AF7C5C1-DAD5-4F77-BDBB-72013489688E}" ShortID="1046330461">
+						<Sound Name="PlayerFootsteps-006" ID="{508EB16C-886D-4999-9B3A-4584133AC9E2}" ShortID="792377373">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CBBF3BF4-C844-4C60-BC53-E76DD30E9B0F}"/>
@@ -211,19 +233,24 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="Player_Footstep-001" ID="{2E6CF38E-3FDE-40A6-B3E6-4E535B9E39B9}">
+								<AudioFileSource Name="PlayerFootsteps-006" ID="{4EBEB826-FF0B-4799-8554-42569BD171E6}">
+									<PropertyList>
+										<Property Name="LoopBegin" Type="Real64" Value="0"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.43756"/>
+									</PropertyList>
 									<Language>SFX</Language>
-									<AudioFile>Player_Footstep-001.wav</AudioFile>
+									<AudioFile>PlayerFootsteps-006.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="34199700"/>
+										<MediaID ID="390640720"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="Player_Footstep-001" ID="{2E6CF38E-3FDE-40A6-B3E6-4E535B9E39B9}" Platform="Linked"/>
+								<ActiveSource Name="PlayerFootsteps-006" ID="{4EBEB826-FF0B-4799-8554-42569BD171E6}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="Player_Footstep-002" ID="{3E965F7A-D789-4C26-B755-3340FE1F34EC}" ShortID="931495951">
+						<Sound Name="PlayerFootsteps-007" ID="{8D170C89-3F1B-4FB0-A705-4FD69EE06224}" ShortID="1023352749">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CBBF3BF4-C844-4C60-BC53-E76DD30E9B0F}"/>
@@ -233,19 +260,24 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="Player_Footstep-002" ID="{C4F93507-04DD-4979-B5C7-5121B7A594CA}">
+								<AudioFileSource Name="PlayerFootsteps-007" ID="{B3A932B7-BBD2-4EFF-83AB-A0EACFD4FF22}">
+									<PropertyList>
+										<Property Name="LoopBegin" Type="Real64" Value="0"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.27455"/>
+									</PropertyList>
 									<Language>SFX</Language>
-									<AudioFile>Player_Footstep-002.wav</AudioFile>
+									<AudioFile>PlayerFootsteps-007.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="995294249"/>
+										<MediaID ID="458575632"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="Player_Footstep-002" ID="{C4F93507-04DD-4979-B5C7-5121B7A594CA}" Platform="Linked"/>
+								<ActiveSource Name="PlayerFootsteps-007" ID="{B3A932B7-BBD2-4EFF-83AB-A0EACFD4FF22}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="Player_Footstep-004" ID="{F1AC2199-9AC9-44C1-8132-79D2DAAADFD6}" ShortID="1060803972">
+						<Sound Name="PlayerFootsteps-008" ID="{A95CFD17-15B0-4E9A-A6E4-A0C0F6AFFB90}" ShortID="284242535">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CBBF3BF4-C844-4C60-BC53-E76DD30E9B0F}"/>
@@ -255,16 +287,21 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="Player_Footstep-004" ID="{E387A3AE-36FE-4B09-8004-B139FA57E22D}">
+								<AudioFileSource Name="PlayerFootsteps-008" ID="{6EB51CCA-44A6-45F3-9AE1-EE6A864D5632}">
+									<PropertyList>
+										<Property Name="LoopBegin" Type="Real64" Value="0"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.22354"/>
+									</PropertyList>
 									<Language>SFX</Language>
-									<AudioFile>Player_Footstep-004.wav</AudioFile>
+									<AudioFile>PlayerFootsteps-008.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="923119442"/>
+										<MediaID ID="113628242"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="Player_Footstep-004" ID="{E387A3AE-36FE-4B09-8004-B139FA57E22D}" Platform="Linked"/>
+								<ActiveSource Name="PlayerFootsteps-008" ID="{6EB51CCA-44A6-45F3-9AE1-EE6A864D5632}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
@@ -308,7 +345,7 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<Sound Name="DeadZ_Footstep-001" ID="{2CD1BB86-E5AD-41A6-BE75-F58D91C0E73D}" ShortID="692892003">
+						<Sound Name="DeadZ-Footsteps-001" ID="{AB762D84-0EA3-41D1-A958-A756C3A2909D}" ShortID="908740957">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CBBF3BF4-C844-4C60-BC53-E76DD30E9B0F}"/>
@@ -318,19 +355,23 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="DeadZ_Footstep-001" ID="{8CBDA3A2-F321-4027-A4E3-428BB61B854D}">
+								<AudioFileSource Name="DeadZ-Footsteps-001" ID="{F1FA8F83-F034-448D-AC42-1F14DF02D4A6}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.23349"/>
+									</PropertyList>
 									<Language>SFX</Language>
-									<AudioFile>DeadZ_Footstep-001.wav</AudioFile>
+									<AudioFile>DeadZ-Footsteps-001.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="1014418268"/>
+										<MediaID ID="700276366"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="DeadZ_Footstep-001" ID="{8CBDA3A2-F321-4027-A4E3-428BB61B854D}" Platform="Linked"/>
+								<ActiveSource Name="DeadZ-Footsteps-001" ID="{F1FA8F83-F034-448D-AC42-1F14DF02D4A6}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="DeadZ_Footstep-002" ID="{D7CE6C56-B1AE-4302-8BDC-EA7E316FD786}" ShortID="33302951">
+						<Sound Name="DeadZ-Footsteps-002" ID="{EB6BF73E-A7A0-411C-92B0-7EAF0EE88FA9}" ShortID="815924156">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CBBF3BF4-C844-4C60-BC53-E76DD30E9B0F}"/>
@@ -340,19 +381,24 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="DeadZ_Footstep-002" ID="{7B1BC14D-29C3-4B3C-9DEB-E31432E7B7FF}">
+								<AudioFileSource Name="DeadZ-Footsteps-002" ID="{F0A53898-7C54-4A14-84EA-823D2BEC50AC}">
+									<PropertyList>
+										<Property Name="LoopBegin" Type="Real64" Value="0"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.16866"/>
+									</PropertyList>
 									<Language>SFX</Language>
-									<AudioFile>DeadZ_Footstep-002.wav</AudioFile>
+									<AudioFile>DeadZ-Footsteps-002.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="776510615"/>
+										<MediaID ID="827156647"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="DeadZ_Footstep-002" ID="{7B1BC14D-29C3-4B3C-9DEB-E31432E7B7FF}" Platform="Linked"/>
+								<ActiveSource Name="DeadZ-Footsteps-002" ID="{F0A53898-7C54-4A14-84EA-823D2BEC50AC}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="DeadZ_Footstep-003" ID="{BE3E1344-4781-457C-97CB-3AC065E77D19}" ShortID="850574931">
+						<Sound Name="DeadZ-Footsteps-003" ID="{5E7C5FC0-552D-4997-8AF4-BC195D9AAD64}" ShortID="395386479">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CBBF3BF4-C844-4C60-BC53-E76DD30E9B0F}"/>
@@ -362,19 +408,24 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="DeadZ_Footstep-003" ID="{132AA378-8035-48A1-8870-22C309EFB180}">
+								<AudioFileSource Name="DeadZ-Footsteps-003" ID="{74D75FF0-240D-491E-917F-0DB68A58709A}">
+									<PropertyList>
+										<Property Name="LoopBegin" Type="Real64" Value="0"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.15827"/>
+									</PropertyList>
 									<Language>SFX</Language>
-									<AudioFile>DeadZ_Footstep-003.wav</AudioFile>
+									<AudioFile>DeadZ-Footsteps-003.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="203208096"/>
+										<MediaID ID="863726062"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="DeadZ_Footstep-003" ID="{132AA378-8035-48A1-8870-22C309EFB180}" Platform="Linked"/>
+								<ActiveSource Name="DeadZ-Footsteps-003" ID="{74D75FF0-240D-491E-917F-0DB68A58709A}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="DeadZ_Footstep-004" ID="{8D1F5902-2F54-4AA0-88CE-7CAACE26E358}" ShortID="401197364">
+						<Sound Name="DeadZ-Footsteps-004" ID="{91662793-8FBE-46E0-9C0C-08A320116E99}" ShortID="716833939">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CBBF3BF4-C844-4C60-BC53-E76DD30E9B0F}"/>
@@ -384,19 +435,24 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="DeadZ_Footstep-004" ID="{1087E8DE-C93A-40C3-9D21-BEA666D3401E}">
+								<AudioFileSource Name="DeadZ-Footsteps-004" ID="{F3C3D321-9D51-4B49-B467-B146C37BAF4A}">
+									<PropertyList>
+										<Property Name="LoopBegin" Type="Real64" Value="0"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.12991"/>
+									</PropertyList>
 									<Language>SFX</Language>
-									<AudioFile>DeadZ_Footstep-004.wav</AudioFile>
+									<AudioFile>DeadZ-Footsteps-004.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="226528266"/>
+										<MediaID ID="955847994"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="DeadZ_Footstep-004" ID="{1087E8DE-C93A-40C3-9D21-BEA666D3401E}" Platform="Linked"/>
+								<ActiveSource Name="DeadZ-Footsteps-004" ID="{F3C3D321-9D51-4B49-B467-B146C37BAF4A}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="DeadZ_Footstep-005" ID="{1B88D52D-6BF3-4416-A12A-9161E93ABE70}" ShortID="841672715">
+						<Sound Name="DeadZ-Footsteps-005" ID="{91480F36-F2AF-471E-B47C-914C44B3CF02}" ShortID="960242895">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CBBF3BF4-C844-4C60-BC53-E76DD30E9B0F}"/>
@@ -406,19 +462,24 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="DeadZ_Footstep-005" ID="{F9E0A607-1568-4723-89E3-16E156ACB88F}">
+								<AudioFileSource Name="DeadZ-Footsteps-005" ID="{E7974E71-14B9-4BC0-A511-8978816DBB97}">
+									<PropertyList>
+										<Property Name="LoopBegin" Type="Real64" Value="0"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.22528"/>
+									</PropertyList>
 									<Language>SFX</Language>
-									<AudioFile>DeadZ_Footstep-005.wav</AudioFile>
+									<AudioFile>DeadZ-Footsteps-005.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="732392639"/>
+										<MediaID ID="807191565"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="DeadZ_Footstep-005" ID="{F9E0A607-1568-4723-89E3-16E156ACB88F}" Platform="Linked"/>
+								<ActiveSource Name="DeadZ-Footsteps-005" ID="{E7974E71-14B9-4BC0-A511-8978816DBB97}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="DeadZ_Footstep-006" ID="{75052D1A-7624-4004-AB58-268FA3964EAA}" ShortID="887213794">
+						<Sound Name="DeadZ-Footsteps-006" ID="{9DE8D64F-953E-45F5-B1CD-9C4D118FBEAB}" ShortID="643818685">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CBBF3BF4-C844-4C60-BC53-E76DD30E9B0F}"/>
@@ -428,16 +489,20 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="DeadZ_Footstep-006" ID="{0B67AAB9-25DE-4640-93AB-69483073578B}">
+								<AudioFileSource Name="DeadZ-Footsteps-006" ID="{735F5081-8AFC-48DE-A6E9-067B96B7A6E7}">
+									<PropertyList>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.14948"/>
+									</PropertyList>
 									<Language>SFX</Language>
-									<AudioFile>DeadZ_Footstep-006.wav</AudioFile>
+									<AudioFile>DeadZ-Footsteps-006.wav</AudioFile>
 									<MediaIDList>
-										<MediaID ID="476537106"/>
+										<MediaID ID="837964879"/>
 									</MediaIDList>
 								</AudioFileSource>
 							</ChildrenList>
 							<ActiveSourceList>
-								<ActiveSource Name="DeadZ_Footstep-006" ID="{0B67AAB9-25DE-4640-93AB-69483073578B}" Platform="Linked"/>
+								<ActiveSource Name="DeadZ-Footsteps-006" ID="{735F5081-8AFC-48DE-A6E9-067B96B7A6E7}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
