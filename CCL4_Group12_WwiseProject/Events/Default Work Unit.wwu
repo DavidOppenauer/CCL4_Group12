@@ -173,6 +173,39 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_Cylinder_Spin" ID="{74F797A9-7771-4C38-86B3-9BC8D351FCCB}">
+					<ChildrenList>
+						<Action Name="" ID="{05B00EBD-75B3-4CA5-8277-3BE7DD2BC2C7}" ShortID="321112803">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Cylinder_Spin" ID="{4620E420-5CB6-4496-9C0C-DB6E57C08012}" WorkUnitID="{12249294-F7F9-453A-A384-A10C2CAE4D71}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Eject_Bullets" ID="{F2CD2B07-7DC4-4239-A10F-ED7736B3D768}">
+					<ChildrenList>
+						<Action Name="" ID="{90DF7EFF-D110-4978-92D7-D3AD4E091A11}" ShortID="937575064">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Eject_Bullets" ID="{93434AC4-59E4-4F0E-BF25-EC80D7D3BC60}" WorkUnitID="{12249294-F7F9-453A-A384-A10C2CAE4D71}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Empty_Revolver" ID="{0D054802-F1C9-4031-BD4D-5BEA834DBA89}">
+					<ChildrenList>
+						<Action Name="" ID="{89F87C35-3D74-4C5E-B515-3E97FD2172B5}" ShortID="663871162">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Empty_Revolver" ID="{A8F81996-4ADC-4A8C-83F8-4555D853F0B8}" WorkUnitID="{12249294-F7F9-453A-A384-A10C2CAE4D71}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
