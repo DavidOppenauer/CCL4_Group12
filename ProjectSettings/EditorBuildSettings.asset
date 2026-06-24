@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Maps/Level_01_prototype.unity
     guid: a7b0ed7fb8ba5ea42a904a6bfb80d660
+  - enabled: 1
+    path: Assets/Scenes/Maps/Final_Levels/Level_02_Finale.unity
+    guid: 82cfa09a9317a3e4fb57886a2ebf61b4
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 96302f2a8e58cf44f92d0692cfcd929a, type: 3}
   m_UseUCBPForAssetBundles: 0
