@@ -7,6 +7,7 @@ public class EnemyMelee : EnemyBase
     [SerializeField] private float chargeUpTime = .5f;
     [SerializeField] private GameObject explosionPrefab;
 
+    private bool hasAnnounced = false;
     // private MeshRenderer _meshRenderer;
 
     protected override void Start()
@@ -18,6 +19,14 @@ public class EnemyMelee : EnemyBase
     protected override void Update()
     {
         base.Update();
+        if (currentState == EnemyState.Chasing && !hasAnnounced)
+        {
+            hasAnnounced = true;
+
+            AkUnitySoundEngine.PostEvent("Play_DeadZ_Announce", gameObject);
+        }
+
+
     }
     protected override void Attack()
     {
@@ -40,6 +49,7 @@ public class EnemyMelee : EnemyBase
         yield return new WaitForSeconds(chargeUpTime);
 
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        AkUnitySoundEngine.PostEvent("Play_Explosion", gameObject);
         PlayerBrain playerBrain = player.GetComponent<PlayerBrain>();
         playerBrain.OnHit();
         Destroy(gameObject);
