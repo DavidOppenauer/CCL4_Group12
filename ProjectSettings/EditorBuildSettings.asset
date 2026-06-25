@@ -32,6 +32,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Maps/Final_Levels/Level_02_Finale.unity
     guid: 82cfa09a9317a3e4fb57886a2ebf61b4
+  - enabled: 1
+    path: Assets/Scenes/Maps/Final_Levels/End_Scene.unity
+    guid: 78dee5e2cbe308b45850eb5b7203eb1f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 96302f2a8e58cf44f92d0692cfcd929a, type: 3}
   m_UseUCBPForAssetBundles: 0
