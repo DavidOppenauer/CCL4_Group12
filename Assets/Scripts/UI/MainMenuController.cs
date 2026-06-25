@@ -19,7 +19,7 @@ public class MainMenuController : MonoBehaviour, ISerializationCallbackReceiver
     [SerializeField] private int inactivePriority = 10;
 
     [Header("Gameplay UI")]
-    [Tooltip("The Gameplay UI GameObject in the hierarchy that should appear after the transition.")]
+    [Tooltip("Gameplay UI GameObject in the hierarchy that should appear after the transition.")]
     [SerializeField] private GameObject gameplayUI;
 
     #if UNITY_EDITOR
@@ -35,7 +35,6 @@ public class MainMenuController : MonoBehaviour, ISerializationCallbackReceiver
     {
         menuUIDocument = GetComponent<UIDocument>();
         
-        // Find the Cinemachine Brain on the Main Camera
         cinemaBrain = Camera.main.GetComponent<CinemachineBrain>();
     }
 
@@ -50,7 +49,6 @@ public class MainMenuController : MonoBehaviour, ISerializationCallbackReceiver
         if (startButton != null) startButton.clicked += OnStartGamePressed;
         if (quitButton != null) quitButton.clicked += OnQuitGamePressed;
 
-        // Initialize state: Menu cam up, Gameplay UI hidden
         ResetMenuState();
     }
 
@@ -72,13 +70,13 @@ public class MainMenuController : MonoBehaviour, ISerializationCallbackReceiver
 
     private void OnStartGamePressed()
     {
-        Debug.Log("Starting Game... Smoothly blending to the rail camera.");
+        //Debug.Log("Starting Game...");
 
         // 1. Give the rail camera the higher priority to start the blend
         if (openingShotCamera != null) openingShotCamera.Priority = inactivePriority;
         if (initialRailCamera != null) initialRailCamera.Priority = activePriority;
 
-        // 2. Hide the Main Menu UI immediately
+        // Hide the Main Menu UI
         if (menuUIDocument != null)
         {
             menuUIDocument.rootVisualElement.style.display = DisplayStyle.None;
@@ -90,19 +88,16 @@ public class MainMenuController : MonoBehaviour, ISerializationCallbackReceiver
 
     private IEnumerator WaitForTransitionToFinish()
     {
-        // Wait a brief frame for Cinemachine to acknowledge priority changes and begin blending
         yield return null;
 
-        // Keep waiting every frame as long as the Cinemachine Brain is actively blending
         while (cinemaBrain != null && cinemaBrain.IsBlending)
         {
             yield return null;
         }
 
-        // Double check if our active camera is indeed the rail camera when blending completes
         if (cinemaBrain != null && cinemaBrain.ActiveVirtualCamera == (ICinemachineCamera)initialRailCamera)
         {
-            Debug.Log("Camera transition finished! Activating Gameplay UI.");
+            // Debug.Log("Camera transition finished!");
             
             if (gameplayUI != null)
             {
@@ -118,11 +113,9 @@ public class MainMenuController : MonoBehaviour, ISerializationCallbackReceiver
 
     private void ResetMenuState()
     {
-        // Menu camera takes priority
         if (openingShotCamera != null) openingShotCamera.Priority = activePriority;
         if (initialRailCamera != null) initialRailCamera.Priority = inactivePriority;
 
-        // Hide gameplay UI until the transition triggers it later
         if (gameplayUI != null)
         {
             gameplayUI.SetActive(false);
