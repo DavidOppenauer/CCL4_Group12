@@ -1715,6 +1715,10 @@ PrefabInstance:
       propertyPath: m_RenderingLayerMask
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1630794972795428178, guid: 7de47d03df8cc554ca6bfadcbb57a41e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 97b35c87d64950d49b14b1e5fe792196, type: 2}
     - target: {fileID: 1718776820836595505, guid: 7de47d03df8cc554ca6bfadcbb57a41e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -0.0000002134434
