@@ -1338,7 +1338,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 109
+  m_VersionIndex: 112
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1372,8 +1372,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 43.745483, y: -2, z: 17.947428}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6277853029437742269}
   m_Father: {fileID: 0}
@@ -1429,7 +1429,7 @@ MonoBehaviour:
   attackRange: 2
   chargeUpTime: 0.5
   explosionPrefab: {fileID: 6947915205150471094, guid: ab1fac88ea6792d46920e72f1804e2a5, type: 3}
-  targetOffset: 6
+  targetOffset: 3
   enemyVisuals: {fileID: 6277853029437742269}
 --- !u!1001 &5806779759216196438
 PrefabInstance:
@@ -1457,7 +1457,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3ae850d73e40e3b4bb19f7e031153c90, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.75
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3ae850d73e40e3b4bb19f7e031153c90, type: 3}
       propertyPath: m_LocalPosition.z
