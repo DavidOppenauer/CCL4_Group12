@@ -2685,12 +2685,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3a2f0ef09f1ed145836529eff0f4d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RailJunction
-  railSegments: []
-  directionSetups:
-  - incomingRail: {fileID: 334623060}
-    leftRail: {fileID: 0}
-    straightRail: {fileID: 0}
-    rightRail: {fileID: 0}
+  railSegments:
+  - {fileID: 334623060}
+  directionSetups: []
 --- !u!4 &757937692
 Transform:
   m_ObjectHideFlags: 0
@@ -4409,12 +4406,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3a2f0ef09f1ed145836529eff0f4d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RailJunction
-  railSegments: []
-  directionSetups:
-  - incomingRail: {fileID: 0}
-    leftRail: {fileID: 0}
-    straightRail: {fileID: 0}
-    rightRail: {fileID: 0}
+  railSegments:
+  - {fileID: 334623060}
+  directionSetups: []
 --- !u!4 &1205424957
 Transform:
   m_ObjectHideFlags: 0
