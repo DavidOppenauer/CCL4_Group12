@@ -39,7 +39,7 @@ public class MessageBoxManager : MonoBehaviour
 
     [Header("Timing Configuration")]
     [Tooltip("Time in seconds to wait for the close animations to finish before shutting off the container.")]
-    [SerializeField] private float closeAnimationDuration = 0.5f;
+    [SerializeField] private float closeAnimationDuration = 1.5f;
 
     private bool isClosing = false;
     private bool canDismiss = false;
