@@ -2473,6 +2473,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBar_Compass_HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 7743472118694370105, guid: 553cc7c2a92713144a31386995c397be, type: 3}
+      propertyPath: m_FillOrigin
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8462603001095331224, guid: 553cc7c2a92713144a31386995c397be, type: 3}
       propertyPath: playerTransform
       value: 
