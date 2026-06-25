@@ -9,9 +9,12 @@ public class EnemyTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            foreach (var enemy in enemies)
+            if (enemies != null && enemies.Count > 0)
             {
-                enemy.TriggerEnemy();
+                foreach (var enemy in enemies)
+                {
+                    enemy.TriggerEnemy();
+                }
             }
         }
     }
