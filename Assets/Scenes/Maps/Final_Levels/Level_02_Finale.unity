@@ -22195,11 +22195,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5093239916970804795, guid: d225041e71ac78c449bb0be27d72f2ff, type: 3}
       propertyPath: playerHealth
-      value: 300
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5093239916970804795, guid: d225041e71ac78c449bb0be27d72f2ff, type: 3}
       propertyPath: playerMaxHealth
-      value: 300
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8659592397390958774, guid: d225041e71ac78c449bb0be27d72f2ff, type: 3}
       propertyPath: m_Name
