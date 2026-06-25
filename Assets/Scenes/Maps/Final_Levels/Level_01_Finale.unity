@@ -6248,7 +6248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f6497955c0839a43a9e0ae2b0962328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneChanger
-  sceneId: 3
+  sceneId: 2
 --- !u!65 &679569813
 BoxCollider:
   m_ObjectHideFlags: 0

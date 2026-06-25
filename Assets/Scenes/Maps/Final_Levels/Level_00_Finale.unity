@@ -4534,6 +4534,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5093239916970804795, guid: d225041e71ac78c449bb0be27d72f2ff, type: 3}
+      propertyPath: playerHealth
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093239916970804795, guid: d225041e71ac78c449bb0be27d72f2ff, type: 3}
+      propertyPath: playerMaxHealth
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8659592397390958774, guid: d225041e71ac78c449bb0be27d72f2ff, type: 3}
       propertyPath: m_Name
       value: ---- GAME MANAGER ----
@@ -6742,7 +6750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f6497955c0839a43a9e0ae2b0962328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneChanger
-  sceneId: 2
+  sceneId: 1
 --- !u!65 &1766174364
 BoxCollider:
   m_ObjectHideFlags: 0

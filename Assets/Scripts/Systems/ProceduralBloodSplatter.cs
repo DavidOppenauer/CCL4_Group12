@@ -4,8 +4,8 @@ using System.Collections.Generic;
 [RequireComponent(typeof(ParticleSystem))]
 public class ProceduralBloodSplatter : MonoBehaviour
 {
-    public GameObject[] bloodDecalPrefabs; 
-    
+    public GameObject[] bloodDecalPrefabs;
+
     private ParticleSystem partSystem;
     private List<ParticleCollisionEvent> collisionEvents;
 
@@ -32,7 +32,7 @@ public class ProceduralBloodSplatter : MonoBehaviour
     {
 
         GameObject decalPrefab = bloodDecalPrefabs[Random.Range(0, bloodDecalPrefabs.Length)];
-        
+
         Quaternion rotation = Quaternion.LookRotation(-normal);
         rotation *= Quaternion.Euler(0, 0, Random.Range(0f, 360f));
 
