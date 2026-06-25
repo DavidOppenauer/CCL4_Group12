@@ -10,4 +10,13 @@ public class AudioScript : MonoBehaviour
     {
         AkUnitySoundEngine.PostEvent("Play_Footsteps_Player", gameObject);
     }
+    public void Eject_Bullets()
+    {
+        AkUnitySoundEngine.PostEvent("Play_Eject_Bullets", gameObject);
+    }
+    public void Cylinder_Spin()
+    {
+        AkUnitySoundEngine.PostEvent("Play_Cylinder_Spin", gameObject);
+    }
+    
 }
