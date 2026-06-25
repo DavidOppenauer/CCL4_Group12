@@ -1,107 +1,144 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
-using Unity.VisualScripting;
-
+using Unity.Cinemachine; 
+using System.Collections; // Required for Coroutines
 
 #if UNITY_EDITOR
-using UnityEditor; // Required for SceneAsset, wrapped in an #if so the game can build
+using UnityEditor; 
 #endif
 
 public class MainMenuController : MonoBehaviour, ISerializationCallbackReceiver
 {
+    [Header("Cinemachine Cameras")]
+    [SerializeField] private CinemachineCamera openingShotCamera;
+    [SerializeField] private CinemachineCamera initialRailCamera;
+
+    [Header("Priority Settings")]
+    [SerializeField] private int activePriority = 20;
+    [SerializeField] private int inactivePriority = 10;
+
+    [Header("Gameplay UI")]
+    [Tooltip("The Gameplay UI GameObject in the hierarchy that should appear after the transition.")]
+    [SerializeField] private GameObject gameplayUI;
+
     #if UNITY_EDITOR
     [SerializeField] private SceneAsset gameplaySceneAsset;
     #endif
 
-    // This string is hidden, stores the name of the scene asset
     [HideInInspector] [SerializeField] private string gameplaySceneName;
+
+    private UIDocument menuUIDocument;
+    private CinemachineBrain cinemaBrain;
+
+    private void Awake()
+    {
+        menuUIDocument = GetComponent<UIDocument>();
+        
+        // Find the Cinemachine Brain on the Main Camera
+        cinemaBrain = Camera.main.GetComponent<CinemachineBrain>();
+    }
 
     private void OnEnable()
     {
-        var root = GetComponent<UIDocument>().rootVisualElement;
+        if (menuUIDocument == null) return;
+        var root = menuUIDocument.rootVisualElement;
 
         Button startButton = root.Q<Button>("BtnStart");
         Button quitButton = root.Q<Button>("BtnQuit");
-        // Button optionsButton = root.Q<Button>("BtnOptions");
 
-        if (startButton != null)
-        {
-            startButton.clicked += OnStartGamePressed;
-        }
-        else
-        {
-            Debug.LogError("Could not find a button named 'BtnStart' in the UXML document!");
-        }
+        if (startButton != null) startButton.clicked += OnStartGamePressed;
+        if (quitButton != null) quitButton.clicked += OnQuitGamePressed;
 
-        if (quitButton != null)
-        {
-            quitButton.clicked += OnQuitGamePressed;
-        }
-        else    
-        {
-            Debug.LogError("Could not find a button named 'BtnQuit' in the UXML document!");
-        }
+        // Initialize state: Menu cam up, Gameplay UI hidden
+        ResetMenuState();
     }
 
     private void OnDisable()
     {
-        var root = GetComponent<UIDocument>().rootVisualElement;
-        if (root != null)
+        if (menuUIDocument != null)
         {
-            Button startButton = root.Q<Button>("BtnStart");
-            if (startButton != null)
+            var root = menuUIDocument.rootVisualElement;
+            if (root != null)
             {
-                startButton.clicked -= OnStartGamePressed;
-            }
-            Button quitButton = root.Q<Button>("BtnStart");
-            if (quitButton != null)
-            {
-                quitButton.clicked -= OnQuitGamePressed;
+                Button startButton = root.Q<Button>("BtnStart");
+                if (startButton != null) startButton.clicked -= OnStartGamePressed;
+
+                Button quitButton = root.Q<Button>("BtnQuit"); 
+                if (quitButton != null) quitButton.clicked -= OnQuitGamePressed;
             }
         }
     }
 
-    // ==============
-    // Event Listeners
-    // ==============
     private void OnStartGamePressed()
     {
-        // There we should put a custom loading screen ...
-        Debug.Log("Starting Game... Loading " + gameplaySceneName);
-        
-        SceneManager.LoadScene(gameplaySceneName);
+        Debug.Log("Starting Game... Smoothly blending to the rail camera.");
+
+        // 1. Give the rail camera the higher priority to start the blend
+        if (openingShotCamera != null) openingShotCamera.Priority = inactivePriority;
+        if (initialRailCamera != null) initialRailCamera.Priority = activePriority;
+
+        // 2. Hide the Main Menu UI immediately
+        if (menuUIDocument != null)
+        {
+            menuUIDocument.rootVisualElement.style.display = DisplayStyle.None;
+        }
+
+        // 3. Monitor the transition state
+        StartCoroutine(WaitForTransitionToFinish());
+    }
+
+    private IEnumerator WaitForTransitionToFinish()
+    {
+        // Wait a brief frame for Cinemachine to acknowledge priority changes and begin blending
+        yield return null;
+
+        // Keep waiting every frame as long as the Cinemachine Brain is actively blending
+        while (cinemaBrain != null && cinemaBrain.IsBlending)
+        {
+            yield return null;
+        }
+
+        // Double check if our active camera is indeed the rail camera when blending completes
+        if (cinemaBrain != null && cinemaBrain.ActiveVirtualCamera == (ICinemachineCamera)initialRailCamera)
+        {
+            Debug.Log("Camera transition finished! Activating Gameplay UI.");
+            
+            if (gameplayUI != null)
+            {
+                gameplayUI.SetActive(true);
+            }
+        }
     }
 
     private void OnQuitGamePressed()
     {
-        // Maybe add a conformation window (but not high priority)
-        Debug.Log("Quitting Game...");
-
         Application.Quit();
+    }
+
+    private void ResetMenuState()
+    {
+        // Menu camera takes priority
+        if (openingShotCamera != null) openingShotCamera.Priority = activePriority;
+        if (initialRailCamera != null) initialRailCamera.Priority = inactivePriority;
+
+        // Hide gameplay UI until the transition triggers it later
+        if (gameplayUI != null)
+        {
+            gameplayUI.SetActive(false);
+        }
     }
 
     // =========================================
     // AUTOMATIC NAME EXTRACTION (Serialization)
     // =========================================
-
     public void OnBeforeSerialize()
     {
         #if UNITY_EDITOR
-            // If unity updates the inspector, extract the string name
-            if (gameplaySceneAsset != null)
-            {
-                gameplaySceneName = gameplaySceneAsset.name;
-            }
-            else
-            {
-                gameplaySceneName = string.Empty;
-            }
+            if (gameplaySceneAsset != null) gameplaySceneName = gameplaySceneAsset.name;
+            else gameplaySceneName = string.Empty;
         #endif
     }
 
-    public void OnAfterDeserialize()
-    {
-        // Interface requirement, leave blank
-    }
+    public void OnAfterDeserialize() { }
 }
