@@ -6,6 +6,11 @@
 				<Sound Name="Ambient_Office" ID="{392129F3-A6E2-46D2-AC9A-02B45F9643C8}" ShortID="940402492">
 					<PropertyList>
 						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-10</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
@@ -31,6 +36,18 @@
 				<Sound Name="Ambient_Wind" ID="{9E85A362-5B0D-4837-8FEA-28DEEA2CA99B}" ShortID="370539517">
 					<PropertyList>
 						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{55661043-5A5C-4066-8350-72A27784CE3B}"/>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-15</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
@@ -294,7 +311,7 @@
 				</RandomSequenceContainer>
 				<RandomSequenceContainer Name="Footsteps_DeadZ" ID="{EFB80C40-ADEA-47B6-BEB7-9D47CB848C41}" ShortID="293620630">
 					<PropertyList>
-						<Property Name="3DSpatialization" Type="int16" Value="2"/>
+						<Property Name="3DSpatialization" Type="int16" Value="1"/>
 						<Property Name="MaxSoundPerInstance" Type="int16">
 							<ValueList>
 								<Value>1</Value>
@@ -302,11 +319,13 @@
 						</Property>
 						<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
 						<Property Name="Pitch" Type="int32">
+							<ValueList>
+								<Value>-1000</Value>
+							</ValueList>
 							<ModifierList>
 								<ModifierInfo>
 									<Modifier Name="" ID="{783E7697-9046-458D-84BC-86CB514BD55E}">
 										<PropertyList>
-											<Property Name="Enabled" Type="bool" Value="True"/>
 											<Property Name="Max" Type="Real64" Value="60"/>
 											<Property Name="Min" Type="Real64" Value="-60"/>
 										</PropertyList>
@@ -335,6 +354,113 @@
 						</Property>
 					</PropertyList>
 					<ReferenceList>
+						<Reference Name="Attenuation">
+							<Custom>
+								<Attenuation Name="Attenuation (Custom)" ID="{D9B7960E-5D29-4C76-B51A-3D6D0B3666F3}" ShortID="24063966">
+									<PropertyList>
+										<Property Name="RadiusMax" Type="Real64" Value="25"/>
+									</PropertyList>
+									<CurveUsageInfoList>
+										<VolumeDryUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+												<Curve Name="VolumeDry" ID="{AEC9920F-4A30-42AB-9849-DD91ABB56605}">
+													<PropertyList>
+														<Property Name="Flags" Type="int32" Value="3"/>
+													</PropertyList>
+													<PointList>
+														<Point>
+															<XPos>0</XPos>
+															<YPos>0</YPos>
+															<Flags>5</Flags>
+														</Point>
+														<Point>
+															<XPos>3.9509525</XPos>
+															<YPos>-0</YPos>
+															<Flags>0</Flags>
+															<SegmentShape>Log1</SegmentShape>
+														</Point>
+														<Point>
+															<XPos>25</XPos>
+															<YPos>-200</YPos>
+															<Flags>37</Flags>
+														</Point>
+													</PointList>
+												</Curve>
+											</CurveUsageInfo>
+										</VolumeDryUsage>
+										<VolumeWetGameUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+										</VolumeWetGameUsage>
+										<VolumeWetUserUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+										</VolumeWetUserUsage>
+										<LowPassFilterUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+										</LowPassFilterUsage>
+										<HighPassFilterUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+										</HighPassFilterUsage>
+										<DualShelfUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+										</DualShelfUsage>
+										<SpreadUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+										</SpreadUsage>
+										<FocusUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+										</FocusUsage>
+										<ObstructionVolumeUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</ObstructionVolumeUsage>
+										<ObstructionLPFUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</ObstructionLPFUsage>
+										<ObstructionHPFUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</ObstructionHPFUsage>
+										<ObstructionDSFUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</ObstructionDSFUsage>
+										<OcclusionVolumeUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</OcclusionVolumeUsage>
+										<OcclusionLPFUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</OcclusionLPFUsage>
+										<OcclusionHPFUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</OcclusionHPFUsage>
+										<OcclusionDSFUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</OcclusionDSFUsage>
+										<DiffractionVolumeUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</DiffractionVolumeUsage>
+										<DiffractionLPFUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</DiffractionLPFUsage>
+										<DiffractionHPFUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</DiffractionHPFUsage>
+										<DiffractionDSFUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</DiffractionDSFUsage>
+										<TransmissionVolumeUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</TransmissionVolumeUsage>
+										<TransmissionLPFUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</TransmissionLPFUsage>
+										<TransmissionHPFUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</TransmissionHPFUsage>
+										<TransmissionDSFUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</TransmissionDSFUsage>
+									</CurveUsageInfoList>
+								</Attenuation>
+							</Custom>
+						</Reference>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{CBBF3BF4-C844-4C60-BC53-E76DD30E9B0F}"/>
 						</Reference>
@@ -365,7 +491,8 @@
 								<AudioFileSource Name="DeadZ-Footsteps-001" ID="{F1FA8F83-F034-448D-AC42-1F14DF02D4A6}">
 									<PropertyList>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimEnd" Type="Real64" Value="0.1277"/>
+										<Property Name="TrimBegin" Type="Real64" Value="0.03484"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.08095"/>
 									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>DeadZ-Footsteps-001.wav</AudioFile>
@@ -390,9 +517,9 @@
 							<ChildrenList>
 								<AudioFileSource Name="DeadZ-Footsteps-002" ID="{F0A53898-7C54-4A14-84EA-823D2BEC50AC}">
 									<PropertyList>
-										<Property Name="LoopBegin" Type="Real64" Value="0"/>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimEnd" Type="Real64" Value="0.16866"/>
+										<Property Name="TrimBegin" Type="Real64" Value="0.038"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.0893"/>
 									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>DeadZ-Footsteps-002.wav</AudioFile>
@@ -417,9 +544,9 @@
 							<ChildrenList>
 								<AudioFileSource Name="DeadZ-Footsteps-003" ID="{74D75FF0-240D-491E-917F-0DB68A58709A}">
 									<PropertyList>
-										<Property Name="LoopBegin" Type="Real64" Value="0"/>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimEnd" Type="Real64" Value="0.15827"/>
+										<Property Name="TrimBegin" Type="Real64" Value="0.02759"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.09306"/>
 									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>DeadZ-Footsteps-003.wav</AudioFile>
@@ -454,7 +581,8 @@
 								<AudioFileSource Name="DeadZ-Footsteps-004" ID="{F3C3D321-9D51-4B49-B467-B146C37BAF4A}">
 									<PropertyList>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimEnd" Type="Real64" Value="0.11995"/>
+										<Property Name="TrimBegin" Type="Real64" Value="0.02749"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.07628"/>
 									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>DeadZ-Footsteps-004.wav</AudioFile>
@@ -490,7 +618,7 @@
 									<PropertyList>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
 										<Property Name="TrimBegin" Type="Real64" Value="0.03474"/>
-										<Property Name="TrimEnd" Type="Real64" Value="0.13013"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.08694"/>
 									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>DeadZ-Footsteps-005.wav</AudioFile>
@@ -525,7 +653,7 @@
 								<AudioFileSource Name="DeadZ-Footsteps-006" ID="{735F5081-8AFC-48DE-A6E9-067B96B7A6E7}">
 									<PropertyList>
 										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimEnd" Type="Real64" Value="0.14948"/>
+										<Property Name="TrimEnd" Type="Real64" Value="0.06267"/>
 									</PropertyList>
 									<Language>SFX</Language>
 									<AudioFile>DeadZ-Footsteps-006.wav</AudioFile>
@@ -916,7 +1044,7 @@
 							<Custom>
 								<Attenuation Name="ChargeUp_Attenuation" ID="{6659279C-EC5D-459C-AA4A-60F68FF3AC2C}" ShortID="78361600">
 									<PropertyList>
-										<Property Name="RadiusMax" Type="Real64" Value="50"/>
+										<Property Name="RadiusMax" Type="Real64" Value="25"/>
 									</PropertyList>
 									<CurveUsageInfoList>
 										<VolumeDryUsage>
@@ -932,7 +1060,7 @@
 															<Flags>5</Flags>
 														</Point>
 														<Point>
-															<XPos>50</XPos>
+															<XPos>25</XPos>
 															<YPos>-200</YPos>
 															<Flags>37</Flags>
 														</Point>
