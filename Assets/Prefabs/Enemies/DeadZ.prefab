@@ -826,6 +826,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 1630794972795428178, guid: 34b82bd08140b7448a4b312307f1cf09, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2e656952a22a69645ae35ec9e85f2167, type: 2}
     - target: {fileID: 2260493053935545606, guid: 34b82bd08140b7448a4b312307f1cf09, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 17.01381
