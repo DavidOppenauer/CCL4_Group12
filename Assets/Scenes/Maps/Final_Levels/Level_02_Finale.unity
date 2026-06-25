@@ -15095,7 +15095,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3a2f0ef09f1ed145836529eff0f4d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RailJunction
-  railSegments: []
+  railSegments:
+  - {fileID: 1311200210}
   directionSetups: []
 --- !u!1001 &662543112
 PrefabInstance:
@@ -30774,35 +30775,35 @@ MonoBehaviour:
       TangentIn:
         x: -0
         y: -0
-        z: -2.629304
+        z: -4.639172
       TangentOut:
         x: 0
         y: 0
-        z: 2.629304
+        z: 4.639172
       Rotation:
         value:
-          x: 0
-          y: 0.99997115
-          z: 0
-          w: 0.0076068253
+          x: -1.0820723e-12
+          y: 0.99999076
+          z: 8.029685e-11
+          w: 0.004311171
     - Position:
         x: 0.40000153
-        y: 0
-        z: -26.289997
+        y: 0.000000007450581
+        z: -46.389996
       TangentIn:
         x: -0
         y: -0
-        z: -2.629304
+        z: -4.639172
       TangentOut:
         x: 0
         y: 0
-        z: 2.629304
+        z: 4.639172
       Rotation:
         value:
-          x: 0
-          y: 0.99997115
-          z: 0
-          w: 0.0076068253
+          x: -1.0820857e-12
+          y: 0.99999076
+          z: 8.029685e-11
+          w: 0.004311171
     m_MetaData:
     - Mode: 0
       Tension: 0.5
@@ -36590,6 +36591,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 139737514204487593, guid: 9ceaf50c80200a84b944e8f0b65ba3a8, type: 3}
   m_PrefabInstance: {fileID: 1608802137}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1614187692 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2367987417362399182, guid: e76610db63ed223468f893a23f8b36c0, type: 3}
+  m_PrefabInstance: {fileID: 2047938750}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1615716765
 GameObject:
   m_ObjectHideFlags: 0
@@ -38875,7 +38881,7 @@ PrefabInstance:
     - target: {fileID: 5480327353284968910, guid: 7d80fd8c47763d5488bb5ba449eab0c2, type: 3}
       propertyPath: doorBlocker
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1614187692}
     - target: {fileID: 5480327353284968910, guid: 7d80fd8c47763d5488bb5ba449eab0c2, type: 3}
       propertyPath: lockedMessage
       value: The door is locked. You need a keycard.
