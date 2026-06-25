@@ -376,6 +376,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 112943445}
+    - target: {fileID: 7411046534144189172, guid: 1487d763152f662478ebdb83a109fabd, type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8253701448455967722, guid: 1487d763152f662478ebdb83a109fabd, type: 3}
       propertyPath: m_Name
       value: FlyingAngel (2)
@@ -3833,17 +3837,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 513624038}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &277597065 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7411046534144189172, guid: 1487d763152f662478ebdb83a109fabd, type: 3}
-  m_PrefabInstance: {fileID: 849177146}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2e86228b4581f04187f87486aee8d61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemeyRanged
 --- !u!1001 &279734483
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12734,67 +12727,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7624231320317427896, guid: 9bddec17867fda242825a852e0418a63, type: 3}
   m_PrefabInstance: {fileID: 845532443}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &849177146
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3719662902506633326, guid: 1487d763152f662478ebdb83a109fabd, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 25.87
-      objectReference: {fileID: 0}
-    - target: {fileID: 3719662902506633326, guid: 1487d763152f662478ebdb83a109fabd, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.09258771
-      objectReference: {fileID: 0}
-    - target: {fileID: 3719662902506633326, guid: 1487d763152f662478ebdb83a109fabd, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 63.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 3719662902506633326, guid: 1487d763152f662478ebdb83a109fabd, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3719662902506633326, guid: 1487d763152f662478ebdb83a109fabd, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3719662902506633326, guid: 1487d763152f662478ebdb83a109fabd, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3719662902506633326, guid: 1487d763152f662478ebdb83a109fabd, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3719662902506633326, guid: 1487d763152f662478ebdb83a109fabd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3719662902506633326, guid: 1487d763152f662478ebdb83a109fabd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 3719662902506633326, guid: 1487d763152f662478ebdb83a109fabd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7411046534144189172, guid: 1487d763152f662478ebdb83a109fabd, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 112943445}
-    - target: {fileID: 8253701448455967722, guid: 1487d763152f662478ebdb83a109fabd, type: 3}
-      propertyPath: m_Name
-      value: FlyingAngelScene1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1487d763152f662478ebdb83a109fabd, type: 3}
 --- !u!43 &859245660
 Mesh:
   m_ObjectHideFlags: 0
@@ -19017,7 +18949,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1190092790
 Transform:
   m_ObjectHideFlags: 0
@@ -21824,7 +21756,7 @@ PrefabInstance:
     - target: {fileID: 6749262219540849401, guid: fc1e4a403ebd06c4cb3919624b3eed4d, type: 3}
       propertyPath: 'enemies.Array.data[3]'
       value: 
-      objectReference: {fileID: 277597065}
+      objectReference: {fileID: 0}
     - target: {fileID: 8248091025520096599, guid: fc1e4a403ebd06c4cb3919624b3eed4d, type: 3}
       propertyPath: m_Name
       value: EnemyTriggerZone1
@@ -25415,7 +25347,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6749262219540849401, guid: fc1e4a403ebd06c4cb3919624b3eed4d, type: 3}
       propertyPath: enemies.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6749262219540849401, guid: fc1e4a403ebd06c4cb3919624b3eed4d, type: 3}
       propertyPath: 'enemies.Array.data[0]'
@@ -25428,7 +25360,7 @@ PrefabInstance:
     - target: {fileID: 6749262219540849401, guid: fc1e4a403ebd06c4cb3919624b3eed4d, type: 3}
       propertyPath: 'enemies.Array.data[2]'
       value: 
-      objectReference: {fileID: 277597065}
+      objectReference: {fileID: 0}
     - target: {fileID: 8248091025520096599, guid: fc1e4a403ebd06c4cb3919624b3eed4d, type: 3}
       propertyPath: m_Name
       value: EnemyTriggerZone
@@ -31781,7 +31713,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1987020866
 Transform:
   m_ObjectHideFlags: 0
@@ -33053,7 +32985,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 1926033039}
   - {fileID: 1431266547}
-  - {fileID: 849177146}
   - {fileID: 513624038}
   - {fileID: 1190092790}
   - {fileID: 1301059349}

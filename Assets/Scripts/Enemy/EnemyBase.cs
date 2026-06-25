@@ -123,9 +123,11 @@ public class EnemyBase : MonoBehaviour
     #region Helper Functions
     private bool HasLineOfSight()
     {
+        Vector3 verticalOffset = Vector3.up * 1.5f;
+
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-        Vector3 enemyPos = transform.position;
-        Vector3 playerPos = player.transform.position;
+        Vector3 enemyPos = transform.position + verticalOffset;
+        Vector3 playerPos = player.transform.position + verticalOffset;
         Vector3 direction = (playerPos - enemyPos).normalized;
 
         if (Physics.Raycast(enemyPos, direction, out RaycastHit hitInfo, distanceToPlayer))
