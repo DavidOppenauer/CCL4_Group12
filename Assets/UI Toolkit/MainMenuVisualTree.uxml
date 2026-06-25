@@ -4,7 +4,7 @@
         <ui:Label text="&lt;color=#FFBB00&gt;NOBODY&lt;/color&gt;&#10;WAS&#10;HERE" name="Header" class="header"/>
         <ui:GroupBox name="MenuBox" class="menu-box">
             <ui:Button text="START GAME" name="BtnStart" class="link-button" style="margin-bottom: 20px;"/>
-            <ui:Button text="OPTIONS" name="BtnOptions" class="link-button" style="margin-bottom: 20px;"/>
+            <ui:Button text="OPTIONS" name="BtnOptions" enabled="false" class="link-button" style="margin-bottom: 20px;"/>
             <ui:Button text="QUIT" name="BtnQuit" class="link-button"/>
         </ui:GroupBox>
     </ui:VisualElement>
