@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=b65d50b523940ba46b2610e13183fd2b&amp;type=3#MainMenuStyle"/>
+    <ui:VisualElement name="EndScreenRoot" class="screen-container" style="background-color: rgba(10, 10, 10, 0.95); justify-content: center; align-items: center; flex-grow: 1; width: 100%; height: 100%; color: rgb(0, 0, 0);">
+        <ui:VisualElement class="menu-box" style="align-items: center; padding: 50px;">
+            <ui:Label text="THANK YOU FOR PLAYING" class="header" style="font-size: 30px; margin-bottom: 10px; align-self: center; padding: 0; margin: 0;"/>
+            <ui:Label text="NOBODY WAS HERE" class="header" style="font-size: 63px; margin-bottom: 60px; align-self: center; color: rgb(255, 187, 0); padding: 0; margin: 0; letter-spacing: 15%; padding-top: 64px; padding-bottom: 43px; justify-content: center; align-items: flex-end; align-content: center;"/>
+            <ui:Button name="BtnReturnToMenu" text="RETURN TO MAIN MENU" class="link-button" style="transform-origin: center; padding-top: 58px; font-size: 36px;"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
