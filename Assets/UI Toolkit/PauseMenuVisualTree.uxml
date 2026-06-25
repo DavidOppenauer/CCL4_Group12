@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../Graphs/uxml.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=b65d50b523940ba46b2610e13183fd2b&amp;type=3#MainMenuStyle"/>
+    <ui:VisualElement name="PauseScreen" class="screen-container" style="background-color: rgba(0, 0, 0, 0.45); justify-content: center; align-items: center; flex-grow: 1; width: 100%; height: 100%; -unity-text-align: upper-center; color: rgb(27, 27, 27);">
+        <ui:Label text="PAUSED" name="Label" style="-unity-text-align: middle-center; left: auto; font-size: 72px; color: rgb(255, 255, 255); justify-content: flex-end; align-items: auto; -unity-font-style: normal; letter-spacing: 25px; align-content: auto;"/>
+        <ui:VisualElement name="MenuCard" class="menu-box" style="background-color: rgba(15, 15, 15, 0.85); border-radius: 8px; min-width: 400px; align-items: center; padding: 40px 30px; justify-content: flex-start; top: 20px;">
+            <ui:Button name="BtnResume" text="RESUME" class="link-button" style="margin-bottom: 25px; font-size: 36px;"/>
+            <ui:Button name="BtnQuitToMenu" text="QUIT TO MENU" class="link-button" style="font-size: 36px;"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
