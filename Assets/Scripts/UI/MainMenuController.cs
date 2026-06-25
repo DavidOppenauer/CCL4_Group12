@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 using Unity.Cinemachine; 
-using System.Collections; // Required for Coroutines
+using System.Collections;
 
 #if UNITY_EDITOR
 using UnityEditor; 
@@ -21,6 +21,10 @@ public class MainMenuController : MonoBehaviour, ISerializationCallbackReceiver
     [Header("Gameplay UI")]
     [Tooltip("Gameplay UI GameObject in the hierarchy that should appear after the transition.")]
     [SerializeField] private GameObject gameplayUI;
+    
+    [Header("Pause Menu")]
+    [Tooltip("Insert PauseMenu into here")]
+    [SerializeField] private GameObject pauseUI;
 
     #if UNITY_EDITOR
     [SerializeField] private SceneAsset gameplaySceneAsset;
@@ -34,7 +38,6 @@ public class MainMenuController : MonoBehaviour, ISerializationCallbackReceiver
     private void Awake()
     {
         menuUIDocument = GetComponent<UIDocument>();
-        
         cinemaBrain = Camera.main.GetComponent<CinemachineBrain>();
     }
 
@@ -70,19 +73,14 @@ public class MainMenuController : MonoBehaviour, ISerializationCallbackReceiver
 
     private void OnStartGamePressed()
     {
-        //Debug.Log("Starting Game...");
-
-        // 1. Give the rail camera the higher priority to start the blend
         if (openingShotCamera != null) openingShotCamera.Priority = inactivePriority;
         if (initialRailCamera != null) initialRailCamera.Priority = activePriority;
 
-        // Hide the Main Menu UI
         if (menuUIDocument != null)
         {
             menuUIDocument.rootVisualElement.style.display = DisplayStyle.None;
         }
 
-        // 3. Monitor the transition state
         StartCoroutine(WaitForTransitionToFinish());
     }
 
@@ -97,8 +95,17 @@ public class MainMenuController : MonoBehaviour, ISerializationCallbackReceiver
 
         if (cinemaBrain != null && cinemaBrain.ActiveVirtualCamera == (ICinemachineCamera)initialRailCamera)
         {
-            // Debug.Log("Camera transition finished!");
-            
+            if (pauseUI != null)
+            {
+
+                // UPDATED: Find the PauseMenuController script and unlock it
+                PauseMenuController pauseController = pauseUI.GetComponent<PauseMenuController>();
+                if (pauseController != null)
+                {
+                    pauseController.EnablePauseFeature(true);
+                }
+            }
+
             if (gameplayUI != null)
             {
                 gameplayUI.SetActive(true);
@@ -116,15 +123,19 @@ public class MainMenuController : MonoBehaviour, ISerializationCallbackReceiver
         if (openingShotCamera != null) openingShotCamera.Priority = activePriority;
         if (initialRailCamera != null) initialRailCamera.Priority = inactivePriority;
 
-        if (gameplayUI != null)
+        if (gameplayUI != null) gameplayUI.SetActive(false);
+        
+        if (pauseUI != null)
         {
-            gameplayUI.SetActive(false);
+            // NEW: Explicitly make sure the pause script is locked down on reset
+            PauseMenuController pauseController = pauseUI.GetComponent<PauseMenuController>();
+            if (pauseController != null)
+            {
+                pauseController.EnablePauseFeature(false);
+            }
         }
     }
 
-    // =========================================
-    // AUTOMATIC NAME EXTRACTION (Serialization)
-    // =========================================
     public void OnBeforeSerialize()
     {
         #if UNITY_EDITOR
@@ -132,6 +143,5 @@ public class MainMenuController : MonoBehaviour, ISerializationCallbackReceiver
             else gameplaySceneName = string.Empty;
         #endif
     }
-
     public void OnAfterDeserialize() { }
 }
